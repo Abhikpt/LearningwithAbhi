@@ -1,0 +1,55 @@
+﻿@page "/fetchdata"
+@using LearningwithAbhi.Shared
+
+
+<h3>Webtools</h3>
+
+<h1>Generate PDF FROM URL</h1>
+<p>Please place your URL here and click on Convert to download PDF version of your page</p>
+<input type="text" @bind="URL" placeholder="URL HERE..."/>
+<button @onclick="generatePDF" > Generate PDF </button>
+
+@code {
+    private async Task GeneratePdf()
+    {
+        // Replace "https://www.example.com" with the URL you want to convert to PDF
+        string urlToConvert = "https://www.example.com";
+
+        // Create a new PDF document
+        var document = new PdfSharpCore.Pdf.PdfDocument();
+
+        // Create a new PDF page
+        var page = document.AddPage();
+
+        // Create a PDF renderer and set the size and resolution
+        var gfx = PdfSharpCore.Drawing.XGraphics.FromPdfPage(page);
+        gfx.InterpolationMode = PdfSharpCore.Drawing.XInterpolationMode.HighQualityBicubic;
+        gfx.SmoothingMode = PdfSharpCore.Drawing.XSmoothingMode.AntiAlias;
+
+        // Define the bounds of the PDF content
+        var contentBounds = new PdfSharpCore.Drawing.XRect(0, 0, page.Width, page.Height);
+
+        // Create a PDF web client and download the content from the URL
+        using var webClient = new System.Net.WebClient();
+        byte[] contentBytes = await webClient.DownloadDataTaskAsync(urlToConvert);
+
+        // Load the content bytes into an image using MemoryStream
+        using var memoryStream = new System.IO.MemoryStream(contentBytes);
+        using var image = PdfSharpCore.Drawing.XImage.FromStream(memoryStream);
+
+        // Draw the image on the PDF page
+        gfx.DrawImage(image, contentBounds);
+
+        // Save the PDF document to a file or memory stream
+        // Replace "example.pdf" with the desired file name
+        string filePath = "example.pdf";
+        document.Save(filePath);
+
+        // Alternatively, if you want to return the PDF as a download, use this:
+        // Replace "example.pdf" with the desired file name
+        //var memoryStream = new System.IO.MemoryStream();
+        //document.Save(memoryStream);
+        //var byteArray = memoryStream.ToArray();
+        //await FileUtil.SaveAs("example.pdf", "application/pdf", byteArray);
+    }
+}
