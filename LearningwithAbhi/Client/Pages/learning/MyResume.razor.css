@@ -1,0 +1,15 @@
+﻿body {
+
+	color:#ff0000;
+
+}
+
+hr {
+	height: 5px;
+	width: 99%;
+	//border-top: 5px solid black;	
+	margin-top: 0px;
+	background-color: #000000;
+	
+}
+

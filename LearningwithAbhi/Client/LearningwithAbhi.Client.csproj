@@ -7,12 +7,33 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Pages\learning\Blogs.razor.css" />
+    <None Remove="Pages\learning\Education.razor.css" />
+    <None Remove="Pages\learning\MyResume.razor.css" />
+    <None Remove="Pages\learning\Objectdesigns.razor.css" />
+    <None Remove="Pages\Shopping.razor.css" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Pages\learning\Blogs.razor.css" />
+    <Content Include="Pages\learning\Education.razor.css" />
+    <Content Include="Pages\learning\MyResume.razor.css" />
+    <Content Include="Pages\learning\Objectdesigns.razor.css" />
+    <Content Include="Pages\Shopping.razor.css" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="6.0.8" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="6.0.8" PrivateAssets="all" />
+    <PackageReference Include="PdfSharpCore" Version="1.3.57" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Shared\LearningwithAbhi.Shared.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Pages\ecommerce\" />
   </ItemGroup>
 
 </Project>

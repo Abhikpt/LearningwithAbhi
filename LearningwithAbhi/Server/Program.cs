@@ -1,4 +1,5 @@
-using Microsoft.AspNetCore.ResponseCompression;
+global using LearningwithAbhi.Shared;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -6,6 +7,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();
+
 
 var app = builder.Build();
 

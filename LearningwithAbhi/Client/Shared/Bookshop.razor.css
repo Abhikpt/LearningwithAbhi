@@ -1,0 +1,15 @@
+﻿body {
+
+	background-color : antiquewhite;
+}
+
+.Container {
+
+	background-color:darkcyan;
+	border: 5px solid black;
+	width:20px;
+	margin: 10px auto;
+	display:flex;
+	flex-wrap:wrap;
+	
+}

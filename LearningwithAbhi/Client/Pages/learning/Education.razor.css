@@ -1,0 +1,48 @@
+@page "/Education"
+
+<PageTitle>Education</PageTitle>
+
+
+<h1>Welcome to our Educational Site</h1>
+
+<p>
+    This is a sample home page for our educational site. Feel free to customize it with your own content and design.
+</p>
+
+<h2>Featured Courses</h2>
+
+<div class="course-list">
+    <div class="course-card">
+        <h3>Course 1</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        <a href="#">Enroll Now</a>
+    </div>
+
+    <div class="course-card">
+        <h3>Course 2</h3>
+        <p>Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        <a href="#">Enroll Now</a>
+    </div>
+
+    <!-- Add more course cards as needed -->
+</div>
+
+<h2>About Us</h2>
+
+<p>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla luctus nibh auctor, rhoncus mi quis, dictum ipsum.
+    Quisque congue euismod ultricies. Integer fringilla fermentum facilisis. Suspendisse euismod, lectus vel tincidunt
+    interdum, ex nisi efficitur tellus, nec congue elit turpis at risus.
+</p>
+
+<h2>Contact Us</h2>
+
+<p>
+    If you have any questions or inquiries, please feel free to get in touch with us using the contact form or the
+    contact details below:
+</p>
+
+<div class="contact-info">
+    <p>Email: contact@educational-site.com</p>
+    <p>Phone: +1 (123) 456-7890</p>
+</div>

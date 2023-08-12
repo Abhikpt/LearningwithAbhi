@@ -1,0 +1,36 @@
+﻿
+body {
+
+	background-color: #d4c1c1;
+}
+
+
+
+.Page-container {
+	margin: auto;
+	width: auto;
+	height: auto;
+	padding: 10px;
+	border: 5px solid #ef2525;
+	
+
+}
+
+.Medicine {
+	background-color: #808080;
+	box-shadow: 10px 10px;
+	border-radius: 25px;
+	background: #a1c644;
+	padding: 20px;
+	margin: 20px;
+	width: 300px;
+	height: auto;
+	
+	// writing-mode: vertical-rl;
+	display: flex;
+}
+
+	.Medicine:hover {
+		//transform: rotate(5deg);
+		transform: scale(1.1, 1.2);
+	}

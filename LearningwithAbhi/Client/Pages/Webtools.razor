@@ -1,4 +1,4 @@
-﻿@page "/fetchdata"
+﻿@*@page "/fetchdata"
 @using LearningwithAbhi.Shared
 
 
@@ -6,7 +6,7 @@
 
 <h1>Generate PDF FROM URL</h1>
 <p>Please place your URL here and click on Convert to download PDF version of your page</p>
-<input type="text" @bind="URL" placeholder="URL HERE..."/>
+<input type="text" @bind="urlToConvert" placeholder="URL HERE..."/>
 <button @onclick="generatePDF" > Generate PDF </button>
 
 @code {
@@ -53,3 +53,4 @@
         //await FileUtil.SaveAs("example.pdf", "application/pdf", byteArray);
     }
 }
+*@

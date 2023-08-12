@@ -1,0 +1,53 @@
+﻿@page "/shoping"
+@using LearningwithAbhi.Shared
+@inject HttpClient Http
+
+
+ 
+<div class="Page-container">
+         <ul>
+                @foreach (var b in pr)
+                {
+            <div class="Medicine">
+                <div class="MedContainer">
+                    <div class="Meditems"> 
+
+                        <h2> Med ID : @b.Id</h2>
+                        <img  src="~/icon-192.png"/>
+                        <content>Description : @b.Description </content>  <br>
+                        <b> Price : @b.Price $ </b>
+                    </div>
+
+                </div>
+
+            </div>
+            }
+        </ul>
+
+            <div class="Books">
+                <div class="MedContainer">
+                    <div class="Meditems">
+
+                        <h2> Med ID : </h2>
+                        <img src="~/icon-192.png" />
+                        <content>Description : </content>
+                        <b> Price :</b>
+                    </div>
+
+                </div>
+
+            </div>
+</div>
+
+  
+
+@code {
+    private static List<ProductModel> pr = new List<ProductModel>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        var   res = await Http.GetFromJsonAsync<List<ProductModel>>("api/Product");
+        if (res != null)
+            pr = res;
+    }
+}
