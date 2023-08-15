@@ -4,12 +4,7 @@ using LearningwithAbhi.Shared;
 
 namespace LearningwithAbhi.Server.Controllers
 {
-
-
-
-
-
-    public class BookController : Controller
+  public class BookController : Controller
     {
 
         private List<BookModel> _bk = new List<BookModel>

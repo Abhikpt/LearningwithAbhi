@@ -1,19 +1,20 @@
-<Project Sdk="Microsoft.NET.Sdk.BlazorWebAssembly">
+﻿<Project Sdk="Microsoft.NET.Sdk.BlazorWebAssembly">
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>954c96df-ed62-453b-bee8-c5265a128e4c</UserSecretsId>
   </PropertyGroup>
 
-  <ItemGroup>
-    <None Remove="Pages\learning\Blogs.razor.css" />
-    <None Remove="Pages\learning\Education.razor.css" />
-    <None Remove="Pages\learning\MyResume.razor.css" />
-    <None Remove="Pages\learning\Objectdesigns.razor.css" />
-    <None Remove="Pages\Shopping.razor.css" />
-  </ItemGroup>
-
+	<ItemGroup>
+		<None Remove="Pages\learning\Blogs.razor.css" />
+		<None Remove="Pages\learning\Education.razor.css" />
+		<None Remove="Pages\learning\MyResume.razor.css" />
+		<None Remove="Pages\learning\Objectdesigns.razor.css" />
+		<None Remove="Pages\Shopping.razor.css" />
+	</ItemGroup>
+	
   <ItemGroup>
     <Content Include="Pages\learning\Blogs.razor.css" />
     <Content Include="Pages\learning\Education.razor.css" />
