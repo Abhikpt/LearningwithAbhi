@@ -2,14 +2,30 @@
 
 	color:#ff0000;
 
+	
+
 }
+
+main-content {
+	background-color: #f7e7e7;
+	--bs-gutter-x: 1.875rem;
+	--bs-gutter-y: 0;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-ms-flex-wrap: wrap;
+	flex-wrap: wrap;
+	margin-top: calc(-1 * var(--bs-gutter-y));
+	margin-right: calc(-.5 * var(--bs-gutter-x));
+	margin-left: calc(-.5 * var(--bs-gutter-x));
+}
+
 
 hr {
 	height: 5px;
 	width: 99%;
-	//border-top: 5px solid black;	
+	/*  border-top: 5px solid black; */
 	margin-top: 0px;
 	background-color: #000000;
-	
 }
 

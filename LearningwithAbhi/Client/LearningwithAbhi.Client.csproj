@@ -8,6 +8,8 @@
   </PropertyGroup>
 
 	<ItemGroup>
+		<None Remove="Pages\About.razor.css" />
+		<None Remove="Pages\Contact.razor.css" />
 		<None Remove="Pages\learning\Blogs.razor.css" />
 		<None Remove="Pages\learning\Education.razor.css" />
 		<None Remove="Pages\learning\MyResume.razor.css" />
@@ -16,6 +18,8 @@
 	</ItemGroup>
 	
   <ItemGroup>
+    <Content Include="Pages\About.razor.css" />
+    <Content Include="Pages\Contact.razor.css" />
     <Content Include="Pages\learning\Blogs.razor.css" />
     <Content Include="Pages\learning\Education.razor.css" />
     <Content Include="Pages\learning\MyResume.razor.css" />
@@ -35,6 +39,15 @@
 
   <ItemGroup>
     <Folder Include="Pages\ecommerce\" />
+    <Folder Include="wwwroot\NewFolder\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EditorConfigFiles Remove="C:\project\WebDesigning\LearningwithAbhi\LearningwithAbhi\Client\.editorconfig" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="C:\project\WebDesigning\LearningwithAbhi\LearningwithAbhi\Client\.editorconfig" />
   </ItemGroup>
 
 </Project>

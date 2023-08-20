@@ -1,0 +1,38 @@
+
+.container {
+    background-color: #deded7;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 10px;
+    margin: 10px auto;
+}
+
+.tiles {
+    background-color: cadetblue;
+    padding: 20px;
+    margin: 20px 5px;
+    border: 2px solid #808080;
+    width: auto ;
+    max-width: 500px;
+    color: white;
+    text-align: center;
+}
+
+
+div{
+    margin: 2px;
+}
+
+label {
+    display: inline-block;
+    width: 100px;
+    color: #000000;
+}
+input {
+    padding: 3px;
+    block-size: auto;
+}
+
+.Note-inp {
+    width : 200px;
+}
