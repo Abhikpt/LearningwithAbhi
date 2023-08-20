@@ -1,0 +1,50 @@
+
+
+.grey-white {
+
+	background-color:aqua;
+}
+
+
+.left {
+	padding-left: 0;
+	float: left;
+	display: block;
+	background-color: #f5cdcd;
+	
+}
+
+.card-area {
+	color: white;
+	
+	padding: 10px;
+	min-height: 450px;
+}
+
+.col-md-5 {
+	width: 48%;
+}
+
+.item-1, .item-2, .item-3, .item-4 {
+	padding: 10%;	
+	margin: 5%;
+	min-height: 50%;
+	background-color: cadetblue;
+	
+}
+
+
+	h4
+
+{
+	color: black;
+}
+
+
+
+.right {
+	padding-right: 0;
+	float: right;
+	display: block;
+	background-color: #f5cdcd;
+}

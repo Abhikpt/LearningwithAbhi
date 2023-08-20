@@ -1,27 +1,39 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+main {
+	background-color: antiquewhite;
+	min-height: 1000px;
+	display: flex;
+	flex-flow: row wrap;
+}
 
-    <header>
-        <nav class="navebar">
-            <ul>
-                <!--    use of link   -->
 
-                <li><a href="../index.html">Home</a></li>
-                <li><a href="Education.html" target="_self">Education</a></li>
-                <li><a href="Calci.html">Calculation</a></li>
-                <li><a href="Entertainment.html">Entertainment</a></li>
-                <li><a href="Blogs.html">Blogs</a></li>
-                <li><a href="Contct.html">Contact us</a></li>
-                <li><a href="About.html" target="_blank">About</a></li>
-            </ul>
-        </nav>
+.card-01 {
+	background-color: cadetblue;
+	border: 3px dotted #000000;
+	width:  90%;
+	height: auto;
+	margin: 10px;
+	position: relative;
+	
+	/*flex-wrap: wrap;     wrap; wrap/unwrap, direction : row , collumn   flow: row wrap*/
+}
+.Expanded {
+	display: none;
+	position: relative;
+	overflow: auto;
+}
 
-    </header>
+.card-01:hover .Expanded {
+	display: block;
+	
+}
 
-</body>
-</html>
+
+a {
+	text-decoration: none;
+}
+
+	a:hover {
+		color: white;
+		text-decoration: none;
+		cursor: pointer;
+	}

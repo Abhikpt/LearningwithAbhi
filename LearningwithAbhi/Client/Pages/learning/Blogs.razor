@@ -1,27 +1,180 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+@page "/Blog"
 
-    <header>
-        <nav class="navebar">
-            <ul>
-                <!--    use of link   -->
 
-                <li><a href="../index.html">Home</a></li>
-                <li><a href="Education.html" target="_self">Education</a></li>
-                <li><a href="Calci.html">Calculation</a></li>
-                <li><a href="Entertainment.html">Entertainment</a></li>
-                <li><a href="Blogs.html">Blogs</a></li>
-                <li><a href="Contct.html">Contact us</a></li>
-                <li><a href="About.html" target="_blank">About</a></li>
-            </ul>
-        </nav>
+@inject IJSRuntime jsRuntime
 
-    </header>
 
-</body>
-</html>
+<PageTitle> Create your own blogs here</PageTitle>
+
+
+<main>
+	<div class="main-tile">
+		<div class="card-01"> 
+			<div> Do you know how to make your PC fast?	</div>
+			<span>If your PC is running slowly, the following suggestions might help speed things up. The tips are listed in order, so start with the first one, 
+				see if that helps, and then continue to the next one if it doesn’t. 
+				</span>
+				<div class="Expanded">
+			<ul>
+				<li> 1. Make sure you have the latest updates for Windows and device drivers </li>
+				<li> 2. Restart your PC and open only the apps you need </li>
+				<li>	3. Use ReadyBoost to help improve performance </li>
+				<li>4. Make sure the system is managing the page file size  </li>
+				<li> 5. Check for low disk space and free up space  </li>
+				<li>	6. Adjust the appearance and performance of Windows </li>
+				<li>7. Pause OneDrive syncing </li>
+				<li> 8. Disable unnecessary startup programs </li>
+				<li>9. Check for and remove viruses and malware </li>
+				<li> 10. Restore your PC from a system restore point </li>
+			</ul>
+			</div>
+			
+			<div> Author: Anhishek Singh Date: @DateTime.Now </div>
+
+		</div>
+
+		<div class="card-01">
+			<div> Top 10 government sites</div>
+			<span>
+				<div class="Expanded">
+					<div class="items">	<h2> 
+							<a href="https://www.pmkisan.gov.in/">1.  PM KISAN SAMMAN NIDHI </a>
+						</h2>
+						<p>Pradhan Mantri Kisan Samman Nidhi (PMKISAN) is an initiative by the government 
+							of India that give farmers up to Rs.6,000 (US$75) per year as minimum income support. </p>
+					</div>
+					<div class="items">
+							<h2>
+							<a href="https://www.india.gov.in">2.National Portal of India  </a>
+						</h2>
+						<p>National Portal of India provides a single-window access to information and services that are electronically delivered from all Government Departments, 
+							Institutions and Organizations.</p>
+					</div>
+					<div class="items">
+							<h2>
+							<a href="https://www.dst.gov.in/">3. Science & Technology</a>
+						</h2>
+						<p>Science & TechnologyScience and Technology have always been an integral part of Indian culture. Natural philosophy, as it was termed in those ancient times, 
+							was pursued vigorously at institutions of higher learning. </p>
+					</div>
+					<div class="items">
+							<h2>
+							<a href="https://main.mohfw.gov.in/"> 4. Health & Family Welfare </a>
+						</h2>
+						<p>Health care should be within the reach of every citizen. For providing basic health facilities to all citizens, government has introduced and implemented 
+							various health schemes and programmes.</p>
+					</div>
+					<div class="items">
+							<h2>
+							<a href="https://www.education.gov.in">5. Education  </a>
+						</h2>
+						<p>EducationThe essence of Human Resource Development is education, which plays a significant and remedial role in balancing the socio-economic framework of the country. 
+							This section is very helpful in getting information related to the elementary, secondary, higher secondary, higher and adult education etc.	You can also find details 
+							of educational institutions, courses, admission procedure, scholarships, student loans, technical and medical education and vocational studies etc.</p>
+					</div>
+					<div class="items">
+							<h2>
+							<a href="http://mohua.gov.in/">6. Housing </a>
+						</h2>
+						<p> HousingThe housing industry of India is one of the fastest growing sectors. A large population base, rising income level and rapid urbanization leads to growth in this sector.
+							In the Federal structure of the Indian polity, the matters pertaining to the housing and urban development have been assigned by the Constitution of India to the State Governments.</p>
+					</div>
+					<div class="items">	<h2>
+							<a href="">7.    </a>
+						</h2>
+						<p></p>
+					</div>
+					<div class="items">
+							<h2>
+							<a href=""> 8.   </a>
+						</h2>
+						<p></p>
+					</div>
+					<div class="items">
+								<h2>
+							<a href="">9.   </a>
+						</h2>
+						<p></p>
+					</div>
+					<div class="items">	<h2>
+							<a href=""> 10.   </a>
+						</h2>
+						<p></p>
+					</div>
+
+					
+				</div>
+			</span>
+			
+
+			<div> Author: Anhishek Singh Date: @DateTime.Now </div>
+
+		</div>
+
+		<div class="card-01">
+			<div> Top 10 educational sites</div>
+			<span  class="wrap expand"  id="#1343" >
+				<main class="Expanded">
+					<div class="items">
+						<h2>
+							<a href="https://dotnettutorials.net/">1. Learn Programming languages </a>
+						</h2>
+						<p>Learn Microsoft .NET, .NET Core, ASP.NET Core, Java, Advance Java, Java Frameworks, C, C++, Python, Data Structure & Algorithm, Databases, 
+							JavaScript, JQuery, Angular, SQL Server, Design Patterns, Dot Net Tutorials, MEAN, MERN, Node, React, and Many more Technologies Quickly and Easily 
+							by Industry Professionals </p>
+					</div>
+					<div class="items">
+						<h2>
+							<a href="https://toolsqa.com/selenium-webdriver/selenium-tutorial/"> 2. Learn selenium  </a>
+						</h2>
+						<p> To learn about selenium from basic to advance go to the website after clicked</p>
+					</div>
+					<div class="items">
+						<h2>
+							<a href="tutorialspoint.com/codingground.htm">3. Get online compilers  </a>
+						</h2>
+						<p> Click on above linke to get almost every language compliers online</p>
+					</div>
+					<div class="items">
+						<h2>
+							<a href="https://arduinogetstarted.com/"> 4. Learn Aurduino -officail  </a>
+						</h2>
+						<p> Learn everyting about through similar likne manuals doc. Here on the side you will get basic code, bloags etc</p>
+					</div>
+
+
+				</main>
+		
+			</span>
+			
+			</div>
+
+			<div> Author: Anhishek Singh Date: @DateTime.Now </div>
+
+	</div>
+
+   
+	
+	
+
+</main>
+
+
+
+
+@code
+{
+
+	private string? currentDateTime;
+
+	protected override void OnInitialized()
+	{
+		updateCurrentDateTime();
+	}
+
+	private void updateCurrentDateTime()
+	{
+		currentDateTime = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+	}
+
+}
