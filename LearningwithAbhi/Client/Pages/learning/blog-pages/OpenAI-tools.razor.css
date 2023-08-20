@@ -1,0 +1,27 @@
+﻿
+.main-temp {
+
+	background-color:  burlywood;
+	display: flex;
+	flex-flow: row wrap;
+}
+
+.cart1 {
+	display: flex;
+	flex-flow: row wrap;
+	position: relative;
+	padding: 10px;
+
+	
+}
+
+
+.items-1, .items-2 {
+	background-color: antiquewhite;
+	color: chocolate;
+	width: 25%;
+	margin: 10px;
+	margin-top: 50px;
+	padding:0.8%;
+	position: relative;
+}
