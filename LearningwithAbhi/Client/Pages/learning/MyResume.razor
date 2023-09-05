@@ -1,17 +1,20 @@
 ﻿@page "/resume"
+@layout NoMenuLayout
+@using System.Text.Json
 
-<body>
+<body class="center">
 
  <div class="navbar-top navbar-dark top-navigation"> 
 	 <NavLink href="#"> Home Page</NavLink>
  </div>
 
 	<header>
-		<h2 style="align-content:center">Resume</h2>
+		<h2 style="text-align:center ; text-decoration: underline ">Resume</h2>
 	</header>
 
 
-<main class="main-content"> 
+<main class="main-content center"> 
+	<div>
 <address>
 
 	<h3><b>Abhishek Singh </b></h3>
@@ -22,10 +25,10 @@
 	<br />
 	
 </address>
-
-
+		</div> <br />
 
 <dl>
+
 	<dt>CAREER OBJECTIVE :	</dt>    <hr>
 
 	<dd>
@@ -36,16 +39,157 @@
 
 
 	<dt>EDUCATIONAL QUALIFICATION: </dt>   <hr />
-	<dd>
+	
+	<Table class="center">
+
+		
+				<tr>
+					<th>		Course	</th>
+					<th>Discipline/ specialization	</th>
+					<th>University/Board</th>
+					<th>Percentage /CGPA </th>
+					<th>Year Of	Passing	</th>
+				</tr>
+			@foreach (var e in _rd)
+			{
+				<tr>
+					<td> @e.Course</td>
+					<td>@e.Discipline</td>
+					<td>@e.Board</td>
+					<td>@e.Percentage</td>
+					<td>@e.PassYear</td>
+				</tr>
+			}
+	
 
 
-	</dd>
-</dl>
+	</Table>
 
+			<dt>Experience : </dt>			<hr />
+			<dd>
+				<b>Organization:</b> TATA Consultancy Services Limited   <br />
+				<b>Position : </b> Assistant System Engineer	 <br />
+				<b>Experience :</b> 3 Year 6 month	 <br />
+				<b>Hand-on : </b> Front-End support, Worked on Selenium web-driver using C#, RestSharp, MySql	 <br />
+				server, Testing services using Postman and SoapUI, Azure-DevOps.	 <br />
+					
+			</dd>
+
+
+			<div>
+			<dt > Projects </dt> <hr />
+
+				<h7 class="center">Academic Projects :</h7>
+				<ul>
+					
+					<li><b>Other Project :</b> RC Plane </li>
+					<li><b>At Degree Level :</b> REAL TIME CONTROLLER USING MICROCONTROLLER</li>
+				</ul>
+
+			
+				<h7 class="center">Company Project : </h7>
+				<ul>
+					<li>	<b>Automation:</b> automated the multiple WebServices using RestSharp and WebApplications using
+							selenium [language: C#]						</li>
+
+					<li>	<b>Web Application from scratch:</b> created table to store data -> created SP to insert and update and get
+							data -> Created API that uses these SP to interact with this database tables -> then created UI to interact
+							with table which uses API. [Language : C#, Blazor, DB: Oracle, API : RestSharp]  			</li>
+
+					<li>	<b>SnapLogic Based:</b> Created SnapLogic to fetch data from file and insert in database, taking data from
+							different database and save in another Database with some manipulation.					</li>
+
+				</ul>
+			
+			</div>
+
+
+			<div>
+			<dt> Skils </dt> <hr />
+			<ul>
+				<li><b>Programming Language: </b> C# , SQL , Python basics, C, Java basic,</li>
+				<li><b>Frameworks: </b> NUnit, Specflow</li>
+				<li><b>Automation:</b> Selenium, RestSharp</li>
+				<li><b>Web language:</b>(HTML, CSS, JavaScript)</li>
+				<li>Front-end development</li>
+				<li>Postman , SoapUI</li>
+				<li>JSON and XML</li>
+				<li>MS office (Word, Power point, excel)</li>
+				
+			</ul>
+			</div>
+				 
+		
+			
+			<div>
+				<dt>ACHIEVEMENTS</dt> <hr />
+				<ul>
+					<li>Participated in International Conference Conducted by Amesco2k16.</li>
+					<li>Appreciation from our team for my continuous support and delivery</li>
+					<li>Design & Development of RC Aircraft.</li>
+					<li>Vision Botics-Sixth Sense Technology (1st prize).</li>
+				</ul>
+			
+			</div>
+
+
+			<div>
+				<dt>AREA OF INTEREST </dt> <hr />
+				<ul>
+					<li>API automation, Web automation</li>
+					<li>Web Designing</li>
+					<li>Cloud computing</li>
+					<li>IOT, Arduino, Robotics Integration</li>			
+				
+				</ul>
+			</div>
+
+
+			<div>
+				<dt>HOBBIES</dt> <hr />
+				<ul>
+					 
+					<li>Learn new technology.</li>
+					<li>Traveling and exploring places</li>
+					<li>Playing home games</li>					
+				</ul>
+			</div>
+			
+			
+
+			<div class="secure-hide" >
+				<dt>PERSONAL PROFILE </dt>
+
+
+			</div>
+
+			<br />
+			
+		<button ></button>
+
+		</dl>
 	</main>
 
 
 </body>
+
+
 @code {
+
+	private List<ResumeData> _rd = new List<ResumeData>{
+
+
+	new ResumeData {Course = "Bachelor of Engineering",Discipline = "INSTRUMENTATION AND CONTROL ENGG.",Board = "SLIET",Percentage= "9.28 CGPA  (83.52%)",PassYear = 2018 },
+	new ResumeData {Course = "Diploma",Discipline = "ELECTRONICS ENGINEERING.",Board = "BTEUP",Percentage= "73.87",PassYear = 2015 },
+	new ResumeData {Course = "Higher Secondary",Discipline = "PCM",Board = "UP BOARD",Percentage= "62%",PassYear = 2012 },
+	new ResumeData {Course = "High School",Discipline = "PCM",Board = "UP BOARD",Percentage= "68.8%",PassYear = 2010 },
+
+
+	};
+
+
+
+
+
 
 }

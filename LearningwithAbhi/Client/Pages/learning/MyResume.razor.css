@@ -1,23 +1,19 @@
-﻿body {
-
-	color:#ff0000;
-
+﻿.page-container {
+	color: blue;
+	min-height: 100vh;
+	max-width: 10px;
+	background-color: papayawhip;
 	
-
 }
 
-main-content {
+.main-content {
 	background-color: #f7e7e7;
-	--bs-gutter-x: 1.875rem;
-	--bs-gutter-y: 0;
-	display: -webkit-box;
-	display: -ms-flexbox;
+	padding: 1.1rem;
 	display: flex;
 	-ms-flex-wrap: wrap;
 	flex-wrap: wrap;
-	margin-top: calc(-1 * var(--bs-gutter-y));
-	margin-right: calc(-.5 * var(--bs-gutter-x));
-	margin-left: calc(-.5 * var(--bs-gutter-x));
+	max-width: 50rem;
+	
 }
 
 
@@ -27,5 +23,44 @@ hr {
 	/*  border-top: 5px solid black; */
 	margin-top: 0px;
 	background-color: #000000;
+}
+
+
+
+table, tr, th,td {
+
+	background-color: antiquewhite;
+	padding: 5px;
+	border: 0.02rem solid #000000;
+	text-align:center;
+	margin-bottom:1.1rem;
+	
+
+}
+th {
+	background-color: aquamarine;
+}
+
+
+/* use to allign any items like table*/
+.center
+{
+	margin-left: auto;
+	margin-right: auto;
+}
+
+dt {
+	text-align:center;
+	margin-top: 2rem;
+}
+
+
+.secure-hide {
+
+	display:none;
+	
+}
+.secure-unhide {
+	display:block;
 }
 

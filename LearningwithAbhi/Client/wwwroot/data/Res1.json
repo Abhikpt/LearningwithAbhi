@@ -1,0 +1,54 @@
+{
+
+	"Skill": [
+		{
+			"Type": "Programming Language",
+			"Description": ": C# , SQL , Python basics, C, Java basic"
+		},
+		{
+			"Type": "Frameworks:",
+			"Description": "NUnit, Specflow"
+		},
+		{
+			"Type": "Automation: ",
+			"Description": "Selenium, RestSharp"
+		},
+		{
+			"Type": "Web language: ",
+			"Description": "(HTML, CSS, JavaScript)"
+		}
+	],
+
+	"Education": [
+		{
+			"Course": "Bachelor of Engineering",
+			"Discipline": "Instrumentation and Control Engg.",
+			"Board": "SLIET",
+			"Percentage": "9.28 CGPA  (83.52%)",
+			"PassYear": "2018"
+		},
+		{
+			"Course": "Diploma ",
+			"Discipline": "Electronics Engineering",
+			"Board": "BTEUP",
+			"Percentage": "73.87%",
+			"Pass Year": "2015"
+		},
+		
+		{
+			"Course": "Higher Secondary",
+			"Discipline": "PCM",
+			"Board": "UP BOARD",
+			"Percentage": "62%",
+			"Pass Year": "2012"
+		},
+		{
+			"Course": "High School",
+			"Discipline": "PCM",
+			"Board": "UP BOARD",
+			"Percentage": "68.8%",
+			"Pass Year": "2010"
+		}
+	]
+
+}
