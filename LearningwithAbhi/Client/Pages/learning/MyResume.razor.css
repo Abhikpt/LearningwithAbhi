@@ -38,7 +38,7 @@ table, tr, th,td {
 
 }
 th {
-	background-color: aquamarine;
+	background-color: #b3de82;
 }
 
 
@@ -49,7 +49,7 @@ th {
 	margin-right: auto;
 }
 
-dt {
+.section {
 	text-align:center;
 	margin-top: 2rem;
 }
@@ -63,4 +63,6 @@ dt {
 .secure-unhide {
 	display:block;
 }
+
+
 
