@@ -1,0 +1,60 @@
+﻿
+.container {
+    background-color: bisque;
+    height: auto;
+    position: relative;
+}
+
+
+.welcome {
+    color: blueviolet;
+    padding: 2rem;
+    position: static;
+    z-index: 1;
+}
+
+.timestamp {
+    text-align: right;
+    position: relative;
+    right: 0px;
+    top: 0px;
+    z-index: 2;
+}
+
+.main-container {
+
+    background-color:violet;
+    display: flex;
+    flex-wrap:wrap;    
+}
+
+.container-1 {  
+   background-color: azure;
+    border: 2px double #000000;
+    max-width: 35%;
+    height: auto;
+    margin: 2%;
+    padding:2%;
+}
+.content01 {
+    color:  darkgreen;
+    font-display: swap;
+    margin-top: 8%;
+}
+
+button {
+    background-color: darkgreen;
+   
+    top: 4%;
+    left: 40%;
+    width: 6rem;
+    height: 2rem;
+    z-index: 1;
+    font-weight: 800;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+educ {
+    background-image: url("images/Education-1280x720.jpg") ;
+
+}

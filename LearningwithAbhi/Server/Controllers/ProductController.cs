@@ -8,7 +8,9 @@ namespace LearningwithAbhi.Server.Controllers
     public class ProductController : ControllerBase
     {
 
-        public static List<ProductModel> pr = new List<ProductModel>()
+        //   public static List<ProductModel> pr = new List<ProductModel>()
+                    //Simplify new expression (IDE0090)
+        public static List<ProductModel> pr = new ()
         {
             new ProductModel
             {
