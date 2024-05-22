@@ -8,27 +8,27 @@
   </PropertyGroup>
 
 	<ItemGroup>
-		<None Remove="Pages\About.razor.css" />
-		<None Remove="Pages\Contact.razor.css" />
+		<None Remove="Pages\BasicPages\About.razor.css" />
+		<None Remove="Pages\BasicPages\Contact.razor.css" />
 		<None Remove="Pages\Index.razor.css" />
 		<None Remove="Pages\learning\blog-pages\OpenAI-tools.razor.css" />
 		<None Remove="Pages\learning\Blogs.razor.css" />
 		<None Remove="Pages\learning\Education.razor.css" />
 		<None Remove="Pages\learning\MyResume.razor.css" />
 		<None Remove="Pages\learning\Objectdesigns.razor.css" />
-		<None Remove="Pages\Shopping.razor.css" />
+		<None Remove="Pages\BasicPages\Shopping.razor.css" />
 	</ItemGroup>
 	
   <ItemGroup>
-    <Content Include="Pages\About.razor.css" />
-    <Content Include="Pages\Contact.razor.css" />
+    <Content Include="Pages\BasicPages\About.razor.css" />
+    <Content Include="Pages\BasicPages\Contact.razor.css" />
     <Content Include="Pages\Index.razor.css" />
     <Content Include="Pages\learning\blog-pages\OpenAI-tools.razor.css" />
     <Content Include="Pages\learning\Blogs.razor.css" />
     <Content Include="Pages\learning\Education.razor.css" />
     <Content Include="Pages\learning\MyResume.razor.css" />
     <Content Include="Pages\learning\Objectdesigns.razor.css" />
-    <Content Include="Pages\Shopping.razor.css" />
+    <Content Include="Pages\BasicPages\Shopping.razor.css" />
   </ItemGroup>
 
   <ItemGroup>
