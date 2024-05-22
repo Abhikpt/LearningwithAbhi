@@ -1,0 +1,35 @@
+@page "/product/{Id:int}"
+@using LearningwithAbhi.Shared
+@inject NavigationManager Navigation
+@inject CartService CartService
+
+<h3>@product?.Name</h3>
+
+<p>@product?.Description</p>
+<p>@product?.Price.ToString("C")</p>
+<p>
+    <button @onclick="AddToCart" class="btn btn-primary">Add to Cart</button>
+</p>
+
+@code {
+    [Parameter]
+    public int Id { get; set; }
+
+    private ProductModel product;
+
+    protected override void OnInitialized()
+    {
+        product = GetProductById(Id);
+    }
+
+    private ProductModel GetProductById(int id)
+    {
+        return new ProductModel { Id = id, Name = $"Product {id}", Price = 19.99 * id, Description = $"Description {id}" };
+    }
+
+    private void AddToCart()
+    {
+        CartService.AddToCart(product);
+        Navigation.NavigateTo("/cart");
+    }
+}

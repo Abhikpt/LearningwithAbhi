@@ -1,0 +1,20 @@
+@using LearningwithAbhi.Shared
+
+<tr>
+    <td>@Item.Product.Name</td>
+    <td>@Item.Product.Price.ToString("C")</td>
+    <td>@Item.Quantity</td>
+    <td>@(Item.Quantity * Item.Product.Price).ToString("C")</td>
+    <td>
+        <button @onclick="() => OnRemove.InvokeAsync(Item)" class="btn btn-danger">Remove</button>
+    </td>
+</tr>
+
+@code {
+    [Parameter]
+    public CartItem Item { get; set; }
+  
+
+    [Parameter]
+    public EventCallback<CartItem> OnRemove { get; set; }
+}
