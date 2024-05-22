@@ -10,23 +10,48 @@
 }
 else
 {
-    <EditForm Model="@order" OnValidSubmit="SubmitOrder">
+    <EditForm Model="@address" OnValidSubmit="SubmitOrder">
         <DataAnnotationsValidator />
         <ValidationSummary />
-        <div>
-            <label for="name">Name:</label>
-            <InputText id="name" class="form-control" @bind-Value="order.Name" />
+         <h4>Please enter your shippinng address</h4>
+        <div class="form-group" >           
+            <div class="input">
+                <label for="name">Name:</label>
+                <InputText id="name" class="form-control" @bind-Value="address.Name" />
+            </div>
+            <div class="input">
+                <label for="address1">Address 1:</label>
+                <InputText id="address1" class="form-control" @bind-Value="address.Address1" />
+            </div>
+            <div class="input"> 
+                <label for="Address2">Address 2:</label>
+                <InputText id="Address2" class="form-control" @bind-Value="address.Address2" />
+            </div>
+            <div class="input">
+                <label for="City">City:</label>
+                <InputText id="City" class="form-control" @bind-Value="address.City" />
+            </div>
+            <div class="input">
+                <label for="State">State:</label>
+                <InputText id="State" class="form-control" @bind-Value="address.State" />
+            </div>
+            <div class="input">
+                <label for="ZipCode">ZipCode:</label>
+                <InputText id="ZipCode" class="form-control" @bind-Value="address.ZipCode" />
+            </div>
+            <div class="input">
+                <label for="Email">Email:</label>
+                <InputText id="Email" class="form-control" @bind-Value="address.Email" />
+            </div>
         </div>
-        <div>
-            <label for="address">Address:</label>
-            <InputText id="address" class="form-control" @bind-Value="order.Address" />
-        </div>
+
         <button type="submit" class="btn btn-primary">Place Order</button>
     </EditForm>
 }
 
 @code {
-    private Order order = new Order();
+    @* private Order order = new Order(); *@
+    private AddressModel address = new AddressModel();
 
     private void SubmitOrder()
     {

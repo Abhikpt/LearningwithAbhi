@@ -9,7 +9,7 @@
 
 
 <div class="container">
-    <h1 class="welcome">Welcome to the site @user</h1>
+    <h1 class="welcome">Welcome to LearningWithAbhi,  @user</h1>
 
     <div class="timestamp">
     <h5>Current Time:</h5>
@@ -39,17 +39,14 @@
 
 </main>
 
-
 <SurveyPrompt Title="How is Blazor working for you?" />
 
 
 </body>
-
 @code{
-    private string user = "Abhishek Singh";
+    private string user = "- place to skilled";
 
     private string currentTime = DateTime.Now.ToString("HH:mm:ss");
-
     private void UpdateClock()
     {
         currentTime = DateTime.Now.ToString("dd-MMM-yyyy HH:mm:ss");

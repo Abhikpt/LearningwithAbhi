@@ -23,7 +23,7 @@
 
 .main-container {
 
-    background-color:violet;
+    background-color:rgb(243, 189, 243);
     display: flex;
     flex-wrap:wrap;    
 }

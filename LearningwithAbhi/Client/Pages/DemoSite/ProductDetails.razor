@@ -3,10 +3,15 @@
 @inject NavigationManager Navigation
 @inject CartService CartService
 
-<h3>@product?.Name</h3>
 
+ <img src="https://via.placeholder.com/150" class="card-img-top" alt="@product.Name"  style="width: 18rem">
+
+ <div>
+<h3>@product?.Name</h3>
 <p>@product?.Description</p>
 <p>@product?.Price.ToString("C")</p>
+
+</div>
 <p>
     <button @onclick="AddToCart" class="btn btn-primary">Add to Cart</button>
 </p>

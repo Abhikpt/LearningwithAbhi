@@ -1,0 +1,50 @@
+form {
+    max-width: 500px;
+    margin: auto;
+}
+
+div.form-group {
+    margin-bottom: 5px; /* Reduce the space between form fields */
+}
+
+label {
+    display: block;
+    margin-top: 12px ; /* Slightly reduce the space between label and input */
+}
+
+
+.form-group {      
+    padding: 3rem;
+    box-sizing: border-box;
+    display: flex;    
+    flex-direction: row;
+    flex-wrap: wrap  ;
+    gap:0.6rem;
+  
+}
+.input
+{  
+    min-width: 15rem;    
+    
+}
+
+
+/* .btn {
+    margin-top: 3rem;
+    padding: 0.5rem  1.2rem;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+} */
+button{
+    margin-top: 3rem;
+}
+
+ button:hover {
+    background-color: #0fb300;
+   
+
+} 
+
+

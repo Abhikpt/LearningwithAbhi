@@ -8,6 +8,17 @@ namespace LearningwithAbhi.Shared
         public string? Name { get; set; }
 
         [Required]
-        public string? Address { get; set; }
+        public string? Address1 { get; set; }
+
+        public string? Address2 { get; set; }
+
+        public string? City { get; set; }
+
+        public string? State { get; set; }
+
+        [Required, MaxLength(5)]
+        public string? ZipCode {get;set;}
+
+
     }
 }
