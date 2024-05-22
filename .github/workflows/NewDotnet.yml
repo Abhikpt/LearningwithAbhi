@@ -30,6 +30,10 @@ jobs:
     - name: Publish
       run: dotnet publish -c Release -o build
 
+    # changes the base-tag in index.html from '/' to 'LearningwithAbhi' to match GitHub Pages repository subdirectory
+    - name: Change base-tag in index.html from / to LearningwithAbhi
+      run: sed -i 's/<base href="\/" \/>/<base href="\/LearningwithAbhi\/" \/>/g' release/wwwroot/index.html
+      
     - name: Deploy to GitHub Pages
       uses: peaceiris/actions-gh-pages@v3
       with:
