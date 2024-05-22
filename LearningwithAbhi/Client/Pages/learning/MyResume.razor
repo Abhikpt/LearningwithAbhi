@@ -41,7 +41,7 @@
 	
 	<Table class="center">
 
-		
+		<thead>
 				<tr>
 					<th>		Course	</th>
 					<th>Discipline/ specialization	</th>
@@ -49,6 +49,8 @@
 					<th>Percentage /CGPA </th>
 					<th>Year Of	Passing	</th>
 				</tr>
+	</thead>
+<tbody>
 			@foreach (var e in _rd)
 			{
 				<tr>
@@ -60,7 +62,7 @@
 				</tr>
 			}
 	
-
+</tbody>
 
 	</Table>
 

@@ -1,0 +1,36 @@
+@page "/checkout"
+@inject CartService CartService
+@inject NavigationManager Navigation
+
+<h3>Checkout</h3>
+
+@if (CartService.CartItems.Count == 10)
+{
+    <span>Your cart is empty.</span>
+}
+else
+{
+    <EditForm Model="@order" OnValidSubmit="SubmitOrder">
+        <DataAnnotationsValidator />
+        <ValidationSummary />
+        <div>
+            <label for="name">Name:</label>
+            <InputText id="name" class="form-control" @bind-Value="order.Name" />
+        </div>
+        <div>
+            <label for="address">Address:</label>
+            <InputText id="address" class="form-control" @bind-Value="order.Address" />
+        </div>
+        <button type="submit" class="btn btn-primary">Place Order</button>
+    </EditForm>
+}
+
+@code {
+    private Order order = new Order();
+
+    private void SubmitOrder()
+    {
+        CartService.ClearCart();
+        Navigation.NavigateTo("/order-confirmation");
+    }
+}

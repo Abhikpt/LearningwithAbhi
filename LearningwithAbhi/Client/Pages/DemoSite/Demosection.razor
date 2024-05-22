@@ -1,0 +1,16 @@
+@page "/Demosection"
+@using LearningwithAbhi.Shared
+@inject NavigationManager Navigation
+
+<h3>Welcome to Our Store</h3>
+
+<p>
+    <button @onclick="NavigateToProducts" class="btn btn-primary">View Products</button>
+</p>
+
+@code {
+    private void NavigateToProducts()
+    {
+        Navigation.NavigateTo("/productpage");
+    }
+}

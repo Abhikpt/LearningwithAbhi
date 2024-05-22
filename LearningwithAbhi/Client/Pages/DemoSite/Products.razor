@@ -1,0 +1,29 @@
+@page "/products"
+@using LearningwithAbhi.Shared
+@inject NavigationManager Navigation
+
+<h3>Products</h3>
+
+<div class="row">
+    @foreach (var product in products)
+    {
+        <div class="col-md-4">
+           
+            <ProductCard Product="product" OnClick="ViewProductDetails" />
+        </div>
+    }
+</div>
+
+@code {
+    private List<ProductModel> products = new List<ProductModel>
+    {
+        new ProductModel { Id = 1, Name = "Product 1", Price = 19.99, Description = "Description 1" },
+        new ProductModel { Id = 2, Name = "Product 2", Price = 29.99, Description = "Description 2" },
+        new ProductModel { Id = 3, Name = "Product 3", Price = 39.99, Description = "Description 3" }
+    };
+
+    private void ViewProductDetails(ProductModel product)
+    {
+        Navigation.NavigateTo($"/product/{product.Id}");
+    }
+}

@@ -40,11 +40,13 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Shared\LearningwithAbhi.Shared.csproj" />
+   
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="Pages\ecommerce\" />
     <Folder Include="wwwroot\NewFolder\" />
+    <Folder Include="Services" />
   </ItemGroup>
 
   <ItemGroup>

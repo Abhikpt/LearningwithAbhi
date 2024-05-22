@@ -1,0 +1,48 @@
+@page "/cart"
+@inject CartService CartService
+@inject NavigationManager Navigation
+
+<h3>Shopping Cart</h3>
+
+@if (CartService.CartItems.Count == 0)
+{
+    <p>Your cart is empty.</p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Total</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in CartService.CartItems)
+            {
+                <CartItems Item="item" OnRemove="RemoveItem" />
+            }
+        </tbody>
+    </table>
+    <p>
+        <strong>Total:</strong> @CartService.CartItems.Sum(i => i.Quantity * i.Product.Price).ToString("C")
+    </p>
+    <p>
+        <button @onclick="Checkout" class="btn btn-primary">Checkout</button>
+    </p>
+}
+
+@code {
+    private void RemoveItem(CartItem item)
+    {
+        CartService.RemoveFromCart(item.Product);
+    }
+
+    private void Checkout()
+    {
+        Navigation.NavigateTo("/checkout");
+    }
+}
