@@ -2,6 +2,13 @@
 
 html, body {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    color :#1861ac;
+    background-color:antiquewhite;
+}
+
+.container {
+
+    background-color: cadetblue;
 }
 
 h1:focus {
@@ -24,8 +31,18 @@ a, .btn-link {
 }
 
 
+
 .content {
     padding-top: 1.1rem;
+    
+}
+
+.px-4
+{
+    border: solid black;
+    margin: 5% 2%;
+    padding: 2%;
+    
 }
 
 .valid.modified:not([type=checkbox]) {
