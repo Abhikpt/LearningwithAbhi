@@ -1,4 +1,43 @@
 @page "/order-confirmation"
+@layout NoMenuLayout
+@inject CartService CartService
+@inject NavigationManager Navigation
+
 
 <h3>Order Confirmation</h3>
 <p>Thank you for your order!</p>
+
+@if (CartService.CartItems.Count != 0)
+{
+    <div>
+         @foreach (var item in CartService.CartItems)
+            {
+                 <h4>Order Details</h4>
+        @* <p><strong>Order Number:</strong> @item.Product.Id</p>
+        <p><strong>Product Name:</strong> @item.Product.Name</p>
+        <p><strong>Quantity:</strong> @item.Quantity</p>
+        <p><strong>Total Price:</strong> $(@item.Quantity * @item.Product.Price</p>
+        <!-- Add more details as needed --> *@
+                
+            }
+       
+    </div>
+}
+else
+{
+    <p>No order details available.</p>
+}
+
+<button class="btn btn-primary" @onclick="GoToDemoPage">Product Page</button>
+
+@code {
+    public CartItem Order { get; set; }
+
+   
+
+    private void GoToDemoPage()
+    {
+        // Navigate back to the home page
+        Navigation.NavigateTo($"products");
+    }
+}
