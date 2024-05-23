@@ -1,0 +1,648 @@
+/* /Pages/BasicPages/About.razor.rz.scp.css */
+
+
+.grey-white[b-fmuidfruz7] {
+
+	background-color:aqua;
+}
+
+
+.left[b-fmuidfruz7] {
+	padding-left: 0;
+	float: left;
+	display: block;
+	background-color: #f5cdcd;
+	
+}
+
+.card-area[b-fmuidfruz7] {
+	color: white;
+	
+	padding: 10px;
+	min-height: 450px;
+}
+
+.col-md-5[b-fmuidfruz7] {
+	width: 48%;
+}
+
+.item-1[b-fmuidfruz7], .item-2[b-fmuidfruz7], .item-3[b-fmuidfruz7], .item-4[b-fmuidfruz7] {
+	padding: 10%;	
+	margin: 5%;
+	min-height: 50%;
+	background-color: cadetblue;
+	
+}
+
+
+	h4[b-fmuidfruz7]
+
+{
+	color: black;
+}
+
+
+
+.right[b-fmuidfruz7] {
+	padding-right: 0;
+	float: right;
+	display: block;
+	background-color: #f5cdcd;
+}
+/* /Pages/BasicPages/Contact.razor.rz.scp.css */
+
+.container[b-e7tri1jhge] {
+    background-color: #deded7;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 10px;
+    margin: 10px auto;
+}
+
+.tiles[b-e7tri1jhge] {
+    background-color: cadetblue;
+    padding: 20px;
+    margin: 20px 5px;
+    border: 2px solid #808080;
+    width: auto ;
+    max-width: 500px;
+    color: white;
+    text-align: center;
+}
+
+
+div[b-e7tri1jhge]{
+    margin: 2px;
+}
+
+label[b-e7tri1jhge] {
+    display: inline-block;
+    width: 100px;
+    color: #000000;
+}
+input[b-e7tri1jhge] {
+    padding: 3px;
+    block-size: auto;
+}
+
+.Note-inp[b-e7tri1jhge] {
+    width : 200px;
+}
+/* /Pages/BasicPages/Shopping.razor.rz.scp.css */
+
+body[b-fred7ya9ps] {
+
+	background-color: #d4c1c1;
+}
+
+
+
+.Page-container[b-fred7ya9ps] {
+	margin: auto;
+	width: auto;
+	height: auto;
+	padding: 10px;
+	border: 5px solid #ef2525;
+	
+
+}
+
+.Medicine[b-fred7ya9ps] {
+	background-color: #808080;
+	box-shadow: 10px 10px;
+	border-radius: 25px;
+	background: #a1c644;
+	padding: 20px;
+	margin: 20px;
+	width: 300px;
+	height: auto;
+	
+	writing-mode: vertical-rl;
+	display: flex;
+}
+
+	.Medicine:hover[b-fred7ya9ps] {
+		transform: rotate(5deg);
+		transform: scale(1.1, 1.2);
+	}
+/* /Pages/DemoSite/CheckOut.razor.rz.scp.css */
+form[b-jyjfgd43x4] {
+    max-width: 500px;
+    margin: auto;
+}
+
+div.form-group[b-jyjfgd43x4] {
+    margin-bottom: 5px; /* Reduce the space between form fields */
+}
+
+label[b-jyjfgd43x4] {
+    display: block;
+    margin-top: 12px ; /* Slightly reduce the space between label and input */
+}
+
+
+.form-group[b-jyjfgd43x4] {      
+    padding: 3rem;
+    box-sizing: border-box;
+    display: flex;    
+    flex-direction: row;
+    flex-wrap: wrap  ;
+    gap:0.6rem;
+  
+}
+.input[b-jyjfgd43x4]
+{  
+    min-width: 15rem;    
+    
+}
+
+
+/* .btn {
+    margin-top: 3rem;
+    padding: 0.5rem  1.2rem;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+} */
+button[b-jyjfgd43x4]{
+    margin-top: 3rem;
+}
+
+ button:hover[b-jyjfgd43x4] {
+    background-color: #0fb300;
+   
+
+} 
+
+
+/* /Pages/DemoSite/Demosection.razor.rz.scp.css */
+/* /Pages/DemoSite/Products.razor.rz.scp.css */
+.col-md-4[b-6ex3888kln]
+ {  
+        background-color: azure;
+         border: 2px double #000000;
+         width: auto;
+         height: auto;
+         margin: 3%;
+         padding:1%;
+         
+ }
+ 
+ .row[b-6ex3888kln]
+ {
+    margin: auto;
+    width: 100%;
+    border: 3px solid green;
+
+ }
+
+/* /Pages/Index.razor.rz.scp.css */
+
+.container[b-r27wvh2l79] {
+    background-color: bisque;
+    height: auto;
+    position: relative;
+}
+
+
+.welcome[b-r27wvh2l79] {
+    color: blueviolet;
+    padding: 2rem;
+    position: static;
+    z-index: 1;
+}
+
+.timestamp[b-r27wvh2l79] {
+    text-align: right;
+    position: relative;
+    right: 0px;
+    top: 0px;
+    z-index: 2;
+}
+
+.main-container[b-r27wvh2l79] {
+
+    background-color:rgb(243, 189, 243);
+    display: flex;
+    flex-wrap:wrap;    
+}
+
+.container-1[b-r27wvh2l79] {  
+   background-color: azure;
+    border: 2px double #000000;
+    max-width: 35%;
+    height: auto;
+    margin: 2%;
+    padding:2%;
+}
+.content01[b-r27wvh2l79] {
+    color:  darkgreen;
+    font-display: swap;
+    margin-top: 8%;
+}
+
+button[b-r27wvh2l79] {
+    background-color: darkgreen;
+   
+    top: 4%;
+    left: 40%;
+    width: 6rem;
+    height: 2rem;
+    z-index: 1;
+    font-weight: 800;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+educ[b-r27wvh2l79] {
+    background-image: url("images/Education-1280x720.jpg") ;
+
+}
+/* /Pages/learning/blog-pages/OpenAI-tools.razor.rz.scp.css */
+
+.main-temp[b-56i1n9u0hv] {
+
+	background-color:  burlywood;
+	display: flex;
+	flex-flow: row wrap;
+}
+
+.cart1[b-56i1n9u0hv] {
+	display: flex;
+	flex-flow: row wrap;
+	position: relative;
+	padding: 10px;
+
+	
+}
+
+
+.items-1[b-56i1n9u0hv], .items-2[b-56i1n9u0hv] {
+	background-color: antiquewhite;
+	color: chocolate;
+	width: 25%;
+	margin: 10px;
+	margin-top: 50px;
+	padding:0.8%;
+	position: relative;
+}
+/* /Pages/learning/Blogs.razor.rz.scp.css */
+main[b-r0ffl4iydz] {
+	background-color: antiquewhite;
+	min-height: 1000px;
+	display: flex;
+	flex-flow: row wrap;
+}
+
+
+
+
+.card-01[b-r0ffl4iydz] {
+	background-color: cadetblue;
+	border: 3px dotted #000000;
+	width:  90%;
+	height: auto;
+	margin: 10px;
+	position: relative;
+	
+	/*flex-wrap: wrap;     wrap; wrap/unwrap, direction : row , collumn   flow: row wrap*/
+}
+
+.heading01[b-r0ffl4iydz] {
+	font-weight: bold;
+	padding-bottom:1rem;
+}
+
+.Expanded[b-r0ffl4iydz] {
+	display: none;
+	position: relative;
+	overflow: auto;
+}
+
+.card-01:hover .Expanded[b-r0ffl4iydz] {
+	display: block;
+	
+}
+
+
+a[b-r0ffl4iydz] {
+	text-decoration: none;
+}
+
+	a:hover[b-r0ffl4iydz] {
+		color: white;
+		text-decoration: none;
+		cursor: pointer;
+	}
+
+/* /Pages/learning/Education.razor.rz.scp.css */
+@page "/Education"
+
+<PageTitle>Education</PageTitle>
+
+
+<h1>Welcome to our Educational Site</h1>
+
+<p>
+    This is a sample home page for our educational site. Feel free to customize it with your own content and design.
+</p>
+
+<h2>Featured Courses</h2>
+
+<div class="course-list">
+    <div class="course-card">
+        <h3>Course 1</h3>
+        <p>Lorem ipsum dolor sit amet[b-nsfrto36e3], consectetur adipiscing elit.</p>
+        <a href="#">Enroll Now</a>
+    </div>
+
+    <div class="course-card">
+        <h3>Course 2</h3>
+        <p>Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        <a href="#">Enroll Now</a>
+    </div>
+
+    <!-- Add more course cards as needed -->
+</div>
+
+<h2>About Us</h2>
+
+<p>
+    Lorem ipsum dolor sit amet[b-nsfrto36e3], consectetur adipiscing elit. Nulla luctus nibh auctor[b-nsfrto36e3], rhoncus mi quis[b-nsfrto36e3], dictum ipsum.
+    Quisque congue euismod ultricies. Integer fringilla fermentum facilisis. Suspendisse euismod[b-nsfrto36e3], lectus vel tincidunt
+    interdum[b-nsfrto36e3], ex nisi efficitur tellus[b-nsfrto36e3], nec congue elit turpis at risus.
+</p>
+
+<h2>Contact Us</h2>
+
+<p>
+    If you have any questions or inquiries[b-nsfrto36e3], please feel free to get in touch with us using the contact form or the
+    contact details below:
+</p>
+
+<div class="contact-info">
+    <p>Email: contact@educational-site.com</p>
+    <p>Phone: +1 (123) 456-7890</p>
+</div[b-nsfrto36e3]>
+/* /Pages/learning/MyResume.razor.rz.scp.css */
+.page-container[b-7nxabpxfkf] {
+	color: blue;
+	min-height: 100vh;
+	max-width: 10px;
+	background-color: papayawhip;
+	
+}
+
+.main-content[b-7nxabpxfkf] {
+	background-color: #f7e7e7;
+	padding: 1.1rem;
+	display: flex;
+	-ms-flex-wrap: wrap;
+	flex-wrap: wrap;
+	max-width: 50rem;
+	
+}
+
+
+hr[b-7nxabpxfkf] {
+	height: 5px;
+	width: 99%;
+	/*  border-top: 5px solid black; */
+	margin-top: 0px;
+	background-color: #000000;
+}
+
+
+
+table[b-7nxabpxfkf], tr[b-7nxabpxfkf], th[b-7nxabpxfkf],td[b-7nxabpxfkf] {
+
+	background-color: antiquewhite;
+	padding: 5px;
+	border: 0.02rem solid #000000;
+	text-align:center;
+	margin-bottom:1.1rem;
+	
+
+}
+th[b-7nxabpxfkf] {
+	background-color: #b3de82;
+}
+
+
+/* use to allign any items like table*/
+.center[b-7nxabpxfkf]
+{
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.section[b-7nxabpxfkf] {
+	text-align:center;
+	margin-top: 2rem;
+}
+
+
+.secure-hide[b-7nxabpxfkf] {
+
+	display:none;
+	
+}
+.secure-unhide[b-7nxabpxfkf] {
+	display:block;
+}
+
+
+
+/* /Pages/learning/Objectdesigns.razor.rz.scp.css */
+<h3>Objectdesigns</h3>
+
+
+<div class="container-d">
+
+	<div class="tiles1">
+		<h1> Transformation effects:  </h1>
+		<span>
+
+		</span>
+	</div>
+	<div class="tiles1">
+
+	</div>
+	<div class="tiles1">
+	</div>
+	<div class="tiles1">
+	</div>
+	<div class="tiles1">
+	</div>
+	<div class="tiles1">
+	</div>
+
+
+
+
+</div>
+
+@code[b-8vqonnbzab] {
+
+}
+/* /Shared/Bookshop.razor.rz.scp.css */
+body[b-7v7onuc7g1] {
+
+	background-color : antiquewhite;
+}
+
+.Container[b-7v7onuc7g1] {
+
+	background-color:darkcyan;
+	border: 5px solid black;
+	width:20px;
+	margin: 10px auto;
+	display:flex;
+	flex-wrap:wrap;
+	
+}
+/* /Shared/MainLayout.razor.rz.scp.css */
+.page[b-4xyfsh1owr] {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+main[b-4xyfsh1owr] {
+    flex: 1;
+}
+
+.sidebar[b-4xyfsh1owr] {
+    background-image: linear-gradient(180deg, rgb(5, 39, 103) 0%, #3a0647 70%);
+}
+
+.top-row[b-4xyfsh1owr] {
+    background-color: #f7f7f7;
+    border-bottom: 1px solid #d6d5d5;
+    justify-content: flex-end;
+    height: 3.5rem;
+    display: flex;
+    align-items: center;
+}
+
+    .top-row[b-4xyfsh1owr]  a, .top-row[b-4xyfsh1owr]  .btn-link {
+        white-space: nowrap;
+        margin-left: 1.5rem;
+        text-decoration: none;
+    }
+
+    .top-row[b-4xyfsh1owr]  a:hover, .top-row[b-4xyfsh1owr]  .btn-link:hover {
+        text-decoration: underline;
+    }
+
+    .top-row[b-4xyfsh1owr]  a:first-child {
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+@media (max-width: 640.98px) {
+    .top-row:not(.auth)[b-4xyfsh1owr] {
+        display: none;
+    }
+
+    .top-row.auth[b-4xyfsh1owr] {
+        justify-content: space-between;
+    }
+
+    .top-row[b-4xyfsh1owr]  a, .top-row[b-4xyfsh1owr]  .btn-link {
+        margin-left: 0;
+    }
+}
+
+@media (min-width: 641px) {
+    .page[b-4xyfsh1owr] {
+        flex-direction: row;
+    }
+
+    .sidebar[b-4xyfsh1owr] {
+        width: 250px;
+        height: 100vh;
+        position: sticky;
+        top: 0;
+    }
+
+    .top-row[b-4xyfsh1owr] {
+        position: sticky;
+        top: 0;
+        z-index: 1;
+    }
+
+    .top-row.auth[b-4xyfsh1owr]  a:first-child {
+        flex: 1;
+        text-align: right;
+        width: 0;
+    }
+
+    .top-row[b-4xyfsh1owr], article[b-4xyfsh1owr] {
+        padding-left: 2rem !important;
+        padding-right: 1.5rem !important;
+    }
+}
+/* /Shared/NavMenu.razor.rz.scp.css */
+.navbar-toggler[b-wfzrl0fj6a] {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.top-row[b-wfzrl0fj6a] {
+    height: 3.5rem;
+    background-color: rgba(0,0,0,0.4);
+}
+
+.navbar-brand[b-wfzrl0fj6a] {
+    font-size: 1.1rem;
+}
+
+.oi[b-wfzrl0fj6a] {
+    width: 2rem;
+    font-size: 1.1rem;
+    vertical-align: text-top;
+    top: -2px;
+}
+
+.nav-item[b-wfzrl0fj6a] {
+    font-size: 0.9rem;
+    padding-bottom: 0.5rem;
+}
+
+    .nav-item:first-of-type[b-wfzrl0fj6a] {
+        padding-top: 1rem;
+    }
+
+    .nav-item:last-of-type[b-wfzrl0fj6a] {
+        padding-bottom: 1rem;
+    }
+
+    .nav-item[b-wfzrl0fj6a]  a {
+        color: #d7d7d7;
+        border-radius: 4px;
+        height: 3rem;
+        display: flex;
+        align-items: center;
+        line-height: 3rem;
+    }
+
+.nav-item[b-wfzrl0fj6a]  a.active {
+    background-color: rgba(255,255,255,0.25);
+    color: white;
+}
+
+.nav-item[b-wfzrl0fj6a]  a:hover {
+    background-color: rgba(255,255,255,0.1);
+    color: white;
+}
+
+@media (min-width: 641px) {
+    .navbar-toggler[b-wfzrl0fj6a] {
+        display: none;
+    }
+
+    .collapse[b-wfzrl0fj6a] {
+        /* Never collapse the sidebar for wide screens */
+        display: block;
+    }
+}
