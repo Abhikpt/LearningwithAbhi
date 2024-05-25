@@ -1,17 +1,82 @@
-@page "/Demosection"
-@layout NoMenuLayout
+@page "/Demo"
 @using LearningwithAbhi.Shared
 @inject NavigationManager Navigation
 
-<h3>Welcome to Our Store</h3>
+<h1>Welcome to Demo section of the Site</h1>
 
-<p>
-    <button @onclick="NavigateToProducts" class="btn btn-primary">View Products</button>
-</p>
+<div class="slider-container">
+  <div class="slider">
+      <div class="slides">
+                @foreach (var demo in Demos)
+            {
+                <div class="slide ">                   
+                    <div class="slide-content">
+                        <h2>@demo.Title</h2>
+                        <p>@demo.Description </p>                      
+                       <button @onclick="(() => NavigateToProducts(demo.DemoUrl))">Navigate to</button>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+
+
+
 
 @code {
-    private void NavigateToProducts()
+
+     private void NavigateToProducts(string url)
     {
-        Navigation.NavigateTo("productpage");
+        Navigation.NavigateTo(url);
+    }
+
+    private int slideIndex = 0;
+
+    // Define a simple class for demo information
+    public class DemoInfo
+    {
+        public string Title { get; set; }
+        public string Description { get; set; }
+        public string ImageUrl { get; set; }
+        public string DemoUrl { get; set; }
+    }
+
+    // Define your demo pages here
+    private List<DemoInfo> Demos = new List<DemoInfo>
+    {
+        new DemoInfo
+        {
+            Title = "Eccomerce site",
+            Description = "Click on link to navigate on eccomerce demo page",
+            ImageUrl = "https://via.placeholder.com/150",
+            DemoUrl = "/products"
+        },
+
+        new DemoInfo
+        {
+            Title = "Login Page",
+            Description = "Click on link to navigatye on eccomerce demo page",
+            ImageUrl = "https://via.placeholder.com/150",
+            DemoUrl = "LoginPage"
+        }
+        // Add more demo pages as needed
+    };
+
+
+
+    private void PlusSlides(int n)
+    {
+        slideIndex += n;
+        if (slideIndex >= Demos.Count)
+        {
+            slideIndex = 0;
+        }
+        else if (slideIndex < 0)
+        {
+            slideIndex = Demos.Count - 1;
+        }
     }
 }
+

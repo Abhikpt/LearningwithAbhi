@@ -1,10 +1,11 @@
 
-
-.grey-white {
-
-	background-color:aqua;
+.main-container
+{
+  height: auto;
+  border: 1px solid blueviolet;
+  overflow: hidden;              /*  uset to stop the overflow of inner cpntent */
+  
 }
-
 
 .left {
 	padding-left: 0;
@@ -15,8 +16,7 @@
 }
 
 .card-area {
-	color: white;
-	
+	color: white;	
 	padding: 10px;
 	min-height: 450px;
 }
@@ -32,15 +32,6 @@
 	background-color: cadetblue;
 	
 }
-
-
-	h4
-
-{
-	color: black;
-}
-
-
 
 .right {
 	padding-right: 0;
