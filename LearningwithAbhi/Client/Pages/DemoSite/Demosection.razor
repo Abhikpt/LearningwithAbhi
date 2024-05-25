@@ -22,9 +22,6 @@
 </div>
 
 
-
-
-
 @code {
 
      private void NavigateToProducts(string url)
@@ -37,10 +34,10 @@
     // Define a simple class for demo information
     public class DemoInfo
     {
-        public string Title { get; set; }
-        public string Description { get; set; }
-        public string ImageUrl { get; set; }
-        public string DemoUrl { get; set; }
+        public string Title { get; set; } = string.Empty ;
+        public string? Description { get; set; }
+        public string? ImageUrl { get; set; }
+        public string DemoUrl { get; set; } = string.Empty;
     }
 
     // Define your demo pages here
@@ -56,12 +53,20 @@
 
         new DemoInfo
         {
-            Title = "Login Page",
-            Description = "Click on link to navigatye on eccomerce demo page",
+            Title = "WebElements Page",
+            Description = "Click on link to navigate on webElements page",
             ImageUrl = "https://via.placeholder.com/150",
-            DemoUrl = "LoginPage"
-        }
+            DemoUrl = "webelements"
+        },
         // Add more demo pages as needed
+
+         new DemoInfo
+        {
+            Title = "Bookfilter Page",
+            Description = "Click on link to navigate on book filter page",
+            ImageUrl = "https://via.placeholder.com/150",
+            DemoUrl = "library"
+        }
     };
 
 

@@ -9,7 +9,7 @@ namespace LearningwithAbhi.Client
 
         public void AddToCart(ProductModel product)
         {
-            var existingItem = CartItems.Find(item => item.Product.Id == product.Id);
+            var existingItem = CartItems.Find(item => item.Product?.Id == product.Id);
             if (existingItem != null)
             {
                 existingItem.Quantity++;
@@ -22,7 +22,7 @@ namespace LearningwithAbhi.Client
 
         public void RemoveFromCart(ProductModel product)
         {
-            var existingItem = CartItems.Find(item => item.Product.Id == product.Id);
+            var existingItem = CartItems.Find(item => item.Product?.Id == product.Id);
             if (existingItem != null)
             {
                 CartItems.Remove(existingItem);

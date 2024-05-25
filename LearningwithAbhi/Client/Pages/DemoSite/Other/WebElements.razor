@@ -1,0 +1,32 @@
+<!-- DemoPage.razor -->
+@page "/webelements"
+
+<h1>Popup section</h1>
+
+<!-- Button to open the popup -->
+<!-- PopupBox.razor -->
+@if (IsOpen)
+{
+    <div class="popup-overlay">
+        <div class="popup-content">
+            <div class="popup-header">
+                <h2>@Title</h2>
+                <button class="close-button" @onclick="Close">X</button>
+            </div>
+            <div class="popup-body">
+                @ChildContent
+            </div>
+        </div>
+    </div>
+}
+
+@code {
+    [Parameter] public bool IsOpen { get; set; }
+    [Parameter] public string? Title { get; set; }
+    [Parameter] public RenderFragment? ChildContent { get; set; }
+
+    private void Close()
+    {
+        IsOpen = false;
+    }
+}

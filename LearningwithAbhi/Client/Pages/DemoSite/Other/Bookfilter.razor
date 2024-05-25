@@ -1,0 +1,97 @@
+@page "/library"
+
+<h1>Book Library</h1>
+
+<div class="filter-serch">
+<!-- Filter input -->
+<input type="text" @bind="filterText" placeholder="Search by Title">
+<select @bind="selectedFilterType" class="dropdown">
+    <option value="Title">Title</option>
+    <option value="Author">Author</option>
+    <option value="Genre">Genre</option>
+</select>
+<button @onclick="FilterBooks" >Search</button>
+</div>
+
+
+<!-- Library table with filtering -->
+@if (filteredBooks.Any())
+{
+    <table class="center">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Author</th>
+                <th>Genre</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach (var book in filteredBooks)
+            {
+                <tr>
+                    <td>@book.Title</td>
+                    <td>@book.Author</td>
+                    <td>@book.Genre</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>No books found.</p>
+}
+
+@code {
+   
+    private string filterText = "";
+    private string selectedFilterType = "Title";
+
+    private List<Book> books = new List<Book>
+    {
+        new Book { Title = "Beloved", Author = "Toni Morrison", Genre = "Historical" },
+        new Book { Title = "Man's Search For Meaning", Author = "Viktor Frankl", Genre = "Autobiography" },
+        new Book { Title = "Change your habits, Change your life", Author = "Marc Reklau", Genre = "Motivation" },
+        new Book { Title = "The Westing Game", Author = "Ellen Raskin ", Genre = "Mystery" },
+        new Book { Title = "The Thirteenth Tale", Author = "Diane Setterfield", Genre = "Mystery" },
+        new Book { Title = "Dune", Author = "Frank Herbert", Genre = "Science Fiction" },
+        new Book { Title = "Che Martian Chronicles", Author = "Ray Bradbury", Genre = "Science Fiction" },
+
+        // Add more sample books
+    };
+
+ private List<Book> filteredBooks = new List<Book>();
+
+@* // if you want to filter by any click
+    private List<Book> filteredBooks => string.IsNullOrWhiteSpace(filterText)
+        ? books : books.Where(b => b.Title.ToLower().Contains(filterText.ToLower())).ToList(); *@
+
+    public class Book
+    {
+        public string Title { get; set; }
+        public string Author { get; set; }
+        public string Genre { get; set; }
+    }
+
+
+    // filter based on specific event
+ private void FilterBooks()
+    {
+        switch (selectedFilterType)
+        {
+            case "Title":
+                filteredBooks = books.Where(book => string.IsNullOrWhiteSpace(filterText) || book.Title.ToLower().Contains(filterText.ToLower())).ToList();
+                break;
+            case "Author":
+                filteredBooks = books.Where(book => string.IsNullOrWhiteSpace(filterText) || book.Author.ToLower().Contains(filterText.ToLower())).ToList();
+                break;
+            case "Genre":
+                filteredBooks = books.Where(book => string.IsNullOrWhiteSpace(filterText) || book.Genre.ToLower().Contains(filterText.ToLower())).ToList();
+                break;
+            default:
+                filteredBooks = books;
+                break;
+        }
+    }
+}
