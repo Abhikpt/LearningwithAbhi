@@ -116,57 +116,6 @@ body[b-fred7ya9ps] {
 		transform: rotate(5deg);
 		transform: scale(1.1, 1.2);
 	}
-/* /Pages/DemoSite/CheckOut.razor.rz.scp.css */
-form[b-jyjfgd43x4] {
-    max-width: 500px;
-    margin: auto;
-}
-
-div.form-group[b-jyjfgd43x4] {
-    margin-bottom: 5px; /* Reduce the space between form fields */
-}
-
-label[b-jyjfgd43x4] {
-    display: block;
-    margin-top: 12px ; /* Slightly reduce the space between label and input */
-}
-
-
-.form-group[b-jyjfgd43x4] {      
-    padding: 3rem;
-    box-sizing: border-box;
-    display: flex;    
-    flex-direction: row;
-    flex-wrap: wrap  ;
-    gap:0.6rem;
-  
-}
-.input[b-jyjfgd43x4]
-{  
-    min-width: 15rem;    
-    
-}
-
-
-/* .btn {
-    margin-top: 3rem;
-    padding: 0.5rem  1.2rem;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    cursor: pointer;
-} */
-button[b-jyjfgd43x4]{
-    margin-top: 3rem;
-}
-
- button:hover[b-jyjfgd43x4] {
-    background-color: #0fb300;
-   
-
-} 
-
-
 /* /Pages/DemoSite/Demosection.razor.rz.scp.css */
 
 
@@ -223,8 +172,171 @@ button[b-jyjfgd43x4]{
     font-weight: bold;
     font-family: sans-serif;
 }
-/* /Pages/DemoSite/Products.razor.rz.scp.css */
-.col-md-4[b-6ex3888kln]
+/* /Pages/DemoSite/Other/Bookfilter.razor.rz.scp.css */
+
+.filter-serch[b-v7gi5gs9o7]{
+    border-spacing: 1;
+    border-collapse: collapse;    
+    border-radius: 6px;
+    overflow: hidden;
+    max-width: 800px;
+    width: 100%;
+    margin: 2rem auto;
+    
+
+}
+.dropdown[b-v7gi5gs9o7] {
+    position: relative;
+    display: inline-block;
+    width: 6.5rem;
+    height: 1.7rem;
+  }
+
+table[b-v7gi5gs9o7] {
+    border-spacing: 1;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 6px;
+    overflow: hidden;
+    max-width: 800px;
+    width: 100%;
+    margin: 0 auto;   
+  }
+
+  /* table * {
+    position: relative;
+  } */
+  table td[b-v7gi5gs9o7], table th[b-v7gi5gs9o7] {
+    padding-left: 8px;
+  }
+  table thead tr[b-v7gi5gs9o7] {
+    height: 60px;
+    background: #45a0d8;
+    font-size: 16px;
+  }
+  table tbody tr[b-v7gi5gs9o7] {
+    height: 48px;
+    border-bottom: 1px solid #E3F1D5;
+  }
+  table tbody tr:last-child[b-v7gi5gs9o7] {
+    border: 0;
+  }
+  table td[b-v7gi5gs9o7], table th[b-v7gi5gs9o7] {
+    text-align: left;
+  }
+  table td.l[b-v7gi5gs9o7], table th.l[b-v7gi5gs9o7] {
+    text-align: right;
+  }
+  table td.c[b-v7gi5gs9o7], table th.c[b-v7gi5gs9o7] {
+    text-align: center;
+  }
+  table td.r[b-v7gi5gs9o7], table th.r[b-v7gi5gs9o7] {
+    text-align: center;
+  }
+  
+  @media screen and (max-width: 35.5em) {
+    table[b-v7gi5gs9o7] {
+      display: block;
+    }
+    table > *[b-v7gi5gs9o7], table tr[b-v7gi5gs9o7], table td[b-v7gi5gs9o7], table th[b-v7gi5gs9o7] {
+      display: block;
+    }
+    table thead[b-v7gi5gs9o7] {
+      display: none;
+    }
+    table tbody tr[b-v7gi5gs9o7] {
+      height: auto;
+      padding: 8px 0;
+    }
+    table tbody tr td[b-v7gi5gs9o7] {
+      padding-left: 45%;
+      margin-bottom: 12px;
+    }
+    table tbody tr td:last-child[b-v7gi5gs9o7] {
+      margin-bottom: 0;
+    }
+    table tbody tr td[b-v7gi5gs9o7]:before {
+      position: absolute;
+      font-weight: 700;
+      width: 40%;
+      left: 10px;
+      top: 0;
+    }
+    table tbody tr td:nth-child(1)[b-v7gi5gs9o7]:before {
+      content: "Code";
+    }
+    table tbody tr td:nth-child(2)[b-v7gi5gs9o7]:before {
+      content: "Stock";
+    }
+    table tbody tr td:nth-child(3)[b-v7gi5gs9o7]:before {
+      content: "Cap";
+    }
+    table tbody tr td:nth-child(4)[b-v7gi5gs9o7]:before {
+      content: "Inch";
+    }
+    table tbody tr td:nth-child(5)[b-v7gi5gs9o7]:before {
+      content: "Box Type";
+    }
+  }
+
+  
+  blockquote[b-v7gi5gs9o7] {
+    color: white;
+    text-align: left;
+  }
+/* /Pages/DemoSite/Productshipment/CheckOut.razor.rz.scp.css */
+form[b-sap47ctczr] {
+    max-width: 500px;
+    margin: auto;
+}
+
+div.form-group[b-sap47ctczr] {
+    margin-bottom: 5px; /* Reduce the space between form fields */
+}
+
+label[b-sap47ctczr] {
+    display: block;
+    margin-top: 12px ; /* Slightly reduce the space between label and input */
+}
+
+
+.form-group[b-sap47ctczr] {      
+    padding: 3rem;
+    box-sizing: border-box;
+    display: flex;    
+    flex-direction: row;
+    flex-wrap: wrap  ;
+    gap:0.6rem;
+  
+}
+.input[b-sap47ctczr]
+{  
+    min-width: 15rem;    
+    
+}
+
+
+/* .btn {
+    margin-top: 3rem;
+    padding: 0.5rem  1.2rem;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+} */
+button[b-sap47ctczr]{
+    margin-top: 3rem;
+}
+
+ button:hover[b-sap47ctczr] {
+    background-color: #0fb300;
+   
+
+} 
+
+
+/* /Pages/DemoSite/Productshipment/Products.razor.rz.scp.css */
+.col-md-4[b-1eqfp8pbm2]
  {  
         background-color: azure;
          border: 2px double #000000;
@@ -235,7 +347,7 @@ button[b-jyjfgd43x4]{
          
  }
  
- .row[b-6ex3888kln]
+ .row[b-1eqfp8pbm2]
  {
     margin: auto;
     width: 100%;
