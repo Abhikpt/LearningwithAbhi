@@ -3,7 +3,16 @@
 html, body {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     color :#1861ac;
-    background-color:antiquewhite;
+  background-color:antiquewhite;
+}
+
+
+/* apply CSS for body section - Mainlayout screen*/
+article.content{
+
+    border: 0.05rem solid black;
+    margin: 0% 0.5%;
+    padding: 1%;
 }
 
 .container {
@@ -37,13 +46,6 @@ a, .btn-link {
     
 }
 
-.px-4
-{
-    border: solid black;
-    margin: 5% 2%;
-    padding: 2%;
-    
-}
 
 .valid.modified:not([type=checkbox]) {
     outline: 1px solid #26b050;

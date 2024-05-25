@@ -1,11 +1,12 @@
 /* /Pages/BasicPages/About.razor.rz.scp.css */
 
-
-.grey-white[b-fmuidfruz7] {
-
-	background-color:aqua;
+.main-container[b-fmuidfruz7]
+{
+  height: auto;
+  border: 1px solid blueviolet;
+  overflow: hidden;              /*  uset to stop the overflow of inner cpntent */
+  
 }
-
 
 .left[b-fmuidfruz7] {
 	padding-left: 0;
@@ -16,8 +17,7 @@
 }
 
 .card-area[b-fmuidfruz7] {
-	color: white;
-	
+	color: white;	
 	padding: 10px;
 	min-height: 450px;
 }
@@ -33,15 +33,6 @@
 	background-color: cadetblue;
 	
 }
-
-
-	h4[b-fmuidfruz7]
-
-{
-	color: black;
-}
-
-
 
 .right[b-fmuidfruz7] {
 	padding-right: 0;
@@ -177,6 +168,61 @@ button[b-jyjfgd43x4]{
 
 
 /* /Pages/DemoSite/Demosection.razor.rz.scp.css */
+
+
+.slider-container[b-du78vfl2hf] {
+    /* background: linear-gradient(149deg, rgb(236, 29, 236) 0%, rgb(92, 56, 7) 100%); */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    max-width: 80rem; 
+
+}
+
+.slider[b-du78vfl2hf] {
+    width: 100%;
+    /* max-width: 600px; */
+    height: auto; 
+    margin: 2rem;
+    border-radius: 20px;
+    text-align: center;   
+    position: relative;
+}
+
+.slides[b-du78vfl2hf] {
+    display: flex;
+    overflow-x: scroll;
+    position: relative;
+    scroll-behavior: smooth;
+    scroll-snap-type: x mandatory;
+   
+}
+
+.slide:nth-of-type(even)[b-du78vfl2hf] {
+    background-color: rgb(250, 246, 212);
+}
+
+.slide[b-du78vfl2hf] {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+    width: 100%;
+    height: 400px;
+    margin-right: 0px;
+    box-sizing: border-box;
+    background: white;
+    transform-origin: center center;
+    transform: scale(1);
+    scroll-snap-align: center;
+}
+
+.slide__text[b-du78vfl2hf] {
+    font-size: 40px;
+    font-weight: bold;
+    font-family: sans-serif;
+}
 /* /Pages/DemoSite/Products.razor.rz.scp.css */
 .col-md-4[b-6ex3888kln]
  {  
