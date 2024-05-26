@@ -1,0 +1,29 @@
+
+@if (IsVisible)
+{
+    <div class="notification-popup">
+        <span class="notification-content">@Message</span>
+        <button class="close-button" @onclick="CloseNotification">Close x</button>
+    </div>
+}
+
+@code {
+    [Parameter]
+    public string Message { get; set; } = "No product founded in cart";
+
+    private bool IsVisible { get; set; }
+
+    public void ShowNotification()
+    {
+        IsVisible = true;
+        StateHasChanged();
+        // Optionally, you can add a timer to automatically close the notification after a certain duration.
+        // Task.Delay(5000).ContinueWith(_ => CloseNotification());
+    }
+
+    private void CloseNotification()
+    {
+        IsVisible = false;
+        StateHasChanged();
+    }
+}

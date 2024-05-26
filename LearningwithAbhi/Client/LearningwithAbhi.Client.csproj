@@ -29,6 +29,7 @@
     <Content Include="Pages\learning\MyResume.razor.css" />
     <Content Include="Pages\learning\Objectdesigns.razor.css" />
     <Content Include="Pages\BasicPages\Shopping.razor.css" />
+    
   </ItemGroup>
 
   <ItemGroup>
@@ -45,6 +46,7 @@
 
   <ItemGroup>
     <Folder Include="Pages\ecommerce\" />
+     <Folder Include="Pages\DemoSite\" />
     <Folder Include="wwwroot\NewFolder\" />
     <Folder Include="Services" />
   </ItemGroup>
