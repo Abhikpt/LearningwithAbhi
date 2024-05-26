@@ -1,4 +1,6 @@
-# LearningwithAbhi (https://abhikpt.github.io/LearningwithAbhi/)
+<p align="ceneter">
+# [LearningwithAbhi](https://abhikpt.github.io/LearningwithAbhi/)
+  </p>
 
 Welcome to the Blazor Practice Website, an interactive platform meticulously crafted to hone your Blazor skills. Whether you're a seasoned developer or just venturing into the realm of Blazor, this repository offers a comprehensive array of demo pages, meticulously designed to enhance your proficiency in Blazor application development.
 
