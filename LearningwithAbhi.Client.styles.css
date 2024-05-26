@@ -335,6 +335,36 @@ button[b-sap47ctczr]{
 } 
 
 
+/* /Pages/DemoSite/Productshipment/OrderConfirmation.razor.rz.scp.css */
+@media (min-width: 1025px) {
+    .h-custom[b-qo1wvueygv] {
+    height: 100vh !important;
+    }
+    }
+    
+    .horizontal-timeline .items[b-qo1wvueygv] {
+    border-top: 2px solid #ddd;
+    }
+    
+    .horizontal-timeline .items .items-list[b-qo1wvueygv] {
+    position: relative;
+    margin-right: 0;
+    }
+    
+    .horizontal-timeline .items .items-list[b-qo1wvueygv]:before {
+    content: "";
+    position: absolute;
+    height: 8px;
+    width: 8px;
+    border-radius: 50%;
+    background-color: #ddd;
+    top: 0;
+    margin-top: -5px;
+    }
+    
+    .horizontal-timeline .items .items-list[b-qo1wvueygv] {
+    padding-top: 15px;
+    }
 /* /Pages/DemoSite/Productshipment/Products.razor.rz.scp.css */
 .col-md-4[b-1eqfp8pbm2]
  {  
