@@ -20,7 +20,7 @@ namespace LearningwithAbhi.Shared
         public string? State { get; set; }
 
         [Required(ErrorMessage = "Zip Code is required.")]
-        [RegularExpression(@"^\d{5}(-\d{4})?$", ErrorMessage = "Invalid postal code format.")]     
+        [RegularExpression(@"^\d{6}(-\d{5})?$", ErrorMessage = "Invalid postal code format.")]     
         public string? ZipCode {get;set;}
 
         [Required(ErrorMessage = "Email is required.")]
