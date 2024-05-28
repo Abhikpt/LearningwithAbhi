@@ -284,6 +284,14 @@ table[b-v7gi5gs9o7] {
     color: white;
     text-align: left;
   }
+/* /Pages/DemoSite/Other/ProductPage.razor.rz.scp.css */
+.formFields[b-uwq0af5z55]
+ {  
+   border: 0.2 rem , black;
+    padding-top: 100 px;
+    text-size-adjust:initial ;
+    
+}
 /* /Pages/DemoSite/Productshipment/CheckOut.razor.rz.scp.css */
 form[b-sap47ctczr] {
     max-width: 500px;
