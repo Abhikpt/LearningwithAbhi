@@ -3,6 +3,9 @@
 
 <h1>Popup section</h1>
 
+<p> Click here to navigate on Add product Page <a href="productpage"> Click Here </a></p>
+
+<p> click here for popup funcationality <button @onclick="Close"> Click me</button></p>
 <!-- Button to open the popup -->
 <!-- PopupBox.razor -->
 @if (IsOpen)
@@ -27,6 +30,6 @@
 
     private void Close()
     {
-        IsOpen = false;
+        IsOpen = !IsOpen;
     }
 }
