@@ -1,13 +1,34 @@
+@page "/popup"
 
-<!-- ExamplePage.razor -->
-@page "/example"
+@if (IsVisible)
+{
+    <div class="popup">
+        <h4>Confirmation popup</h4>
+        <div class="popup-content">
+          @ChildContent
+          <p> This is a sample popupbox </p>
+        </div>
+        
+        <button class="close-button" @onclick="ClosePopup">Close</button>
+    </div>
+}
 
-<h1>Example Page</h1>
 
-<button @onclick="() => IsPopupOpen = true">Open Popup</button>
+<button @onclick="ShowPopup" >click me</button>
 
+@code {   
 
+ [Parameter]
+    public RenderFragment ChildContent { get; set; }
+    private bool IsVisible { get; set; } = false;
 
-@code {
-    private bool IsPopupOpen = false;
+    public void ShowPopup()
+    {
+        IsVisible = true;
+    }
+
+    private void ClosePopup()
+    {
+        IsVisible = false;
+    }
 }

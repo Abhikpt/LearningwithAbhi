@@ -1,0 +1,14 @@
+.horizontal-box-container {
+    display: flex;
+    justify-content: space-between; /* Adjust as needed */
+    align-items: center; /* Adjust as needed */
+
+}
+
+.horizontal-box {
+    border: 1px solid #0b0101;
+    background-color: #f1f9f7;
+    padding: 1.8rem;
+    margin: 0 0,6rem; /* Adjust as needed */
+    width: 30%; /* Adjust as needed */
+}

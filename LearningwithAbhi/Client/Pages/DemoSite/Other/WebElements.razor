@@ -1,35 +1,38 @@
-<!-- DemoPage.razor -->
+
 @page "/webelements"
 
-<h1>Popup section</h1>
 
-<p> Click here to navigate on Add product Page <a href="productpage"> Click Here </a></p>
+<h1>WebElements Designing: </h1>
+<hr>
 
-<p> click here for popup funcationality <button @onclick="Close"> Click me</button></p>
-<!-- Button to open the popup -->
-<!-- PopupBox.razor -->
-@if (IsOpen)
-{
-    <div class="popup-overlay">
-        <div class="popup-content">
-            <div class="popup-header">
-                <h2>@Title</h2>
-                <button class="close-button" @onclick="Close">X</button>
-            </div>
-            <div class="popup-body">
-                @ChildContent
-            </div>
-        </div>
+<h2>Click on below link to navigate on corresponding WebElements page</h2>
+<div class="horizontal-box-container">
+    <div class="horizontal-box">
+        <li class=""> Click here to navigate on <strong>Add product Page</strong> <a href="productpage"> Click Here </a></li>
+
     </div>
-}
+    <div class="horizontal-box">
+        <li> click here to navigate on <strong>Popup funcationality page</strong> <a href="popup"> Click Here </a></li>
 
-@code {
-    [Parameter] public bool IsOpen { get; set; }
-    [Parameter] public string? Title { get; set; }
-    [Parameter] public RenderFragment? ChildContent { get; set; }
+    </div>
+    <div class="horizontal-box">
+        <li> click here to navigate on <strong>File Upload funcationality page</strong> <a href=""> Click Here </a></li>
 
-    private void Close()
+    </div>
+</div>
+
+
+
+<button @onclick="ShowPopup">Show Popup</button>
+<popupbox/>
+
+
+@code {   
+
+    Popupbox popupBox =new  Popupbox();
+
+    void ShowPopup()
     {
-        IsOpen = !IsOpen;
+        popupBox.ShowPopup();
     }
 }
