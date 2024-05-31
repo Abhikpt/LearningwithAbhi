@@ -10,12 +10,15 @@
     <option value="Author">Author</option>
     <option value="Genre">Genre</option>
 </select>
-<button @onclick="FilterBooks" >Search</button>
+<button @onclick="FilterBooks" @onload="FilterBooks" >Search</button>
+<button @onclick="ClearBook"  >Clear</button>
 </div>
 
 
+
+
 <!-- Library table with filtering -->
-@if (filteredBooks.Any())
+@if (filterText.Any())
 {
     <table class="center">
         <thead>
@@ -38,9 +41,29 @@
         </tbody>
     </table>
 }
-else
+
+else 
 {
-    <p>No books found.</p>
+    <table class="center">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Author</th>
+                <th>Genre</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach (var book in books)
+            {
+                <tr>
+                    <td>@book.Title</td>
+                    <td>@book.Author</td>
+                    <td>@book.Genre</td>
+                </tr>
+            }
+        </tbody>
+    </table>
 }
 
 @code {
@@ -62,7 +85,7 @@ else
     };
 
  private List<Book> filteredBooks = new List<Book>();
-
+    
 @* // if you want to filter by any click
     private List<Book> filteredBooks => string.IsNullOrWhiteSpace(filterText)
         ? books : books.Where(b => b.Title.ToLower().Contains(filterText.ToLower())).ToList(); *@
@@ -94,4 +117,11 @@ else
                 break;
         }
     }
+
+        public void ClearBook()
+        {
+                filterText = "";
+        }
+
+    
 }
