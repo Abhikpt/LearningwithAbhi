@@ -1,0 +1,49 @@
+@page "/login"
+@inject NavigationManager NavigationManager
+
+<CustomPopup @ref="customPopup" >
+    <h3>Login</h3>
+    <div  style="width: 50%;" >
+        <div class="form-group"  >
+            <label for="inputEmail">UserID</label>
+            <input type="email" class="form-control" id="inputEmail" placeholder="Enter email" @bind="Input.User">
+        </div>
+        <div class="form-group">
+            <label for="inputPassword">Password</label>
+            <input type="password" class="form-control" id="inputPassword" placeholder="Password" @bind="Input.Password">
+        </div>
+        <button type="button" class="btn btn-primary" @onclick="LoginUser">Login</button>
+    </div>
+</CustomPopup>
+
+<button type="button" class="btn btn-primary" @onclick="ShowPopup">Show Login Popup</button>
+
+@code {
+    private CustomPopup customPopup;
+    private LoginInputModel Input { get; set; } = new LoginInputModel();
+
+    private async Task LoginUser()
+    {
+        if (Input.User == "Admin" && Input.Password == "12345")
+        {
+            NavigationManager.NavigateTo("/"); // Redirect to home page or dashboard
+            
+        }
+        else
+        {
+            // Handle failed login
+        }
+    }
+
+    private void ShowPopup()
+    {
+        customPopup.ShowPopup();
+    }
+
+    public class LoginInputModel
+    {
+        public string User { get; set; }
+        public string Password { get; set; }
+        public bool RememberMe { get; set; }
+    }
+}

@@ -1,0 +1,22 @@
+<div class="custom-popup" style="@popupStyle">
+    <div class="popup-content">
+        @ChildContent
+    </div>
+</div>
+
+@code {
+    [Parameter]
+    public RenderFragment ChildContent { get; set; }
+
+    private string popupStyle = "display:none;";
+
+    public void ShowPopup()
+    {
+        popupStyle = "display:block;";
+    }
+
+    public void HidePopup()
+    {
+        popupStyle = "display:none;";
+    }
+}
