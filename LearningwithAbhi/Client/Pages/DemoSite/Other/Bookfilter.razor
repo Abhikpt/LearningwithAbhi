@@ -10,8 +10,8 @@
     <option value="Author">Author</option>
     <option value="Genre">Genre</option>
 </select>
-<button @onclick="FilterBooks" @onload="FilterBooks" >Search</button>
-<button @onclick="ClearBook"  >Clear</button>
+<button class="btn-primary" @onclick="FilterBooks" @onload="FilterBooks" >Search</button>
+<button class="btn-primary" @onclick="ClearBook"  >Clear</button>
 </div>
 
 
@@ -29,15 +29,21 @@
             </tr>
         </thead>
         <tbody>
+        @if(filteredBooks.Any())
+        {
+                    @foreach (var book in filteredBooks)
+                    {
+                        <tr>
+                            <td>@book.Title</td>
+                            <td>@book.Author</td>
+                            <td>@book.Genre</td>
+                        </tr>
+                    }
+        }
 
-            @foreach (var book in filteredBooks)
-            {
-                <tr>
-                    <td>@book.Title</td>
-                    <td>@book.Author</td>
-                    <td>@book.Genre</td>
-                </tr>
-            }
+        else{
+            <p class="no-record"> No record found</p>
+        }
         </tbody>
     </table>
 }
@@ -92,9 +98,9 @@ else
 
     public class Book
     {
-        public string Title { get; set; }
-        public string Author { get; set; }
-        public string Genre { get; set; }
+        public string? Title { get; set; }
+        public string? Author { get; set; }
+        public string? Genre { get; set; }
     }
 
 
