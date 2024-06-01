@@ -109,3 +109,10 @@ table {
     color: white;
     text-align: left;
   }
+
+  .no-record
+  {  
+    padding: 1%; 
+    font-weight: bolder;
+    text-align: center;
+  }

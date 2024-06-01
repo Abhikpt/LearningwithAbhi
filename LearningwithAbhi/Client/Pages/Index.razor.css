@@ -22,8 +22,7 @@
 }
 
 .main-container {
-
-    background-color:rgb(243, 189, 243);
+    background-color: #d1d2d2;
     display: flex;
     flex-wrap:wrap;    
 }

@@ -10,12 +10,45 @@
     <option value="Author">Author</option>
     <option value="Genre">Genre</option>
 </select>
-<button @onclick="FilterBooks" >Search</button>
+<button class="btn-primary" @onclick="FilterBooks" @onload="FilterBooks" >Search</button>
+<button class="btn-primary" @onclick="ClearBook"  >Clear</button>
 </div>
 
 
+
+
 <!-- Library table with filtering -->
-@if (filteredBooks.Any())
+@if (filterText.Any())
+{
+    <table class="center">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Author</th>
+                <th>Genre</th>
+            </tr>
+        </thead>
+        <tbody>
+        @if(filteredBooks.Any())
+        {
+                    @foreach (var book in filteredBooks)
+                    {
+                        <tr>
+                            <td>@book.Title</td>
+                            <td>@book.Author</td>
+                            <td>@book.Genre</td>
+                        </tr>
+                    }
+        }
+
+        else{
+            <p class="no-record"> No record found</p>
+        }
+        </tbody>
+    </table>
+}
+
+else 
 {
     <table class="center">
         <thead>
@@ -27,7 +60,7 @@
         </thead>
         <tbody>
 
-            @foreach (var book in filteredBooks)
+            @foreach (var book in books)
             {
                 <tr>
                     <td>@book.Title</td>
@@ -37,10 +70,6 @@
             }
         </tbody>
     </table>
-}
-else
-{
-    <p>No books found.</p>
 }
 
 @code {
@@ -62,16 +91,16 @@ else
     };
 
  private List<Book> filteredBooks = new List<Book>();
-
+    
 @* // if you want to filter by any click
     private List<Book> filteredBooks => string.IsNullOrWhiteSpace(filterText)
         ? books : books.Where(b => b.Title.ToLower().Contains(filterText.ToLower())).ToList(); *@
 
     public class Book
     {
-        public string Title { get; set; }
-        public string Author { get; set; }
-        public string Genre { get; set; }
+        public string? Title { get; set; }
+        public string? Author { get; set; }
+        public string? Genre { get; set; }
     }
 
 
@@ -94,4 +123,11 @@ else
                 break;
         }
     }
+
+        public void ClearBook()
+        {
+                filterText = "";
+        }
+
+    
 }
