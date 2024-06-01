@@ -285,6 +285,13 @@ table[b-v7gi5gs9o7] {
     color: white;
     text-align: left;
   }
+
+  .no-record[b-v7gi5gs9o7]
+  {  
+    padding: 1%; 
+    font-weight: bolder;
+    text-align: center;
+  }
 /* /Pages/DemoSite/Other/Popupbox.razor.rz.scp.css */
 /* Add your desired styling for the popup here */
 
@@ -456,8 +463,7 @@ button[b-sap47ctczr]{
 }
 
 .main-container[b-r27wvh2l79] {
-
-    background-color:rgb(243, 189, 243);
+    background-color: #d1d2d2;
     display: flex;
     flex-wrap:wrap;    
 }
