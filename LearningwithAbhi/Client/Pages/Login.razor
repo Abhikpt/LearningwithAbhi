@@ -3,47 +3,76 @@
 
 <CustomPopup @ref="customPopup" >
     <h3>Login</h3>
-    <div  style="width: 50%;" >
+    <div>
         <div class="form-group"  >
+   
             <label for="inputEmail">UserID</label>
             <input type="email" class="form-control" id="inputEmail" placeholder="Enter email" @bind="Input.User">
+            
         </div>
+
         <div class="form-group">
+
             <label for="inputPassword">Password</label>
             <input type="password" class="form-control" id="inputPassword" placeholder="Password" @bind="Input.Password">
         </div>
+
         <button type="button" class="btn btn-primary" @onclick="LoginUser">Login</button>
+        <button type="button" class="btn btn-primary" @onclick="ClosePopup">closed</button>
+
+        @if( !string.IsNullOrEmpty(errorMessage))
+        {
+            <p style="color:#ff0000;"> @errorMessage </p>
+        }
+
+
     </div>
 </CustomPopup>
 
-<button type="button" class="btn btn-primary" @onclick="ShowPopup">Show Login Popup</button>
+<button style="@buttonVisibility" type="button" class="btn btn-primary" @onclick="ShowPopup">Show Login Popup</button>
 
 @code {
     private CustomPopup customPopup;
+    string buttonVisibility = "display:block";
+
+    private string errorMessage = string.Empty;
     private LoginInputModel Input { get; set; } = new LoginInputModel();
 
     private async Task LoginUser()
     {
-        if (Input.User == "Admin" && Input.Password == "12345")
+        if (Input.User == "abhishek" && Input.Password == "1996")
         {
-            NavigationManager.NavigateTo("/"); // Redirect to home page or dashboard
+            NavigationManager.NavigateTo("#"); // Redirect to home page or dashboard
             
         }
         else
         {
-            // Handle failed login
+            errorMessage = "Enter User and Password combination is wrong";
+            
         }
     }
 
     private void ShowPopup()
     {
         customPopup.ShowPopup();
+        buttonVisibility = "display:none";
+    }
+
+     public void ClosePopup()
+    {
+        
+        customPopup.HidePopup();
+        buttonVisibility = "display:block";
+   
     }
 
     public class LoginInputModel
     {
+     
         public string? User { get; set; }
+
+  
         public string? Password { get; set; }
-        public bool RememberMe { get; set; }
+       
     }
 }

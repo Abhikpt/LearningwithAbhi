@@ -41,16 +41,20 @@
     margin-top: 8%;
 }
 
-button {
-    background-color: darkgreen;
-   
-    top: 4%;
-    left: 40%;
+.btn-home {
+    background-color: #ffffff;   
+    margin: 4% 40%;
     width: 6rem;
     height: 2rem;
     z-index: 1;
     font-weight: 800;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: #090909;
+}
+
+.btn-home:hover{
+    background-color:#358106;
+  
 }
 
 educ {

@@ -2,11 +2,11 @@
 
 <div class="card" style="width: 18rem;">
     <img src="https://via.placeholder.com/150" class="card-img-top" alt="@Product.Name">
-    <div class="card-body">
-        <h5 class="card-title">@Product.Name</h5>
-        <p class="card-text">@Product.Description</p>
-        <p class="card-text"><strong>@Product.Price.ToString("C")</strong></p>
-        <button @onclick="() => OnClick.InvokeAsync(Product)" class="btn btn-primary">View Details</button>
+    <div class="card-body productdetails">
+        <h5 class="card-title" id="productName">@Product.Name</h5>
+        <p class="description card-text">@Product.Description</p>
+        <p class="price card-text"><strong>@Product.Price.ToString("C")</strong></p>
+        <button @onclick="() => OnClick.InvokeAsync(Product)" class="btn btn-primary viewDetails" >View Details</button>
     </div>
 </div>
 

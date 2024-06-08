@@ -5,13 +5,13 @@
 <div class="filter-serch">
 <!-- Filter input -->
 <input type="text" @bind="filterText" placeholder="Search by Title">
-<select @bind="selectedFilterType" class="dropdown">
+<select @bind="selectedFilterType" class="dropdown" id="dropdown">
     <option value="Title">Title</option>
     <option value="Author">Author</option>
     <option value="Genre">Genre</option>
 </select>
-<button class="btn-primary" @onclick="FilterBooks" @onload="FilterBooks" >Search</button>
-<button class="btn-primary" @onclick="ClearBook"  >Clear</button>
+<button class="btn-primary" @onclick="FilterBooks" @onload="FilterBooks"  id="search">Search</button>
+<button class="btn-primary clear" @onclick="ClearBook"   >Clear</button>
 </div>
 
 
@@ -110,6 +110,7 @@ else
         switch (selectedFilterType)
         {
             case "Title":
+            // each book will be supply through where condition and if condition get trun this value will got return 
                 filteredBooks = books.Where(book => string.IsNullOrWhiteSpace(filterText) || book.Title.ToLower().Contains(filterText.ToLower())).ToList();
                 break;
             case "Author":

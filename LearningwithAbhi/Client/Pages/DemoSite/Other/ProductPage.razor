@@ -3,34 +3,34 @@
 
 <h3>Product Management</h3>
 
-<section>
+<section class="produc-form">
     <h4>Add New Product</h4>
     <EditForm Model="@newProduct" OnValidSubmit="AddProduct" >
         <DataAnnotationsValidator />
         <ValidationSummary  />
-        <div class="formFields">
+        <div class="formFields" id="product">
             <label for="productID">ProducID:</label>
             <InputText id="productID" @bind-Value="newProduct.ProductID" class="form-control" />
         </div>
-        <div class="formFields">
+        <div class="formFields"  id="productNAme">
             <label for="productName">Name:</label>
             <InputText id="productName" @bind-Value="newProduct.Name" class="form-control" />
         </div>
 
-        <div class="formFields">
+        <div class="productprice formFields" >
             <label for="productPrice">Price:</label>
             <InputNumber id="productPrice" @bind-Value="newProduct.Price" class="form-control" />
         </div>
-        <div class="formFields">
+        <div class="productDesc formFields">
             <label for="productDescription">Description:</label>
             <InputText id="productDescription" @bind-Value="newProduct.Description" class="form-control" />
         </div>
-        <div class="formFields">
+        <div class="productType formFields">
             <label for="productType">Product Type:</label>
             <InputText id="productType" @bind-Value="newProduct.ProductType" class="form-control" />
         </div>       
-        <button type="submit" class="btn btn-primary">Add Product</button>       
-        <button type="reset" class="btn btn-primary">Reset</button>       
+        <button type="submit" id="AddProduct"  class="btn btn-primary" name="Add-product">Add Product</button>       
+        <button type="reset" id="reset"  class="btn btn-primary">Reset</button>       
     </EditForm>
 </section>
 
