@@ -117,6 +117,13 @@ body[b-fred7ya9ps] {
 		transform: scale(1.1, 1.2);
 	}
 /* /Pages/CustomPopup.razor.rz.scp.css */
+.custom-popup[b-w8vazh2q6f]
+{
+   max-width: 50%;
+    align-items: center;
+    margin: auto
+}
+
 /* /Pages/DemoSite/Demosection.razor.rz.scp.css */
 
 
@@ -313,6 +320,7 @@ table[b-v7gi5gs9o7] {
 .close-button[b-jfzo1iqn6r] {
     margin-top: 10px;
     cursor: pointer;
+    margin-left: auto;
 }
 /* /Pages/DemoSite/Other/ProductPage.razor.rz.scp.css */
 .formFields[b-uwq0af5z55]
@@ -325,8 +333,10 @@ table[b-v7gi5gs9o7] {
 /* /Pages/DemoSite/Other/WebElements.razor.rz.scp.css */
 .horizontal-box-container[b-nun68t162h] {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between; /* Adjust as needed */
     align-items: center; /* Adjust as needed */
+    
 
 }
 
@@ -334,7 +344,7 @@ table[b-v7gi5gs9o7] {
     border: 1px solid #0b0101;
     background-color: #f1f9f7;
     padding: 1.8rem;
-    margin: 0 0,6rem; /* Adjust as needed */
+    margin: 0.4rem 0.6rem; /* Adjust as needed */
     width: 30%; /* Adjust as needed */
 }
 /* /Pages/DemoSite/Productshipment/CheckOut.razor.rz.scp.css */
@@ -482,16 +492,20 @@ button[b-sap47ctczr]{
     margin-top: 8%;
 }
 
-button[b-r27wvh2l79] {
-    background-color: darkgreen;
-   
-    top: 4%;
-    left: 40%;
+.btn-home[b-r27wvh2l79] {
+    background-color: #ffffff;   
+    margin: 4% 40%;
     width: 6rem;
     height: 2rem;
     z-index: 1;
     font-weight: 800;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: #090909;
+}
+
+.btn-home:hover[b-r27wvh2l79]{
+    background-color:#358106;
+  
 }
 
 educ[b-r27wvh2l79] {
