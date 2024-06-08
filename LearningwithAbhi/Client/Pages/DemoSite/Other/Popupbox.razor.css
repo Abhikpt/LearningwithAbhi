@@ -18,4 +18,5 @@
 .close-button {
     margin-top: 10px;
     cursor: pointer;
+    margin-left: auto;
 }
