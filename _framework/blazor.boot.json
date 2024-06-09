@@ -8,7 +8,7 @@
   "resources": {
     "assembly": {
       "ICSharpCode.SharpZipLib.dll": "sha256-K4ug2pe2HVcvI0U5szV\/eavFCqkllm40Nfypq0yf828=",
-      "LearningwithAbhi.Client.dll": "sha256-ERTM46JSEz48h8Eu8qkALLOrriYWmpMGejle49nRAdQ=",
+      "LearningwithAbhi.Client.dll": "sha256-YqAy72zWmcMC9A8JzCAzpkZDQiKsT3s81xgX3UTKGzE=",
       "LearningwithAbhi.Shared.dll": "sha256-HcBl16FPKE\/nmur5TzEciXE7fGS1s9I1hWXKRyMe0V8=",
       "Microsoft.AspNetCore.Components.dll": "sha256-o887dmt7Lekit4wfDkDAYyMgw2JgyHFVvnG0RZWpUSc=",
       "Microsoft.AspNetCore.Components.Forms.dll": "sha256-jsRT7raOdIiCar4+ysOXmOgHKYtA0udMnO6qVTAx+bU=",
