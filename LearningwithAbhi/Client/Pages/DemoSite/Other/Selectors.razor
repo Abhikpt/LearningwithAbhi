@@ -9,11 +9,11 @@
     
     <h3>CSS and XPath Locator</h3>
     <p>Access the following input field by using any of selector:  "css selector", "xpath"</p>
-    
-    <label>User: </label>
-    <input type="text" id="text-input">
-    <label>Pass: </label>
-    <input type="text" id="text-input">
+
+    <label>First Name: </label>
+    <input type="text" id="text-input" class="inpt-main wrap-hr ">
+    <label>Last Name: </label>
+    <input type="text" id="text-input" class="inpt-main wrap-hr ">
 
 </div>
 
@@ -39,14 +39,32 @@
     </ul>
 </div>
 
-
-
-
   
+    <div class="EmployeNAme tiles-hr">
+         <h3>Dropdown selection</h3>
+            <label for="employer">Employer:</label>
+            <select id="employer" @bind ="@SelectedEmp"  class="dropdown-main">
+                <option value="">Select an employer</option>           
+                    <option value="1" > Employee 01 </option>
+                    <option value="2" > Employee 02 </option>
+                    <option value="3" > Employee 03 </option>
+                    <option value="4" > Employee 04 </option>
+                    <option value="5" > Employee 05 </option>            
+            </select>
+
+        @if(!string.IsNullOrEmpty(SelectedEmp)) 
+        {
+            <p><strong>selected Employee is: </strong> @SelectedEmp </p>
+        }       
+    </div>
+
+
 
 
 
 @code { 
    
+
+   string? SelectedEmp ;
 
 }

@@ -1,0 +1,123 @@
+@page "/register"
+@using System.ComponentModel.DataAnnotations
+@inject NavigationManager nav
+
+
+<h3>Registration Form</h3>
+
+<EditForm Model="@registrationModel" OnValidSubmit="HandleValidSubmit" >
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+
+<div class="section-1 wrap-hr">
+      <div class="form-group-ahs" >
+        <label for="name">UserName:</label>
+        <InputText id="name" @bind-Value="@registrationModel.UserName" class="form-control" />
+        <ValidationMessage For="@(() => registrationModel.UserName)" />
+        
+    </div> 
+
+    <div class="form-group-ahs" >
+        <label for="name">Name:</label>
+        <InputText id="name" @bind-Value="@registrationModel.Name" class="form-control" />
+        <ValidationMessage For="@(() => registrationModel.Name)" />
+    </div>
+
+       <div class="form-group-ahs">
+        <label for="mobile">Mobile Number:</label>
+        <InputText id="mobile" @bind-Value="@registrationModel.MobileNumber" class="form-control" />
+        <ValidationMessage For="@(() => registrationModel.MobileNumber)" />
+    </div>
+
+    <div class="form-group-ahs email">
+        <label for="email">Email:</label>
+        <InputText id="email" @bind-Value="@registrationModel.Email" class="form-control" />
+        <ValidationMessage For="@(() => registrationModel.Email)" />
+    </div>
+</div>
+
+<div class="section-2 wrap-hr">
+    <div class="form-group-ahs gender" >
+        <label for="gender">Gender:</label>
+        <InputSelect id="gender" @bind-Value="@registrationModel.Gender" class="form-control">
+        <option value="">Select option</option>   
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+            <option value="other">Other</option>
+        </InputSelect>
+        <ValidationMessage For="@(() => registrationModel.Gender)" />
+    </div>
+
+    <div class="form-group-ahs">
+        <label for="dob">Date of Birth:</label>
+        <InputDate id="dob" @bind-Value="@registrationModel.DateOfBirth" class="form-control" />
+        <ValidationMessage For="@(() => registrationModel.DateOfBirth)" />
+    </div>
+
+    <div class="form-group-ahs">
+        <label>Interests:</label>
+        <div class="form-check">
+            <InputCheckbox id="sports" @bind-Value="@registrationModel.Interests.Sports" class="form-check-input" />
+            <label class="form-check-label" for="sports">Sports</label>
+        </div>
+        <div class="form-check">
+            <InputCheckbox id="music" @bind-Value="@registrationModel.Interests.Music" class="form-check-input" />
+            <label class="form-check-label" for="music">Music</label>
+        </div>
+    </div>
+</div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+</EditForm>
+
+
+<p> @RegistrationMsg </p>
+
+
+
+
+
+@code {
+    private RegistrationModel registrationModel = new RegistrationModel();
+  
+    string displayblock = "display:block;";
+    String RegistrationMsg = string.Empty;
+
+    public class RegistrationModel
+    {
+         [Required(ErrorMessage = "UserName is required")]
+        public string? UserName { get; set; }
+
+        [Required(ErrorMessage = "Name is required")]
+        public string? Name { get; set; }
+
+        [Required(ErrorMessage = "Email is required")]
+        [EmailAddress(ErrorMessage = "Invalid email address")]
+        public string? Email { get; set; }
+
+        [Required(ErrorMessage = "Mobile Number is required")]
+        [RegularExpression(@"^[0-9]{10}$", ErrorMessage = "Invalid mobile number")]
+        public string? MobileNumber { get; set; }
+
+        [Required(ErrorMessage = "Gender is required")]
+        public string? Gender { get; set; }
+
+        [Required(ErrorMessage = "Date of Birth is required")]
+        public DateTime DateOfBirth { get; set; }
+
+        public InterestsModel Interests { get; set; } = new InterestsModel();
+    }
+
+    public class InterestsModel
+    {
+        public bool Sports { get; set; }
+        public bool Music { get; set; }
+    }
+
+    private void HandleValidSubmit()
+    {
+        // Handle form submission here
+        RegistrationMsg =  registrationModel.Name + ", You have been Register successfully!!";
+         @* nav.NavigateTo("#");       *@
+    }
+}
