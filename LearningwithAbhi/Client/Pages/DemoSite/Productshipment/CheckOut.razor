@@ -34,7 +34,7 @@ else
             <div class="input state">
                 <label for="State">State:</label>
                 @* <InputText id="State" class="form-control" @bind-Value="address.State" /> *@
-            <select id="country" class="form-control" @bind="@address.State">
+            <select id="country" class="form-control dropdown" @bind="@address.State">
                     <option value="">Select a State</option>
                     @foreach (var State in States)
                     {

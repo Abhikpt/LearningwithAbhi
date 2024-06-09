@@ -100,3 +100,24 @@ a, .btn-link {
         
     }
 
+
+    .dropdown-main  , .inpt-main
+    {       
+        min-height: 2rem;
+        min-width: 6.2rem;
+             
+    }
+
+    .wrap-hr 
+    {
+        display: flex;
+        flex-wrap: nowrap;                   
+    }
+
+    .form-group-ahs
+    {
+        margin-left: 2rem;
+        margin-top: 1rem;
+
+    }
+
