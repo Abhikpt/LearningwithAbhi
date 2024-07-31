@@ -1,0 +1,33 @@
+﻿.cards-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 1.25px;
+    background-color: #def6b6;
+
+}
+
+.card {
+    width: 150px;
+    height: 150px;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    perspective: 1000px;
+    cursor: pointer;
+    margin: 10px;
+    transform-style: preserve-3d;
+    transition: transform 0.3s;
+}
+
+.card:hover {
+    transform: rotateY(20deg);
+}
+
+.card h4 {
+    text-align: center;
+    padding: 60px 0;
+    font-size: 18px;
+    margin: 0;
+}
