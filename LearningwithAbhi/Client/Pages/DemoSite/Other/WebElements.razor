@@ -1,50 +1,60 @@
-
 @page "/webelements"
 
+    <div class="demo-layout">
+        <div class="sidebar">
+            <ul>
+                <li><a @onclick='() => SelectDemo("popup")'>Popup Functionality</a></li>
+                <li><a @onclick='() => SelectDemo("alert")'>Alert Functionality</a></li>
+                <li><a @onclick='() => SelectDemo("slider")'>Slider Demo</a></li>
+                <li><a @onclick='() => SelectDemo("tabs")'>Tabs Demo</a></li>
+                <li><a @onclick='() => SelectDemo("dragdrop")'>Drag and Drop Demo</a></li>
+                <li><a @onclick='() => SelectDemo("bookfilter")'>BookFilters</a></li>
+                <li><a @onclick='() => SelectDemo("productpage")'>ProductPage</a></li>        
+            </ul>
+        </div>
 
-<h1>WebElements Designing: </h1>
-<hr>
-<h2>Click on below link to navigate on corresponding WebElements page</h2>
+        <div class="content">
+            @if (selectedDemo == "popup")
+            {
+                <Popupbox />
+            }
+            else if (selectedDemo == "alert")
+            {
+                <AlertDemo/>
+            }
+            else if (selectedDemo == "slider")
+            {
+                 <Slider /> 
+               
+            }
+            else if (selectedDemo == "tabs")
+            {
+                <TabsScreen /> 
 
-<div class="horizontal-box-container element-lists"  >
-    <div class="horizontal-box" id="webelement-list" >
-        <li class="productpage"> Click here to navigate on <strong>Add product Page</strong> <a href="productpage"> Click Here </a></li>
+            }
+            else if (selectedDemo == "dragdrop")
+            {
+                 <DragAndDrop/> 
+              
+            }
+            else if (selectedDemo == "bookfilter")
+            {
+                <Bookfilter />
+            }
+            
+           else if(selectedDemo == "productpage")
+            {
+                <ProductPage /> 
+            }
 
-    </div>
-    
-    <div class="horizontal-box" id="popup">
-        <li > click here to navigate on <strong>Popup funcationality page</strong> <a href="popup"> Click Here </a></li>
+        </div>
+   </div>
 
-    </div>
+@code {
+    private string selectedDemo;
 
-    <div class="horizontal-box" id="selector" >
-        <li> click here to navigate on <strong>CSS and Xpath Selector page</strong> <a href="selectors"> Click Here </a></li>
-    </div>
-
-    
-    <div class="horizontal-box" id="Iframes"  name="frames" >
-        <li> click here to navigate on <strong>Frame page</strong> <a href="iframes"> Click Here </a></li>
-    </div>
-
-    <div class="horizontal-box" >
-        <li> click here to navigate on <strong>File Upload funcationality page</strong> <a href=""> Click Here </a></li>
-
-    </div>
-
-</div>
-
-
-
-<button @onclick="ShowPopup">Show Popup</button>
-<popupbox/>
-
-
-@code {   
-
-    Popupbox popupBox =new  Popupbox();
-
-    void ShowPopup()
+    private void SelectDemo(string demoName)
     {
-        popupBox.ShowPopup();
+        selectedDemo = demoName;
     }
 }

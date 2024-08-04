@@ -1,0 +1,31 @@
+@page "/tabsdemo"
+
+<div>
+    <button @onclick="() => SelectTab(1)">Employee</button>
+    <button @onclick="() => SelectTab(2)">Employers</button>
+    <button @onclick="() => SelectTab(3)">Insurance</button>
+</div>
+
+<div>
+    @if (currentTab == 1)
+    {
+        <p>This is content for Employee </p>
+    }
+    else if (currentTab == 2)
+    {
+        <p>This is content for Employers</p>
+    }
+    else if (currentTab == 3)
+    {
+        <p>This is content for Insurance</p>
+    }
+</div>
+
+@code {
+    private int currentTab = 1;
+
+    private void SelectTab(int tab)
+    {
+        currentTab = tab;
+    }
+}
