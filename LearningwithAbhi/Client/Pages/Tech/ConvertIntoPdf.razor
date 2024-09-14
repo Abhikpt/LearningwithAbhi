@@ -2,8 +2,8 @@
 @using Microsoft.AspNetCore.Components.Forms
 @inject PdfService PdfService
 @inject ImageProcessingService ImageService
-@* @inject WordService WordService
-@inject ImageProcessingService ImageProcessingService *@
+@* @inject WordService WordService *@
+@* @inject ImageProcessingService ImageProcessingService *@
 
 <h3>PDF and Image Operations</h3>
 
@@ -33,7 +33,7 @@
 
     private void ResizeImage(string inputPath, string outputPath, int width, int height)
     {
-        ImageService.ResizeImage(inputPath, outputPath, width, height);
+
     }
 
     private void ImagesToPdf(string[] imagePaths, string outputPath)

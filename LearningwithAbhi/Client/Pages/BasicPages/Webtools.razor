@@ -1,49 +1,52 @@
 ﻿@page "/webtools"
 @using Microsoft.AspNetCore.Components
+@using LearningwithAbhi.Client.Pages.Tech;
 
 
 <h3>Webtools</h3>
 
 <div class="cards-container">
   
-        <div class="card" @onclick="NavigateToPdfConv">
+        <div class="card" @onclick=" () => ShowContent(typeof(ConvertIntoPdf))">
         <h4>ConvertToPdf</h4>       
          </div>
 
-        <div class="card" @onclick="NavigateToCalculator">
+        <div class="card" @onclick=" () => ShowContent(typeof(Calculator))">
         <h4>calculator</h4>
          </div>
 
-        <div class="card" @onclick="NavigateToDownloader">
+        <div class="card" @onclick=" () => ShowContent(typeof(Imageresizer))">
         <h4>Downloader</h4>       
          </div>
 
-        <div class="card" @onclick="NavigateToPage4">
+        <div class="card" @onclick=" () => ShowContent(typeof(Calculator))">
         <h4>Tool 1</h4>        
          </div>
 
-        <div class="card" @onclick="NavigateToPage5">
-        <h4>Tool 2</h4>       
+        <div class="card" @onclick=" () => ShowContent(typeof(ConvertIntoPdf))">
+        <h4>Resize Images</h4>       
          </div>
-    
 
+</div>  
+
+
+<div class="content-container">
+    @currentContent
 </div>
 
-@code {
-   
-        // Navigate to corresponding pages
-    private void NavigateToPdfConv() => NavigationManager.NavigateTo("/ConvertToPdf");
-    private void NavigateToCalculator() => NavigationManager.NavigateTo("/calculator");
-    private void NavigateToDownloader() => NavigationManager.NavigateTo("/Downloader");
-    private void NavigateToPage4() => NavigationManager.NavigateTo("/tool4");
-    private void NavigateToPage5() => NavigationManager.NavigateTo("/tool5");
-       
-    
 
- 
 
-    [Inject]
-    private NavigationManager NavigationManager { get; set; }
 
- 
-}
+ @code {
+
+    private RenderFragment currentContent;
+
+    private void ShowContent(Type contentType)
+    {
+        currentContent = builder =>
+        {
+            builder.OpenComponent(0, contentType);
+            builder.CloseComponent();
+        };
+    }
+    }

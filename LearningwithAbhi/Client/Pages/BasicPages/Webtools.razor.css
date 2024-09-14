@@ -31,3 +31,13 @@
     font-size: 18px;
     margin: 0;
 }
+
+
+.content-container {
+    margin-top: 1.25rem;
+    padding: 1.25rem;
+    border: 0.06rem solid #ddd;
+    border-radius: 0.3125rem;
+    background-color: #f9f9f9; /* Optional: Add a background color */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: Add a shadow for better visual */
+}

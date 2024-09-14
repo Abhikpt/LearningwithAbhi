@@ -1,14 +1,29 @@
-using ImageMagick;
+
+using SixLabors.ImageSharp;
+using SixLabors.ImageSharp.Processing;
+using SixLabors.ImageSharp.Formats.Jpeg;
 
 public class ImageProcessingService
 {
-    public void ResizeImage(string inputPath, string outputPath, int width, int height)
+    static void Main(string[] args)
     {
-       
-          using (MagickImage image = new MagickImage(inputPath))
+        // Paths to the input and output images
+        string inputPath = "input.jpg";
+        string outputPath = "output.jpg";
+
+        // Desired width and height
+        int newWidth = 800;
+        int newHeight = 600;
+
+        ResizeTheImage(inputPath, outputPath, newWidth, newHeight);
+    }
+
+   public static void ResizeTheImage(string inputPath, string outputPath, int width, int height)
+    {
+        using (Image image = Image.Load(inputPath))
         {
-            image.Resize(width, height);
-            image.Write(outputPath);
+            image.Mutate(x => x.Resize(width, height));
+            image.Save(outputPath, new JpegEncoder());
         }
     }
 }
