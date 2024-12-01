@@ -1,0 +1,55 @@
+@page "/Imageresizer"
+@using SixLabors.ImageSharp
+@using SixLabors.ImageSharp.Processing
+@using SixLabors.ImageSharp.Formats
+@using System.IO
+@using System.Threading.Tasks
+
+<h3>Image Resizer</h3>
+
+<input type="file" onchange="HandleFileSelected" />
+<input type="number" @bind="newWidth" placeholder="Width" />
+<input type="number" @bind="newHeight" placeholder="Height" />
+<button @onclick="ResizeImage">Resize Image</button>
+
+@if (resizedImageUrl != null)
+{
+    <div>
+        <h4>Resized Image:</h4>
+        <img src="@resizedImageUrl" alt="Resized Image" />
+    </div>
+}
+
+@code {
+    private IBrowserFile selectedFile;
+    private int newWidth = 800;
+    private int newHeight = 600;
+    private string resizedImageUrl;
+
+    private  async Task HandleFileSelected(InputFileChangeEventArgs e)
+    {
+        selectedFile = e.File;
+    }
+
+    private async Task ResizeImage()
+    {
+        if (selectedFile == null)
+        {
+            return;
+        }
+
+        using (var stream = selectedFile.OpenReadStream())
+        {
+            using (var image = await Image.LoadAsync(stream))
+            {
+                image.Mutate(x => x.Resize(newWidth, newHeight));
+
+                using (var outputStream = new MemoryStream())
+                {
+                    await image.SaveAsJpegAsync(outputStream);
+                    resizedImageUrl = $"data:image/jpeg;base64,{Convert.ToBase64String(outputStream.ToArray())}";
+                }
+            }
+        }
+    }
+}

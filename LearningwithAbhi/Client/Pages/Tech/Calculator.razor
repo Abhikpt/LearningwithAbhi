@@ -1,0 +1,157 @@
+@page "/calculator"
+
+    <div class="calculator-container">
+        <h2>Calculate your digits.....</h2>
+    <div class="calculator-display">
+        <input type="text" value="@Display" disabled />
+    </div>
+
+
+    <div class="calculator-buttons">
+        @foreach (var button in Buttons)
+        {
+            <button class="calculator-button" @onclick="() => OnButtonClick(button)">
+                @button
+            </button>
+        }
+    </div>
+</div>
+
+@code {
+    private string Display { get; set; } = "0";
+    private string Operator { get; set; }
+    private double? Operand1 { get; set; }
+    private double? Operand2 { get; set; }
+    private bool NewEntry { get; set; } = true;
+
+    private readonly string[] Buttons = 
+    {
+        "7", "8", "9", "/", 
+        "4", "5", "6", "*", 
+        "1", "2", "3", "-", 
+        "0", ".", "=", "+",
+        "c", "%", "x²", "sqrt(x)"
+    };
+
+    private void OnButtonClick(string button)
+    {
+        if (double.TryParse(button, out _) || button == ".")
+        {
+            if (NewEntry)
+            {
+                Display = button;
+                NewEntry = false;
+            }
+            else
+            {
+                Display += button;
+            }
+        }
+        else if (button == "=")
+        {
+            if (Operand1.HasValue && !string.IsNullOrEmpty(Operator))
+            {
+                Operand2 = double.Parse(Display);
+                CalculateResult();
+                NewEntry = true;
+            }
+        }
+         else if (button == "c")
+         {
+             Operand1 = null;
+            Operand2 = null;
+            Operator = null;
+            Display = null;
+         }
+
+         else if (button == "x²")
+         {
+                     
+         }
+           else if (button == "sqrt(x)")
+         {
+          
+            
+         }
+        else
+        {
+            Operand1 = double.Parse(Display);
+            Operator = button;
+            Display = Operand1 + Operator ;
+            NewEntry = true;
+        }
+    }
+
+    private void CalculateResult()
+    
+    {
+        switch (Operator)
+        {
+            case "+":
+                Display = (Operand1 + Operand2).ToString();
+                break;
+            case "-":
+                Display = (Operand1 - Operand2).ToString();
+                break;
+            case "*":
+                Display = (Operand1 * Operand2).ToString();
+                break;
+            case "/":
+                Display = Operand2 != 0 ? (Operand1 / Operand2).ToString() : "Error";
+                break;
+        }
+
+        // Reset for next calculation
+        Operand1 = null;
+        Operand2 = null;
+        Operator = null;
+    }
+}
+
+<style>
+    
+    .calculator-container {
+    width: 320px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #333;
+    border-radius: 15px;
+    box-shadow: 0 20px 30px rgba(0, 0, 0, 0.5);
+}
+
+.calculator-display input {
+    width: 100%;
+    height: 50px;
+    text-align: right;
+    padding: 10px;
+    font-size: 1.5em;
+    border-radius: 10px;
+    border: none;
+    margin-bottom: 20px;
+    box-shadow: inset 0 5px 10px #e0f5c1;
+}
+
+.calculator-buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+}
+
+.calculator-button {
+    padding: 20px;
+    font-size: 1.2em;
+    border-radius: 10px;
+    border: none;
+    background-color: #625252;
+    color: #fff;
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3);
+    transition: transform 0.2s, box-shadow 0.2s;
+    cursor: pointer;
+}
+
+.calculator-button:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 20px rgba(0, 0, 0, 0.4);
+}
+
+</style>

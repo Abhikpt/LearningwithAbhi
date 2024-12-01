@@ -1,0 +1,20 @@
+@page "/alertdemo"
+@inject JSRuntime JsRuntime
+
+
+<button @onclick="ShowAlert">Show Alert</button>
+
+
+@code
+{
+
+   private void ShowAlert()
+    {
+        // Implementation for showing an alert
+        // For example, using JavaScript interop to show a browser alert
+        JsRuntime.InvokeVoidAsync("alert", "This is an alert demo!");
+    }
+  
+     
+}
+

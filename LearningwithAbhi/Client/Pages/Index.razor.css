@@ -1,10 +1,12 @@
 ﻿
-.container {
-    background-color: bisque;
-    height: auto;
-    position: relative;
+.indexpage {
+    background-image: url('../wwwroot/images/Indexbg.jpg'); /* Background image path */
+    background-size: cover; /* Ensure the image covers the entire screen */
+    background-position: center ; /* Center the background image */
+    background-attachment: fixed; /* Keep the image fixed when scrolling */  
+  
+   
 }
-
 
 .welcome {
     color: blueviolet;
@@ -13,13 +15,7 @@
     z-index: 1;
 }
 
-.timestamp {
-    text-align: right;
-    position: relative;
-    right: 0px;
-    top: 0px;
-    z-index: 2;
-}
+
 
 .main-container {
     background-color: #d1d2d2;

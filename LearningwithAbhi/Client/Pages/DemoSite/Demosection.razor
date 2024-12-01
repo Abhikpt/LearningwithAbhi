@@ -2,7 +2,12 @@
 @using LearningwithAbhi.Shared
 @inject NavigationManager Navigation
 
-<h1>Welcome to Demo section of the Site</h1>
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="#">Home</a></li>
+    <li class="breadcrumb-item"><a href="Demo">Demo</a></li>
+  </ol>
+</nav>
 
 <div class="slider-container">
   <div class="slider">
@@ -66,6 +71,14 @@
             Description = "Click on link to navigate on book filter page",
             ImageUrl = "https://via.placeholder.com/150",
             DemoUrl = "library"
+        },
+
+          new DemoInfo
+        {
+            Title = "Webtools Page",
+            Description = "Click on link to navigate Webtools page",
+            ImageUrl = "https://via.placeholder.com/150",
+            DemoUrl = "webtools"
         }
     };
 

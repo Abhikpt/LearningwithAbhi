@@ -4,6 +4,16 @@
 
 <h3>Checkout</h3>
 
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="#">Home</a></li>
+    <li class="breadcrumb-item"><a href="Demo">Demo</a></li>
+    <li class="breadcrumb-item"><a href="products">Product</a></li>
+    <li class="breadcrumb-item"><a href="cart">Cart</a></li>
+    <li class="breadcrumb-item"><a href="checkout">Checkout</a></li>
+  </ol>
+</nav>
+
 @if (CartService.CartItems.Count == 0)
 {
     <span>Your cart is empty.</span>

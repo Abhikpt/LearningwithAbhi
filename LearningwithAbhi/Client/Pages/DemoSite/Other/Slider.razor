@@ -1,0 +1,8 @@
+@page "/sliderdemo"
+
+<input type="range" min="0" max="100" step="1" @bind="sliderValue" />
+<p>Slider value: @sliderValue</p>
+
+@code {
+    private int sliderValue = 50;
+}

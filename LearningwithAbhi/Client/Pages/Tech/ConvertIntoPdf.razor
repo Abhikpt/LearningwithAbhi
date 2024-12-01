@@ -1,0 +1,43 @@
+@page "/ConvertToPdf"
+@using Microsoft.AspNetCore.Components.Forms
+@inject PdfService PdfService
+@inject ImageProcessingService ImageService
+@* @inject WordService WordService *@
+@* @inject ImageProcessingService ImageProcessingService *@
+
+<h3>PDF and Image Operations</h3>
+
+<InputFile OnChange="HandleFileUpload" />
+
+@code {
+    private async Task HandleFileUpload(InputFileChangeEventArgs e)
+    {
+        var files = e.GetMultipleFiles();
+        foreach (var file in files)
+        {
+            // Handle different file types (PDF, Image, Word) based on the file type
+            // e.g., call appropriate methods from services
+        }
+    }
+
+    // Example methods to call your services
+    private void MergePdfs(string[] pdfPaths, string outputPath)
+    {
+        PdfService.MergePdfs(pdfPaths, outputPath);
+    }
+
+    private void ConvertWordToPdf(string wordPath, string pdfPath)
+    {
+        PdfService.ConvertWordToPdf(wordPath, pdfPath);
+    }
+
+    private void ResizeImage(string inputPath, string outputPath, int width, int height)
+    {
+
+    }
+
+    private void ImagesToPdf(string[] imagePaths, string outputPath)
+    {
+        PdfService.MergeImageToPdf(imagePaths, outputPath);
+    }
+}
