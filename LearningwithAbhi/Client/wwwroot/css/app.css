@@ -1,10 +1,12 @@
 ﻿@import url('open-iconic/font/css/open-iconic-bootstrap.min.css');
-
+/* 
 html, body {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     color :#1861ac;
   background-color:antiquewhite;
-}
+} */
+
+
 
 
 /* apply CSS for body section - Mainlayout screen*/
@@ -15,10 +17,10 @@ article.content{
     padding: 1%;
 }
 
-.container {
+/* .container {
 
     background-color: cadetblue;
-}
+} */
 
 h1:focus {
     outline: none;
@@ -120,4 +122,5 @@ a, .btn-link {
         margin-top: 1rem;
 
     }
+
 

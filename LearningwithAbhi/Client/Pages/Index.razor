@@ -3,48 +3,54 @@
 @layout MainLayout
 @using System.Timers;
 
-<body class="page-body">
+<div class="bg-primary-subtle">
 
+    
+<div>
+   
 
-<PageTitle>Home - Entry point</PageTitle>
+        <div class="p-3  border bg-primary-">
+        <FeatureBlock
+            Href="/" 
+            Title="Welcome to My Blazor Web Tools" 
+            Description="Explore blogs, web tools, and practice automation with ease!"
+            Command="Discover Features" 
+            ImageSrc="../wwwroot/images/top-blogging-tools2.jpg" 
+        />
+        </div>
+        
+         <div class="row"></div>
+        <FeatureBlock 
+            ImageSrc="https://dotnet.microsoft.com/static/images/illustrations/swimlane-cross-browser.svg" 
 
-<div class="container">
-    <h1 class="welcome">Welcome to LearningWithAbhi,  @user</h1>
+            Href="/" 
+            Title="Blogs" 
+            Description="Stay informed with articles on Blazor, automation, and development insights."
+            Command="Read Blogs" 
+        />
+        
+        <FeatureBlock 
+            Href="/" 
+            Title="Web Tools" 
+            Description="Access calculators and other tools to simplify your daily tasks."
+            Command="Try Tools" 
+            ImageSrc="https://dotnet.microsoft.com/static/images/illustrations/open-source-vibrant-community.svg" 
+        />
+        
+        <FeatureBlock 
+            ImageSrc="https://dotnet.microsoft.com/static/images/illustrations/swimlane-csharp-javascript.svg" 
 
-    <div class="timestamp">
-    <h5>Current Time:</h5>
-    <p>@currentTime</p>
+            Href="/Demo" 
+            Title="Practice Automation" 
+            Description="Test your automation scripts on our specially designed demo page."
+            Command="Practice Now" 
+        />
     </div>
-
 </div>
 
-<main class="main-container" >
- 
-    <div class="container-1 educ">
-        <h2>Education</h2>
-            <p class="content01">
-                Education is the process of acquiring knowledge, skills, values, and habits through learning, teaching, or research. So Start learning .....
-            </p>
-            <button class="btn-home"> Enter </button>
-    </div>
 
-     <div class="container-1">
-        <h2>Blogs </h2>
-            <p class="content01">
-               Let's share information, opinions, and experiences on the internet. .....
-            </p>
-            <button class="btn-home"> Enter </button>
-    </div>
-
-
-</main>
-
-<SurveyPrompt Title="How is Blazor working for you?" />
-
-
-</body>
 @code{
-    private string user = "- check it.";
+    private string user = "- Abhi";
 
     private string currentTime = DateTime.Now.ToString("HH:mm:ss");
     private void UpdateClock()
