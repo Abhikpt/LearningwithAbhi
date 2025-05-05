@@ -1,4 +1,3 @@
-// IncomeTaxCalculator.razor (Blazor UI + Logic)
 @page "/income-tax-calculator"
 
 <h3>Income Tax Calculator (Old vs New Regime)</h3>
@@ -21,26 +20,63 @@
 
     @if (TaxCalculated)
     {
-       <div class="row mt-4">
+        <div class="table-responsive mt-4">
+            <table class="table table-bordered table-striped">
+                <thead class="table-light">
+                    <tr>
+                        <th>Label</th>
+                        <th>Old Regime</th>
+                        <th>New Regime</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>Taxable Income</td><td>₹@FormatAmount(OldTaxableIncome)</td><td>₹@FormatAmount(NewTaxableIncome)</td></tr>
+                    <tr><td>5% Slab</td><td>₹@FormatAmount(OldSlab5)</td><td>₹@FormatAmount(NewSlab5)</td></tr>
+                    <tr><td>10% Slab</td><td>-</td><td>₹@FormatAmount(NewSlab10)</td></tr>
+                    <tr><td>15% Slab</td><td>-</td><td>₹@FormatAmount(NewSlab15)</td></tr>
+                    <tr><td>20% Slab</td><td>₹@FormatAmount(OldSlab20)</td><td>₹@FormatAmount(NewSlab20)</td></tr>
+                    <tr><td>25% Slab</td><td>-</td><td>₹@FormatAmount(NewSlab25)</td></tr>
+                    <tr><td>30% Slab</td><td>₹@FormatAmount(OldSlab30)</td><td>₹@FormatAmount(NewSlab30)</td></tr>
+                    <tr><td>Total Tax</td><td>₹@FormatAmount(OldTotalTax)</td><td>₹@FormatAmount(NewTotalTax)</td></tr>
+                    <tr><td>Rebate</td><td>₹@FormatAmount(OldRebate)</td><td>₹@FormatAmount(NewRebate)</td></tr>
+                    <tr><td>Cess (4%)</td><td>₹@FormatAmount(OldCess)</td><td>₹@FormatAmount(NewCess)</td></tr>
+                    <tr class="fw-bold"><td>Final Tax Payable</td><td>₹@FormatAmount(OldFinalTax)</td><td>₹@FormatAmount(NewFinalTax)</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="row mt-4">
             <div class="col-md-6">
-                <div class="p-4 border rounded shadow bg-light">
-                    <h4>New Regime</h4>
-                    <p><strong>Taxable Income:</strong> ₹@NewTaxableIncome</p>
-                    <p><strong>Total Tax:</strong> ₹@NewTotalTax</p>
-                    <p><strong>Rebate:</strong> ₹@NewRebate</p>
-                    <p><strong>Cess (4%):</strong> ₹@NewCess</p>
-                    <p><strong><u>Final Tax Payable (New Regime):</u></strong> ₹@NewFinalTax</p>
+                <div class="card border-success mb-3">
+                    <div class="card-header bg-success text-white">Old Regime</div>
+                    <div class="card-body">
+                        <p><strong>Taxable Income:</strong> ₹@FormatAmount(OldTaxableIncome)</p>
+                        <p><strong>5% Slab:</strong> ₹@FormatAmount(OldSlab5)</p>
+                        <p><strong>20% Slab:</strong> ₹@FormatAmount(OldSlab20)</p>
+                        <p><strong>30% Slab:</strong> ₹@FormatAmount(OldSlab30)</p>
+                        <p><strong>Total Tax:</strong> ₹@FormatAmount(OldTotalTax)</p>
+                        <p><strong>Rebate:</strong> ₹@FormatAmount(OldRebate)</p>
+                        <p><strong>Cess (4%):</strong> ₹@FormatAmount(OldCess)</p>
+                        <p><strong>Final Tax Payable:</strong> ₹@FormatAmount(OldFinalTax)</p>
+                    </div>
                 </div>
             </div>
-
             <div class="col-md-6">
-                <div class="p-4 border rounded shadow bg-light">
-                    <h4>Old Regime</h4>
-                    <p><strong>Taxable Income:</strong> ₹@OldTaxableIncome</p>
-                    <p><strong>Total Tax:</strong> ₹@OldTotalTax</p>
-                    <p><strong>Rebate:</strong> ₹@OldRebate</p>
-                    <p><strong>Cess (4%):</strong> ₹@OldCess</p>
-                    <p><strong><u>Final Tax Payable (Old Regime):</u></strong> ₹@OldFinalTax</p>
+                <div class="card border-primary mb-3">
+                    <div class="card-header bg-primary text-white">New Regime</div>
+                    <div class="card-body">
+                        <p><strong>Taxable Income:</strong> ₹@FormatAmount(NewTaxableIncome)</p>
+                        <p><strong>5% Slab:</strong> ₹@FormatAmount(NewSlab5)</p>
+                        <p><strong>10% Slab:</strong> ₹@FormatAmount(NewSlab10)</p>
+                        <p><strong>15% Slab:</strong> ₹@FormatAmount(NewSlab15)</p>
+                        <p><strong>20% Slab:</strong> ₹@FormatAmount(NewSlab20)</p>
+                        <p><strong>25% Slab:</strong> ₹@FormatAmount(NewSlab25)</p>
+                        <p><strong>30% Slab:</strong> ₹@FormatAmount(NewSlab30)</p>
+                        <p><strong>Total Tax:</strong> ₹@FormatAmount(NewTotalTax)</p>
+                        <p><strong>Rebate:</strong> ₹@FormatAmount(NewRebate)</p>
+                        <p><strong>Cess (4%):</strong> ₹@FormatAmount(NewCess)</p>
+                        <p><strong>Final Tax Payable:</strong> ₹@FormatAmount(NewFinalTax)</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -53,19 +89,11 @@
     decimal Investments;
     bool TaxCalculated = false;
 
-    // New Regime fields
-    decimal NewTaxableIncome;
-    decimal NewTotalTax;
-    decimal NewRebate;
-    decimal NewCess;
-    decimal NewFinalTax;
+    decimal NewTaxableIncome, NewTotalTax, NewRebate, NewCess, NewFinalTax;
+    decimal NewSlab5, NewSlab10, NewSlab15, NewSlab20, NewSlab25, NewSlab30;
 
-    // Old Regime fields
-    decimal OldTaxableIncome;
-    decimal OldTotalTax;
-    decimal OldRebate;
-    decimal OldCess;
-    decimal OldFinalTax;
+    decimal OldTaxableIncome, OldTotalTax, OldRebate, OldCess, OldFinalTax;
+    decimal OldSlab5, OldSlab20, OldSlab30;
 
     void CalculateTax()
     {
@@ -79,13 +107,14 @@
         NewTaxableIncome = Income - StandardDeduction - Investments;
         NewTotalTax = 0;
 
-        NewTotalTax += CalculateSlabTax(NewTaxableIncome, 0, 300000, 0);
-        NewTotalTax += CalculateSlabTax(NewTaxableIncome, 300001, 600000, 0.05m);
-        NewTotalTax += CalculateSlabTax(NewTaxableIncome, 600001, 900000, 0.10m);
-        NewTotalTax += CalculateSlabTax(NewTaxableIncome, 900001, 1200000, 0.15m);
-        NewTotalTax += CalculateSlabTax(NewTaxableIncome, 1200001, 1500000, 0.20m);
-        NewTotalTax += CalculateSlabTax(NewTaxableIncome, 1500001, 1800000, 0.25m);
-        NewTotalTax += CalculateSlabTax(NewTaxableIncome, 1800001, decimal.MaxValue, 0.30m);
+        NewSlab5 = CalculateSlabTax(NewTaxableIncome, 300001, 600000, 0.05m);
+        NewSlab10 = CalculateSlabTax(NewTaxableIncome, 600001, 900000, 0.10m);
+        NewSlab15 = CalculateSlabTax(NewTaxableIncome, 900001, 1200000, 0.15m);
+        NewSlab20 = CalculateSlabTax(NewTaxableIncome, 1200001, 1500000, 0.20m);
+        NewSlab25 = CalculateSlabTax(NewTaxableIncome, 1500001, 1800000, 0.25m);
+        NewSlab30 = CalculateSlabTax(NewTaxableIncome, 1800001, decimal.MaxValue, 0.30m);
+
+        NewTotalTax = NewSlab5 + NewSlab10 + NewSlab15 + NewSlab20 + NewSlab25 + NewSlab30;
 
         NewRebate = NewTaxableIncome <= 700000 ? Math.Min(NewTotalTax, 60000) : 0;
         NewCess = (NewTotalTax - NewRebate) * 0.04m;
@@ -94,13 +123,14 @@
 
     void CalculateOldRegime()
     {
-        OldTaxableIncome = Income - 50000 - Investments; // Standard Deduction is 50K in Old Regime
+        OldTaxableIncome = Income - 50000 - Investments;
         OldTotalTax = 0;
 
-        OldTotalTax += CalculateSlabTax(OldTaxableIncome, 0, 250000, 0);
-        OldTotalTax += CalculateSlabTax(OldTaxableIncome, 250001, 500000, 0.05m);
-        OldTotalTax += CalculateSlabTax(OldTaxableIncome, 500001, 1000000, 0.20m);
-        OldTotalTax += CalculateSlabTax(OldTaxableIncome, 1000001, decimal.MaxValue, 0.30m);
+        OldSlab5 = CalculateSlabTax(OldTaxableIncome, 250001, 500000, 0.05m);
+        OldSlab20 = CalculateSlabTax(OldTaxableIncome, 500001, 1000000, 0.20m);
+        OldSlab30 = CalculateSlabTax(OldTaxableIncome, 1000001, decimal.MaxValue, 0.30m);
+
+        OldTotalTax = OldSlab5 + OldSlab20 + OldSlab30;
 
         OldRebate = OldTaxableIncome <= 500000 ? Math.Min(OldTotalTax, 12500) : 0;
         OldCess = (OldTotalTax - OldRebate) * 0.04m;
@@ -112,5 +142,10 @@
         if (income <= min) return 0;
         var taxable = Math.Min(income, max) - min;
         return taxable * rate;
+    }
+
+    string FormatAmount(decimal amount)
+    {
+        return string.Format("{0:N0}", amount);
     }
 }
