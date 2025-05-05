@@ -1,0 +1,138 @@
+@page "/samplepagetest"
+@using System.Collections.Generic
+
+@code {
+    private string Name { get; set; } = string.Empty;
+    private string Email { get; set; } = string.Empty;
+    private string SelectedGender { get; set; } = string.Empty;
+    private string SelectedOption { get; set; } = string.Empty;
+    private List<(int Id, string Name, string Email)> TableData { get; set; } = new()
+    {
+        (1, "John Doe", "john.doe@example.com"),
+        (2, "Jane Smith", "jane.smith@example.com")
+    };
+    private List<string> DragItems { get; set; } = new() { "Item 1", "Item 2" };
+    private List<string> DropZone { get; set; } = new();
+
+    private void HandleSubmit()
+    {
+        // Handle form submission
+        Console.WriteLine($"Name: {Name}, Email: {Email}, Gender: {SelectedGender}, Option: {SelectedOption}");
+    }
+
+    private void OnDrop(string item)
+    {
+        DragItems.Remove(item);
+        DropZone.Add(item);
+    }
+}
+
+<PageTitle>Sample Page Test</PageTitle>
+
+<h1>Sample Page Test</h1>
+<p>Welcome to the sample page test! This page is created for learning and practice purposes, inspired by the <a href="#" target="_blank">LearningwithAbhi</a>.</p>
+<hr />
+
+<section>
+    <h2>Features</h2>
+    <ul>
+        <li>Interactive elements for testing automation tools</li>
+        <li>Sample forms for data entry</li>
+        <li>Dropdowns, checkboxes, and radio buttons</li>
+        <li>Tables for sorting and filtering data</li>
+        <li>Drag-and-drop functionality</li>
+    </ul>
+</section>
+
+<hr />
+
+<section>
+    <h2>Interactive Elements</h2>
+
+    <h3>Forms</h3>
+    <form @onsubmit="HandleSubmit">
+        <div>
+            <label for="name">Name:</label>
+            <input type="text" id="name" @bind="Name" placeholder="Enter your name" />
+        </div>
+
+        <div>
+            <label for="email">Email:</label>
+            <input type="email" id="email" @bind="Email" placeholder="Enter your email" />
+        </div>
+
+     @* <div>
+        <label>Gender:</label>
+        <input type="radio" id="male" name="gender" @bind-value="SelectedGender" value="Male" />
+        <label for="male">Male</label>
+
+        <input type="radio" id="female" name="gender" @bind-value="SelectedGender" value="Female" />
+        <label for="female">Female</label>
+    </div> *@
+
+
+        <div>
+            <label for="dropdown">Select an option:</label>
+            <select id="dropdown" @bind="SelectedOption">
+                <option value="">--Select--</option>
+                <option value="option1">Option 1</option>
+                <option value="option2">Option 2</option>
+                <option value="option3">Option 3</option>
+            </select>
+        </div>
+
+        <button type="submit">Submit</button>
+    </form>
+
+    <p><strong>Form Data:</strong> Name: @Name, Email: @Email, Gender: @SelectedGender, Option: @SelectedOption</p>
+
+    <h3>Table</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Email</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var row in TableData)
+            {
+                <tr>
+                    <td>@row.Id</td>
+                    <td>@row.Name</td>
+                    <td>@row.Email</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</section>
+
+<hr />
+
+@* <section>
+    <h2>Drag and Drop</h2>
+    <p>Drag the items below to the designated area:</p>
+    <div style="display: flex; gap: 1rem;">
+        @foreach (var item in DragItems)
+        {
+            <div draggable="true" style="padding: 1rem; border: 1px solid #ccc;" @ondragstart="(e) => {e.DataTransfer.SetData('text', item)" @ondragover="(e) => e.PreventDefault()" @ondrop="(e) => OnDrop(item)}">@item</div>
+        }
+    </div>
+    <div style="margin-top: 2rem; padding: 2rem; border: 2px dashed #ccc;" @ondragover="(e) => e.PreventDefault()">
+        @if (DropZone.Any())
+        {
+            <p>Items dropped here:</p>
+            <ul>
+                @foreach (var droppedItem in DropZone)
+                {
+                    <li>@droppedItem</li>
+                }
+            </ul>
+        }
+        else
+        {
+            <p>Drop items here</p>
+        }
+    </div>
+</section> *@

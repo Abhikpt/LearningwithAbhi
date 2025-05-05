@@ -1,0 +1,116 @@
+// IncomeTaxCalculator.razor (Blazor UI + Logic)
+@page "/income-tax-calculator"
+
+<h3>Income Tax Calculator (Old vs New Regime)</h3>
+
+<div class="p-4 border rounded shadow">
+    <div class="mb-2">
+        <label>Income:</label>
+        <input type="number" @bind="Income" class="form-control" />
+    </div>
+    <div class="mb-2">
+        <label>Standard Deduction:</label>
+        <input type="number" @bind="StandardDeduction" class="form-control" />
+    </div>
+    <div class="mb-2">
+        <label>Investments:</label>
+        <input type="number" @bind="Investments" class="form-control" />
+    </div>
+
+    <button class="btn btn-primary mt-2" @onclick="CalculateTax">Calculate</button>
+
+    @if (TaxCalculated)
+    {
+       <div class="row mt-4">
+            <div class="col-md-6">
+                <div class="p-4 border rounded shadow bg-light">
+                    <h4>New Regime</h4>
+                    <p><strong>Taxable Income:</strong> ₹@NewTaxableIncome</p>
+                    <p><strong>Total Tax:</strong> ₹@NewTotalTax</p>
+                    <p><strong>Rebate:</strong> ₹@NewRebate</p>
+                    <p><strong>Cess (4%):</strong> ₹@NewCess</p>
+                    <p><strong><u>Final Tax Payable (New Regime):</u></strong> ₹@NewFinalTax</p>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="p-4 border rounded shadow bg-light">
+                    <h4>Old Regime</h4>
+                    <p><strong>Taxable Income:</strong> ₹@OldTaxableIncome</p>
+                    <p><strong>Total Tax:</strong> ₹@OldTotalTax</p>
+                    <p><strong>Rebate:</strong> ₹@OldRebate</p>
+                    <p><strong>Cess (4%):</strong> ₹@OldCess</p>
+                    <p><strong><u>Final Tax Payable (Old Regime):</u></strong> ₹@OldFinalTax</p>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+@code {
+    decimal Income;
+    decimal StandardDeduction = 75000;
+    decimal Investments;
+    bool TaxCalculated = false;
+
+    // New Regime fields
+    decimal NewTaxableIncome;
+    decimal NewTotalTax;
+    decimal NewRebate;
+    decimal NewCess;
+    decimal NewFinalTax;
+
+    // Old Regime fields
+    decimal OldTaxableIncome;
+    decimal OldTotalTax;
+    decimal OldRebate;
+    decimal OldCess;
+    decimal OldFinalTax;
+
+    void CalculateTax()
+    {
+        CalculateNewRegime();
+        CalculateOldRegime();
+        TaxCalculated = true;
+    }
+
+    void CalculateNewRegime()
+    {
+        NewTaxableIncome = Income - StandardDeduction - Investments;
+        NewTotalTax = 0;
+
+        NewTotalTax += CalculateSlabTax(NewTaxableIncome, 0, 300000, 0);
+        NewTotalTax += CalculateSlabTax(NewTaxableIncome, 300001, 600000, 0.05m);
+        NewTotalTax += CalculateSlabTax(NewTaxableIncome, 600001, 900000, 0.10m);
+        NewTotalTax += CalculateSlabTax(NewTaxableIncome, 900001, 1200000, 0.15m);
+        NewTotalTax += CalculateSlabTax(NewTaxableIncome, 1200001, 1500000, 0.20m);
+        NewTotalTax += CalculateSlabTax(NewTaxableIncome, 1500001, 1800000, 0.25m);
+        NewTotalTax += CalculateSlabTax(NewTaxableIncome, 1800001, decimal.MaxValue, 0.30m);
+
+        NewRebate = NewTaxableIncome <= 700000 ? Math.Min(NewTotalTax, 60000) : 0;
+        NewCess = (NewTotalTax - NewRebate) * 0.04m;
+        NewFinalTax = Math.Round(NewTotalTax - NewRebate + NewCess, 2);
+    }
+
+    void CalculateOldRegime()
+    {
+        OldTaxableIncome = Income - 50000 - Investments; // Standard Deduction is 50K in Old Regime
+        OldTotalTax = 0;
+
+        OldTotalTax += CalculateSlabTax(OldTaxableIncome, 0, 250000, 0);
+        OldTotalTax += CalculateSlabTax(OldTaxableIncome, 250001, 500000, 0.05m);
+        OldTotalTax += CalculateSlabTax(OldTaxableIncome, 500001, 1000000, 0.20m);
+        OldTotalTax += CalculateSlabTax(OldTaxableIncome, 1000001, decimal.MaxValue, 0.30m);
+
+        OldRebate = OldTaxableIncome <= 500000 ? Math.Min(OldTotalTax, 12500) : 0;
+        OldCess = (OldTotalTax - OldRebate) * 0.04m;
+        OldFinalTax = Math.Round(OldTotalTax - OldRebate + OldCess, 2);
+    }
+
+    decimal CalculateSlabTax(decimal income, decimal min, decimal max, decimal rate)
+    {
+        if (income <= min) return 0;
+        var taxable = Math.Min(income, max) - min;
+        return taxable * rate;
+    }
+}
