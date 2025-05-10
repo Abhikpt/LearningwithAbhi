@@ -40,6 +40,7 @@ Application Template: Blazor WebAssembly Hosted template
  projects share.
 
 
+
 #Client (Blazor WebAssembly):
 -This is the Blazor WebAssembly application that runs on the client side, in the user's browser.
 -It contains Razor components (.razor files) and static web resources (JavaScript, CSS, etc.).
@@ -59,7 +60,14 @@ Application Template: Blazor WebAssembly Hosted template
 -It ensures consistency between the client and server by centralizing logic or data structures that both projects need to reference.
 
 
-Solution Structure:
+### Solution Structure:
+
+This solution contains 3 projects:
+
+- Client – Blazor WebAssembly app (UI)
+- Server – ASP.NET Core Web API and host
+- Shared – Shared models between Client and Server
+
 /LearningwithAbhi
     /Client           -> Blazor WebAssembly (Client-side) 
         - wwwroot/     -> Static files (CSS, JS, etc.)
@@ -73,12 +81,18 @@ Solution Structure:
         - Models/      -> Shared models
         - Services/    -> Shared logic or services
 
+## Project steps:
+
+1. Created the Blazor WebAssemly project
+```bash
+dotnet new blazorwasm -o LearningWithAbhi --hosted
+```
+
+2. 
 
 
 
-# Project works:
-1. We can use dotnet run to run the application
-2. Can use dotnet watch to run the application and reflect cjhanges automatically.
+### how added CSS styling:
 3. inline elements - Span,
 4. block elements - Div
 5. Element allignment and posisiotning:    [MainLayout]
@@ -92,5 +106,13 @@ Solution Structure:
 6. d-flex ms-auto justify-content-around  added in NavigationLayout screen to make 
         justify-content-around -Distributes items evenly with equal space around them
         ms-auto  - marging + start side (auto, left,right)
-7. 
-    
+
+
+
+## Building and running app:
+1. We can use dotnet run to run the application from server root
+2. Can use dotnet watch to run the application and reflect cjhanges automatically.
+
+
+
+## [Employee CRUD Flow (documentation)](/LearningwithAbhi/Client/Pages/learning/blog-pages/EmplyeeScreenE2E.md)

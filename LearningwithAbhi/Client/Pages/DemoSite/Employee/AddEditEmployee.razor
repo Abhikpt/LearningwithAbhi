@@ -1,0 +1,60 @@
+@page "/employees/add"
+@page "/employees/edit/{Id:int}"
+@inject Client.Services.EmployeeService EmployeeService
+@inject NavigationManager NavigationManager
+
+<h3 class="text-xl font-bold mb-4">@((Id == 0) ? "Add New Employee" : "Edit Employee")</h3>
+
+<EditForm Model="employee" OnValidSubmit="HandleSubmit">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+
+    <div class="mb-3">
+        <label>Name:</label>
+        <InputText class="form-control" @bind-Value="employee.FullName" />
+    </div>
+
+    <div class="mb-3">
+        <label>Email:</label>
+        <InputText class="form-control" @bind-Value="employee.Email" />
+    </div>
+
+    <div class="mb-3">
+        <label>Department:</label>
+        <InputText class="form-control" @bind-Value="employee.Department" />
+    </div>
+
+    <button class="btn btn-success me-2" type="submit">Save</button>
+    <button class="btn btn-secondary" type="button" @onclick="Cancel">Cancel</button>
+</EditForm>
+
+@code {
+    [Parameter] public int Id { get; set; }
+    private Employee employee = new() 
+    {
+        FullName = string.Empty,
+        Email = string.Empty,
+        Department = string.Empty   
+    };
+    protected override async Task OnInitializedAsync()
+    {
+        if (Id != 0)
+        {
+            var existing = await EmployeeService.GetByIdAsync(Id);
+            if (existing != null)
+                employee = existing;
+        }
+    }
+
+    private async Task HandleSubmit()
+    {
+        if (Id == 0)
+            await EmployeeService.AddAsync(employee);
+        else
+            await EmployeeService.UpdateAsync(employee);
+
+        NavigationManager.NavigateTo("/employees");
+    }
+
+    private void Cancel() => NavigationManager.NavigateTo("/employees");
+}
