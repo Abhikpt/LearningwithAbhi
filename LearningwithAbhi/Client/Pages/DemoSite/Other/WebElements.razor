@@ -9,7 +9,7 @@
                 <li><a @onclick='() => SelectDemo("tabs")'>Tabs Demo</a></li>
                 <li><a @onclick='() => SelectDemo("dragdrop")'>Drag and Drop Demo</a></li>
                 <li><a @onclick='() => SelectDemo("bookfilter")'>BookFilters</a></li>
-                <li><a @onclick='() => SelectDemo("productpage")'>ProductPage</a></li>        
+                <li><a @onclick='() => SelectDemo("product-manage")'>ProductPage</a></li>        
             </ul>
         </div>
 
@@ -42,9 +42,9 @@
                 <Bookfilter />
             }
             
-           else if(selectedDemo == "productpage")
+           else if(selectedDemo == "product-manage")
             {
-                <ProductPage /> 
+                <ManageProduct /> 
             }
 
         </div>
