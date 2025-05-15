@@ -42,6 +42,14 @@ namespace LearningwithAbhi.Shared;
 
         [Required, StringLength(6, MinimumLength = 5)]
         public string ZipCode { get; set; } = string.Empty;
+
+        [Required]
+        public string Country { get; set; } = string.Empty;
+
+        public override string ToString()
+        {
+            return $"{Street}, {City}, {State} - {ZipCode}, {Country}";
+        }
     }
 
     public class EmpSkill

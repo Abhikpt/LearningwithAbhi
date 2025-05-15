@@ -1,8 +1,8 @@
-<nav class="navbar navbar-expand-md bg-info  d-flex justify-content-end">
+@* <nav class="navbar navbar-expand-md bg-info  d-flex justify-content-end">
    <div class="navbar-collapse d-flex ms-auto justify-content-around " id="navbarNavAltMarkup">
     <div class="navbar-nav  ">
       <a class="nav-item nav-link active" href="#">Home</a>
-      <a class="nav-item nav-link" href="Demo1">Demo</a>
+      <a class="nav-item nav-link" href="automation-practice">Practice</a>
       <a class="nav-item nav-link" href="Login">Login</a>
       <a class="nav-item nav-link" href="register">Register</a>  
       <form class="d-flex ">
@@ -12,6 +12,78 @@
     </div>
   </div>
 
-</nav>
+</nav> *@
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="/">
+                <i class="bi bi-code-square me-2"></i>LearningWithAbhi
+            </a>
+            <button class="navbar-toggler" type="button" @onclick="ToggleMenu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <form class="d-flex ">
+              <input class="form-control m-1 mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+          </form>     
+
+            <div class="@(menuOpen ? "navbar-collapse show" : "navbar-collapse collapse")">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#features">Features</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/learning">Learning</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/tools">Tools</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/automation-practice">Practice</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/blog">Blog</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/Login">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/register">Register</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
 
 
+@code {
+    
+    private bool menuOpen = false;
+    
+
+    private void ToggleMenu()
+    {
+        menuOpen = !menuOpen;
+    }
+}
+
+<style>
+    .home-page {
+        overflow-x: hidden;
+        padding-top: 56px; /* For fixed navbar */
+    }
+
+    /* Navbar */
+    .navbar {
+        transition: all 0.3s ease;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+
+    .navbar.scrolled {
+        background-color: rgba(13, 110, 253, 0.95) !important;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+    }
+    </style>

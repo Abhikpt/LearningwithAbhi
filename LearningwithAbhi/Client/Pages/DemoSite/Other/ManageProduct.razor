@@ -1,45 +1,55 @@
-@page "/productpage"
+@page "/product-manage"
 @using System.ComponentModel.DataAnnotations
 
 <h3>Product Management</h3>
+  
 
-<section class="produc-form">
-    <h4>Add New Product</h4>
-    <EditForm Model="@newProduct" OnValidSubmit="AddProduct" >
+    <EditForm Model="@newProduct" OnValidSubmit="AddProduct">
         <DataAnnotationsValidator />
-        <ValidationSummary  />
-        <div class="formFields" id="product">
-            <label for="productID">ProducID:</label>
+        <ValidationSummary class="mb-3" />
+<section class="container row ">
+        <div class="mb-1 col">
+            <label for="productID" class="form-label mb-0">Product ID</label>
             <InputText id="productID" @bind-Value="newProduct.ProductID" class="form-control" />
         </div>
-        <div class="formFields"  id="productNAme">
-            <label for="productName">Name:</label>
+
+        <div class="mb-1 col">
+            <label for="productName" class="form-label mb-0">Name</label>
             <InputText id="productName" @bind-Value="newProduct.Name" class="form-control" />
         </div>
 
-        <div class="productprice formFields" >
-            <label for="productPrice">Price:</label>
+        <div class="mb-1 col">
+            <label for="productPrice" class="form-label mb-0">Price</label>
             <InputNumber id="productPrice" @bind-Value="newProduct.Price" class="form-control" />
         </div>
-        <div class="productDesc formFields">
-            <label for="productDescription">Description:</label>
+
+        <div class="mb-1 col">
+            <label for="productDescription" class="form-label mb-0 ">Description</label>
             <InputText id="productDescription" @bind-Value="newProduct.Description" class="form-control" />
         </div>
-        <div class="productType formFields">
-            <label for="productType">Product Type:</label>
+
+        <div class="mb-1 col">
+            <label for="productType" class="form-label mb-0">Product Type</label>
             <InputText id="productType" @bind-Value="newProduct.ProductType" class="form-control" />
-        </div>       
-        <button type="submit" id="AddProduct"  class="btn btn-primary" name="Add-product">Add Product</button>       
-        <button type="reset" id="reset"  class="btn btn-primary">Reset</button>       
+        </div>
+
+        <div class="d-flex gap-3">
+            <button type="submit" class="btn btn-primary @(IsAnyFieldPopulated() ? "" : "btn-secondary")" disabled="@(!IsAnyFieldPopulated())">Add Product</button>
+            <button type="reset" class="btn btn-primary">Reset</button>
+        </div>
+        </section>
     </EditForm>
-</section>
+
+
 
  
 <br/>
-<section class="grid-data">
+<section class="grid-data container">
+   <div class="d-flex justify-content-between align-items-center mb-3">
+    <h4 class="mb-0">Products List</h4>
+    <button type="reset" class="btn btn-primary" @onclick="ClearProduct">Clear Product</button>
+    </div>
 
-    <h4>Products List</h4>
-    <a @onclick = "ClearProduct"  style="text-decoration: underline; align:right"> Clear Data </a>
     <table class="table table-striped">
         <thead>
             <tr>
@@ -75,16 +85,17 @@
         newProduct = new Product(); // Reset the form
     }
 
-private void ClearProduct()
-{
-    products.Clear();
-}
+    private bool IsAnyFieldPopulated()
+    {
+        return !string.IsNullOrWhiteSpace(newProduct.ProductID)
+            && !string.IsNullOrWhiteSpace(newProduct.Name)
+            && newProduct.Price > 0;
+    }
 
-
-
-
-
-
+    private void ClearProduct()
+    {
+        products.Clear();
+    }
 
     public class Product
     {

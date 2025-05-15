@@ -1,5 +1,5 @@
 
-# My Blazor Learning Project
+# My Blazor Learning Project -BlazorDevJourney
 Welcome to my website, a platform I'm developing as part of my learning journey with Blazor. Here’s what you can explore:
 
 ## Features

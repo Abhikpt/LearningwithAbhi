@@ -1,0 +1,48 @@
+@page "/automation-practice"
+@using Microsoft.AspNetCore.Components.Routing
+
+<h1 class="text-3xl font-bold mb-6 text-center">🧪 Automation Practice Dashboard</h1>
+
+
+<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
+    @foreach (var module in Modules)
+    { 
+         <div class="col">
+                <div class="card h-100 shadow-sm border-0 transition-all"
+                     style="cursor: pointer; transition: all 0.3s ease;"
+                     onmouseover="this.style.transform='scale(1.03)'; this.classList.add('shadow-lg');"
+                     onmouseout="this.style.transform='scale(1)'; this.classList.remove('shadow-lg');">
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title text-primary">@module.Title</h5>
+                        <p class="card-text flex-grow-1">@module.Description</p>
+                        <a href="@module.Path" class="btn btn-primary mt-2">Launch</a>
+                    </div>
+                </div>
+            </div>
+    }
+  </div>
+
+
+
+@code {
+    public record AutomationModule(string Title, string Description, string Path);
+
+    List<AutomationModule> Modules = new()
+    {
+        new("Login Page", "Practice login automation with validation and error handling.", "/login"),
+        new("Register Page", "Simulate user registration with dynamic form fields.", "/register"),
+        new("Product Management", "Add new product with image upload and category dropdown.", "/product-manage"),
+        new("E-commerce Flow", "Simulate full user checkout process.", "/products"),
+        new("Employee Management", "Add, edit, and delete employee records.", "/employees"),
+        new("Page Elements", "Interact with differetn elements on page.", "/webelements"),
+    //    new("Form Validations", "Client and server-side validations.", "/form-validation"),
+        new("Book Librarys", "Search the different book using search window", "/library"),
+
+        new("File Upload", "Practice file upload automation.", "/file-upload"),
+        new("Dynamic Tables", "Test table sorting, filtering, and pagination.", "/table-demo"),
+        new("Alert Handling", "Trigger alert, confirm, and prompt windows.", "/alerts"),
+        new("Iframe Page", "Embed iframe to practice switching context.", "/iframe"),      
+        new("Date Picker", "Select dates and automate calendar widgets.", "/date-picker"),
+        new("Dropdown & Autocomplete", "Dynamic dropdown and search suggestion box.", "/dropdown-demo"),
+    };
+}

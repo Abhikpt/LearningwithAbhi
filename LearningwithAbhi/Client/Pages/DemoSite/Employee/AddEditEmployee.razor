@@ -24,18 +24,54 @@
         <InputText class="form-control" @bind-Value="employee.Department" />
     </div>
 
+    <div class="mb-3">
+        <label>Phone:</label>
+        <InputText class="form-control" @bind-Value="employee.Phone" />
+    </div>
+    <div class="mb-3">
+        <label>Age:</label>
+        <InputNumber class="form-control" @bind-Value="employee.Age" />
+    </div>
+
+    <div class="mb-3">
+        <label>Address Details :</label>
+    </div>
+    <div class="mb-3">
+        <label>Street:</label>
+        <InputText class="form-control" @bind-Value="employee.Address.Street" />
+    </div>
+    <div class="mb-3">
+        <label>City:</label>
+        <InputText class="form-control" @bind-Value="employee.Address.City" />
+    </div>
+    <div class="mb-3">
+        <label>State:</label>
+        <InputText class="form-control" @bind-Value="employee.Address.State" />
+    </div>
+    <div class="mb-3">
+        <label>Zip Code:</label>
+        <InputText class="form-control" @bind-Value="employee.Address.ZipCode" />   
+    </div>
+    <div class="mb-3">
+        <label>Country:</label>
+        <InputText class="form-control" @bind-Value="employee.Address.Country" />
+    </div>  
     <button class="btn btn-success me-2" type="submit">Save</button>
     <button class="btn btn-secondary" type="button" @onclick="Cancel">Cancel</button>
 </EditForm>
 
+
 @code {
     [Parameter] public int Id { get; set; }
-    private Employee employee = new() 
+    
+    private Employee employee = new()
     {
-        FullName = string.Empty,
-        Email = string.Empty,
-        Department = string.Empty   
+        Address = new()
     };
+    
+
+   
+
     protected override async Task OnInitializedAsync()
     {
         if (Id != 0)
@@ -49,7 +85,10 @@
     private async Task HandleSubmit()
     {
         if (Id == 0)
+        {
+            // Ensure Id is set to 0 for new employee
             await EmployeeService.AddAsync(employee);
+        }
         else
             await EmployeeService.UpdateAsync(employee);
 
