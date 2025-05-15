@@ -168,62 +168,6 @@ body[b-fred7ya9ps] {
     margin: auto
 }
 
-/* /Pages/DemoSite/Demosection.razor.rz.scp.css */
-
-
-.slider-container[b-du78vfl2hf] {
-    /* background: linear-gradient(149deg, rgb(236, 29, 236) 0%, rgb(92, 56, 7) 100%); */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
-    max-width: 80rem; 
-
-}
-
-.slider[b-du78vfl2hf] {
-    width: 100%;
-    /* max-width: 600px; */
-    height: auto; 
-    margin: 2rem;
-    border-radius: 20px;
-    text-align: center;   
-    position: relative;
-}
-
-.slides[b-du78vfl2hf] {
-    display: flex;
-    overflow-x: scroll;
-    position: relative;
-    scroll-behavior: smooth;
-    scroll-snap-type: x mandatory;
-   
-}
-
-.slide:nth-of-type(even)[b-du78vfl2hf] {
-    background-color: rgb(250, 246, 212);
-}
-
-.slide[b-du78vfl2hf] {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-shrink: 0;
-    width: 100%;
-    height: 400px;
-    margin-right: 0px;
-    box-sizing: border-box;
-    background: white;
-    transform-origin: center center;
-    transform: scale(1);
-    scroll-snap-align: center;
-}
-
-.slide__text[b-du78vfl2hf] {
-    font-size: 40px;
-    font-weight: bold;
-    font-family: sans-serif;
-}
 /* /Pages/DemoSite/Other/Bookfilter.razor.rz.scp.css */
 
 .filter-serch[b-v7gi5gs9o7]{
@@ -343,6 +287,14 @@ table[b-v7gi5gs9o7] {
     font-weight: bolder;
     text-align: center;
   }
+/* /Pages/DemoSite/Other/ManageProduct.razor.rz.scp.css */
+.formFields[b-n9lbgm9c7p]
+ {  
+   border: 0.2 rem , black;
+    padding-top: 100 px;
+    text-size-adjust:initial ;
+    
+}
 /* /Pages/DemoSite/Other/Popupbox.razor.rz.scp.css */
 /* Add your desired styling for the popup here */
 
@@ -365,14 +317,6 @@ table[b-v7gi5gs9o7] {
     margin-top: 10px;
     cursor: pointer;
     margin-left: auto;
-}
-/* /Pages/DemoSite/Other/ProductPage.razor.rz.scp.css */
-.formFields[b-uwq0af5z55]
- {  
-   border: 0.2 rem , black;
-    padding-top: 100 px;
-    text-size-adjust:initial ;
-    
 }
 /* /Pages/DemoSite/Other/WebElements.razor.rz.scp.css */
 .horizontal-box-container[b-nun68t162h] {
