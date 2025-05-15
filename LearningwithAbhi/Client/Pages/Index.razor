@@ -1,55 +1,184 @@
 ﻿@page "/"
 @layout MainLayout
 @using System.Timers
+@inject NavigationManager Navigation
+@implements IDisposable
 
 <div class="home-page">
-    <!-- Hero Section with Clock -->
-    <div class="hero-section bg-primary text-white p-5 rounded-bottom-4">
+  
+
+    <!-- Hero Section -->
+    <header class="hero-section">
         <div class="container">
-            <div class="row align-items-center">
-                <div class="col-md-8">
-                    <h1 class="display-4 fw-bold">Welcome to My Blazor Web Tools</h1>
-                    <p class="lead">Explore blogs, web tools, and practice automation with ease!</p>
-                    <div class="d-flex align-items-center gap-3">
-                        <a href="#features" class="btn btn-light btn-lg px-4 me-2">Discover Features</a>
-                        <div class="clock-display bg-dark p-2 rounded">
-                            <i class="bi bi-clock me-2"></i>
-                            <span>@currentTime</span>
+            <div class="row align-items-center py-5">
+                <div class="col-lg-6 text-center text-lg-start py-5">
+                    <h1 class="display-3 fw-bold text-white mb-3">Master Blazor Development</h1>
+                    <p class="lead text-white-80 mb-4">Join my journey learning Blazor while building practical tools and documenting the process</p>
+                    <div class="d-flex flex-wrap gap-3 justify-content-center justify-content-lg-start">
+                        <button @onclick='() => Navigation.NavigateTo("/learning")' 
+                                class="btn btn-light btn-lg px-4 py-2 d-flex align-items-center">
+                            Start Learning <i class="bi bi-arrow-right ms-2"></i>
+                        </button>
+                        <button @onclick='() => Navigation.NavigateTo("#demo")'
+                                class="btn btn-outline-light btn-lg px-4 py-2 d-flex align-items-center">
+                            Try Demo <i class="bi bi-play-circle ms-2"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="col-lg-6 d-none d-lg-block">
+                    <div class="hero-image-container">
+                        <img src="images/blazor-hero.svg" class="img-fluid floating-animation" alt="Blazor Development">
+                        <div class="hero-badge bg-primary">
+                            <div class="badge-content">
+                                <span class="d-block">Latest</span>
+                                <span class="d-block fw-bold">.NET 8</span>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4 d-none d-md-block">
-                    <img src="images/top-blogging-tools2.jpg" class="img-fluid rounded-3 shadow" alt="Web Tools Illustration">
+            </div>
+        </div>
+        <div class="hero-wave">
+            <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".25" fill="currentColor"></path>
+                <path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" opacity=".5" fill="currentColor"></path>
+                <path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z" fill="currentColor"></path>
+            </svg>
+        </div>
+    </header>
+
+    <!-- Stats Section -->
+    <section class="stats-section py-4 bg-white">
+        <div class="container">
+            <div class="row g-4 text-center">
+                <div class="col-6 col-md-3">
+                    <div class="stat-card p-3 rounded-3">
+                        <div class="display-5 fw-bold text-primary mb-1">@learningModules</div>
+                        <div class="text-muted small">Learning Modules</div>
+                        <i class="bi bi-journal-bookmark stat-icon text-primary"></i>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3">
+                    <div class="stat-card p-3 rounded-3">
+                        <div class="display-5 fw-bold text-success mb-1">@webTools</div>
+                        <div class="text-muted small">Web Tools</div>
+                        <i class="bi bi-tools stat-icon text-success"></i>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3">
+                    <div class="stat-card p-3 rounded-3">
+                        <div class="display-5 fw-bold text-warning mb-1">@automationTests</div>
+                        <div class="text-muted small">Test Pages</div>
+                        <i class="bi bi-robot stat-icon text-warning"></i>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3">
+                    <div class="stat-card p-3 rounded-3">
+                        <div class="display-5 fw-bold text-info mb-1">@codeSamples</div>
+                        <div class="text-muted small">Code Samples</div>
+                        <i class="bi bi-file-code stat-icon text-info"></i>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+    </section>
 
-    <!-- Interactive Value Display -->
-    <div class="container my-5">
-        <div class="row justify-content-center">
-            <div class="col-lg-8">
-                <div class="card shadow-sm">
-                    <div class="card-body">
-                        <h3 class="card-title text-center mb-4">Quick Interactive Demo</h3>
-                        <div class="slider-container px-3">
-                            <input type="range" 
-                                   min="0" 
-                                   max="100" 
-                                   step="1" 
-                                   @bind="demoValue" 
-                                   @bind:event="oninput"
-                                   class="form-range mb-3" />
-                            
-                            <div class="d-flex justify-content-between align-items-center">
-                                <div class="value-display text-center flex-grow-1">
-                                    <span class="display-4 fw-bold" style="color: @GetValueColor()">@demoValue</span>
-                                    <div class="progress mt-2" style="height: 10px;">
-                                        <div class="progress-bar" 
-                                             style="width: @(demoValue + "%"); background-color: @GetValueColor()">
+    <!-- Interactive Demo Section -->
+    <section id="demo" class="demo-section py-5 bg-light">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="display-5 fw-bold mb-3">Interactive Blazor Demo</h2>
+                <p class="lead text-muted mx-auto" style="max-width: 700px;">
+                    Experience real-time Blazor functionality with this interactive component showcasing data binding and event handling
+                </p>
+            </div>
+            
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="card shadow-sm border-0 overflow-hidden">
+                        <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+                            <h3 class="mb-0"><i class="bi bi-lightning-charge me-2"></i> Data Binding Demo</h3>
+                            <span class="badge bg-white text-primary">Live Preview</span>
+                        </div>
+                        <div class="card-body">
+                            <div class="row align-items-center">
+                                <div class="col-md-6">
+                                    <div class="p-4">
+                                        <div class="mb-4">
+                                            <label for="blazorSlider" class="form-label d-flex justify-content-between">
+                                                <span>Adjust the slider:</span>
+                                                <span class="fw-bold" style="color: @GetValueColor()">@demoValue%</span>
+                                            </label>
+                                            <input id="blazorSlider" type="range" 
+                                                   min="0" max="100" step="1" 
+                                                   @bind="demoValue" @bind:event="oninput"
+                                                   class="form-range" />
+                                        </div>
+                                        
+                                        <div class="progress mb-4" style="height: 12px;">
+                                            <div class="progress-bar" 
+                                                 style="width: @(demoValue + "%"); background-color: @GetValueColor()">
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="alert alert-info mb-4">
+                                            <i class="bi bi-info-circle me-2"></i> @GetValueDescription()
+                                        </div>
+                                        
+                                        <div class="d-flex gap-2">
+                                            <button @onclick="() => AdjustValue(-10)" class="btn btn-outline-primary flex-grow-1">
+                                                <i class="bi bi-dash-lg"></i> 10
+                                            </button>
+                                            <button @onclick="() => AdjustValue(-1)" class="btn btn-outline-primary">
+                                                <i class="bi bi-dash"></i>
+                                            </button>
+                                            <button @onclick="ResetValue" class="btn btn-primary px-4">
+                                                Reset
+                                            </button>
+                                            <button @onclick="() => AdjustValue(1)" class="btn btn-outline-primary">
+                                                <i class="bi bi-plus"></i>
+                                            </button>
+                                            <button @onclick="() => AdjustValue(10)" class="btn btn-outline-primary flex-grow-1">
+                                                <i class="bi bi-plus-lg"></i> 10
+                                            </button>
                                         </div>
                                     </div>
-                                    <p class="mt-2 text-muted">@GetValueDescription()</p>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="p-4 bg-white rounded h-100">
+                                        <h4 class="mb-3">How This Works</h4>
+                                        <p>This demo showcases Blazor's powerful two-way data binding:</p>
+                                        
+                                        <div class="code-sample bg-dark text-white p-3 rounded mb-3">
+                                            <pre class="mb-0"><code class="language-csharp">@@code {
+    private int demoValue = 50;
+    
+    private void AdjustValue(int change) {
+        demoValue = Math.Clamp(demoValue + change, 0, 100);
+    }
+}</code></pre>
+                                        </div>
+                                        
+                                        <ul class="list-group list-group-flush mb-3">
+                                            <li class="list-group-item d-flex justify-content-between">
+                                                <span>Component Type:</span>
+                                                <span class="fw-bold">Razor Component</span>
+                                            </li>
+                                            <li class="list-group-item d-flex justify-content-between">
+                                                <span>Data Binding:</span>
+                                                <span class="fw-bold">@@bind + @@bind:event</span>
+                                            </li>
+                                            <li class="list-group-item d-flex justify-content-between">
+                                                <span>State Management:</span>
+                                                <span class="fw-bold">Component State</span>
+                                            </li>
+                                        </ul>
+                                        
+                                        <button @onclick='() => Navigation.NavigateTo("/learning/binding")'
+                                                class="btn btn-outline-primary w-100 mt-2">
+                                            Learn More About Binding
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -57,57 +186,460 @@
                 </div>
             </div>
         </div>
-    </div>
+    </section>
 
-    <!-- Features Grid -->
-    <div id="features" class="container my-5">
-        <h2 class="text-center mb-5">Explore Our Features</h2>
-        <div class="row g-4">
-            <div class="col-md-4">
-                <FeatureCard 
-                    Href="/blogs"
-                    Title="Blogs" 
-                    Description="Stay informed with articles on Blazor, automation, and development insights."
-                    Command="Read Blogs"
-                    Icon="bi-journal-text"
-                    ColorClass="bg-info"
-                />
+    <!-- Features Section -->
+    <section id="features" class="features-section py-5 bg-white">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="display-5 fw-bold mb-3">Explore My Blazor Journey</h2>
+                <p class="lead text-muted mx-auto" style="max-width: 700px;">
+                    Discover the various aspects of my Blazor learning experience, from tutorials to practical tools
+                </p>
             </div>
-            <div class="col-md-4">
-                <FeatureCard 
-                    Href="/tools"
-                    Title="Web Tools" 
-                    Description="Access calculators and other tools to simplify your daily tasks."
-                    Command="Try Tools"
-                    Icon="bi-tools"
-                    ColorClass="bg-success"
-                />
-            </div>
-            <div class="col-md-4">
-                <FeatureCard 
-                    Href="/automation-practice"
-                    Title="Practice Automation" 
-                    Description="Test your automation scripts on our specially designed demo page."
-                    Command="Practice Now"
-                    Icon="bi-robot"
-                    ColorClass="bg-warning"
-                />
+            
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-3">
+                    <div class="feature-card card h-100 border-0 shadow-sm hover-lift">
+                        <div class="card-body p-4 text-center">
+                            <div class="icon-circle bg-primary bg-opacity-10 text-primary mb-4 mx-auto">
+                                <i class="bi bi-journal-bookmark fs-2"></i>
+                            </div>
+                            <h3 class="h4 mb-3">Learning Modules</h3>
+                            <p class="text-muted mb-4">Step-by-step tutorials covering components, routing, and state management.</p>
+                            <a href="/learning" class="btn btn-outline-primary stretched-link">Start Learning</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-lg-3">
+                    <div class="feature-card card h-100 border-0 shadow-sm hover-lift">
+                        <div class="card-body p-4 text-center">
+                            <div class="icon-circle bg-success bg-opacity-10 text-success mb-4 mx-auto">
+                                <i class="bi bi-tools fs-2"></i>
+                            </div>
+                            <h3 class="h4 mb-3">Web Tools</h3>
+                            <p class="text-muted mb-4">Practical tools built with Blazor including calculators and converters.</p>
+                            <a href="/tools" class="btn btn-outline-success stretched-link">Explore Tools</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-lg-3">
+                    <div class="feature-card card h-100 border-0 shadow-sm hover-lift">
+                        <div class="card-body p-4 text-center">
+                            <div class="icon-circle bg-warning bg-opacity-10 text-warning mb-4 mx-auto">
+                                <i class="bi bi-robot fs-2"></i>
+                            </div>
+                            <h3 class="h4 mb-3">Automation</h3>
+                            <p class="text-muted mb-4">Pages designed for testing automation scripts with various UI patterns.</p>
+                            <a href="/automation" class="btn btn-outline-warning stretched-link">Practice Now</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-lg-3">
+                    <div class="feature-card card h-100 border-0 shadow-sm hover-lift">
+                        <div class="card-body p-4 text-center">
+                            <div class="icon-circle bg-info bg-opacity-10 text-info mb-4 mx-auto">
+                                <i class="bi bi-file-earmark-code fs-2"></i>
+                            </div>
+                            <h3 class="h4 mb-3">Code Samples</h3>
+                            <p class="text-muted mb-4">Reusable code snippets and component examples for Blazor development.</p>
+                            <a href="/samples" class="btn btn-outline-info stretched-link">Browse Samples</a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
+    </section>
 
-    <!-- Footer with User Greeting -->
-    <footer class="bg-light py-4 mt-5">
-        <div class="container text-center">
-            <p class="mb-0">Welcome back, <span class="fw-bold">@user.TrimStart('-').Trim()</span></p>
+    <!-- Recent Updates Section -->
+    <section class="updates-section py-5 bg-light">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="display-5 fw-bold mb-3">Recent Updates</h2>
+                <p class="lead text-muted">Latest additions to my Blazor learning portal</p>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-4">
+                    <div class="update-card card h-100 border-0 shadow-sm overflow-hidden">
+                        <div class="update-badge bg-primary">NEW</div>
+                        <img src="images/state-management.jpg" class="card-img-top" alt="State Management">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between mb-2">
+                                <span class="badge bg-primary bg-opacity-10 text-primary">Learning</span>
+                                <small class="text-muted">3 days ago</small>
+                            </div>
+                            <h3 class="h5 mb-3">State Management Guide</h3>
+                            <p class="text-muted mb-3">Added new section covering component state, cascading parameters, and Fluxor for state management.</p>
+                            <a href="/learning/state-management" class="btn btn-sm btn-outline-primary">View Module</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-lg-4">
+                    <div class="update-card card h-100 border-0 shadow-sm overflow-hidden">
+                        <div class="update-badge bg-success">TOOL</div>
+                        <img src="images/json-tool.jpg" class="card-img-top" alt="JSON Tool">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between mb-2">
+                                <span class="badge bg-success bg-opacity-10 text-success">Utility</span>
+                                <small class="text-muted">1 week ago</small>
+                            </div>
+                            <h3 class="h5 mb-3">JSON Formatter Tool</h3>
+                            <p class="text-muted mb-3">New web tool for formatting and validating JSON data with syntax highlighting.</p>
+                            <a href="/tools/json-formatter" class="btn btn-sm btn-outline-success">Try Tool</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-lg-4">
+                    <div class="update-card card h-100 border-0 shadow-sm overflow-hidden">
+                        <div class="update-badge bg-warning">UPDATE</div>
+                        <img src="images/automation-test.jpg" class="card-img-top" alt="Automation Test">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between mb-2">
+                                <span class="badge bg-warning bg-opacity-10 text-warning">Automation</span>
+                                <small class="text-muted">2 weeks ago</small>
+                            </div>
+                            <h3 class="h5 mb-3">Dynamic Forms Page</h3>
+                            <p class="text-muted mb-3">Added dynamic form builder page for practicing automation testing.</p>
+                            <a href="/automation/forms" class="btn btn-sm btn-outline-warning">Test Page</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-5">
+                <a href="/updates" class="btn btn-primary px-4">
+                    View All Updates <i class="bi bi-arrow-right ms-2"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Learning Path Section -->
+    <section class="learning-path-section py-5 bg-white">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-5 mb-lg-0">
+                    <h2 class="display-5 fw-bold mb-4">My Blazor Learning Path</h2>
+                    <p class="lead text-muted mb-4">Follow my structured journey from Blazor basics to advanced concepts</p>
+                    
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-badge bg-primary"></div>
+                            <div class="timeline-content">
+                                <h4 class="h5 mb-1">Component Fundamentals</h4>
+                                <p class="text-muted small">Mastered component structure, parameters, and lifecycle methods</p>
+                                <a href="/learning/components" class="small">View Module</a>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-badge bg-success"></div>
+                            <div class="timeline-content">
+                                <h4 class="h5 mb-1">Data Binding & Events</h4>
+                                <p class="text-muted small">Learned two-way binding, event handling, and forms validation</p>
+                                <a href="/learning/binding" class="small">View Module</a>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-badge bg-info"></div>
+                            <div class="timeline-content">
+                                <h4 class="h5 mb-1">Dependency Injection</h4>
+                                <p class="text-muted small">Implemented services and DI in Blazor applications</p>
+                                <a href="/learning/dependency-injection" class="small">View Module</a>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-badge bg-warning"></div>
+                            <div class="timeline-content">
+                                <h4 class="h5 mb-1">JavaScript Interop</h4>
+                                <p class="text-muted small">Explored JS interoperability for browser APIs</p>
+                                <a href="/learning/js-interop" class="small">View Module</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <a href="/learning-path" class="btn btn-outline-primary mt-4">View Full Learning Path</a>
+                </div>
+                
+                <div class="col-lg-6">
+                    <div class="card border-0 shadow-sm overflow-hidden h-100">
+                        <div class="card-body p-0">
+                            <div class="row g-0 h-100">
+                                <div class="col-md-6 bg-primary text-white p-4 d-flex flex-column">
+                                    <h3 class="h4 text-white mb-3">Current Focus</h3>
+                                    <ul class="list-unstyled flex-grow-1">
+                                        <li class="mb-3 d-flex align-items-start">
+                                            <i class="bi bi-check-circle-fill me-2 mt-1"></i>
+                                            <div>
+                                                <span class="d-block fw-bold">Authentication</span>
+                                                <small class="opacity-75">Implementing Auth in Blazor</small>
+                                            </div>
+                                        </li>
+                                        <li class="mb-3 d-flex align-items-start">
+                                            <i class="bi bi-check-circle-fill me-2 mt-1"></i>
+                                            <div>
+                                                <span class="d-block fw-bold">Authorization</span>
+                                                <small class="opacity-75">Role-based access control</small>
+                                            </div>
+                                        </li>
+                                        <li class="d-flex align-items-start">
+                                            <i class="bi bi-circle me-2 mt-1"></i>
+                                            <div>
+                                                <span class="d-block fw-bold">Performance</span>
+                                                <small class="opacity-75">WebAssembly optimizations</small>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                    <div class="mt-auto pt-3">
+                                        <a href="/learning/current" class="btn btn-outline-light btn-sm">View Progress</a>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 bg-light p-4 d-flex flex-column">
+                                    <h3 class="h4 mb-3">Upcoming Topics</h3>
+                                    <ul class="list-unstyled flex-grow-1">
+                                        <li class="mb-3">
+                                            <i class="bi bi-arrow-right-short text-primary me-2"></i>
+                                            <span class="fw-bold">Blazor Hybrid</span>
+                                            <small class="d-block text-muted ms-4">Mobile & desktop integration</small>
+                                        </li>
+                                        <li class="mb-3">
+                                            <i class="bi bi-arrow-right-short text-primary me-2"></i>
+                                            <span class="fw-bold">SignalR</span>
+                                            <small class="d-block text-muted ms-4">Real-time communication</small>
+                                        </li>
+                                        <li class="mb-3">
+                                            <i class="bi bi-arrow-right-short text-primary me-2"></i>
+                                            <span class="fw-bold">PWA</span>
+                                            <small class="d-block text-muted ms-4">Progressive Web Apps</small>
+                                        </li>
+                                        <li>
+                                            <i class="bi bi-arrow-right-short text-primary me-2"></i>
+                                            <span class="fw-bold">Microfrontends</span>
+                                            <small class="d-block text-muted ms-4">Modular architecture</small>
+                                        </li>
+                                    </ul>
+                                    <div class="mt-auto pt-3">
+                                        <a href="/roadmap" class="btn btn-outline-primary btn-sm">View Roadmap</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials-section py-5 bg-light">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="display-5 fw-bold mb-3">What Developers Say</h2>
+                <p class="lead text-muted mx-auto" style="max-width: 700px;">
+                    Feedback from fellow developers who've found value in this learning journey
+                </p>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="testimonial-card card h-100 border-0 shadow-sm">
+                        <div class="card-body p-4">
+                            <div class="d-flex mb-3">
+                                <img src="images/avatar1.jpg" class="rounded-circle me-3" width="50" height="50" alt="User">
+                                <div>
+                                    <h4 class="h6 mb-0">Sarah K.</h4>
+                                    <small class="text-muted">Frontend Developer</small>
+                                </div>
+                            </div>
+                            <p class="mb-0">"The component examples helped me understand Blazor's data binding much faster than official docs."</p>
+                        </div>
+                        <div class="card-footer bg-transparent border-0 pt-0">
+                            <div class="text-warning">
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-4">
+                    <div class="testimonial-card card h-100 border-0 shadow-sm">
+                        <div class="card-body p-4">
+                            <div class="d-flex mb-3">
+                                <img src="images/avatar2.jpg" class="rounded-circle me-3" width="50" height="50" alt="User">
+                                <div>
+                                    <h4 class="h6 mb-0">Mike T.</h4>
+                                    <small class="text-muted">Full Stack Dev</small>
+                                </div>
+                            </div>
+                            <p class="mb-0">"The automation practice pages saved me hours of setup time for testing our Blazor components."</p>
+                        </div>
+                        <div class="card-footer bg-transparent border-0 pt-0">
+                            <div class="text-warning">
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-half"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-4">
+                    <div class="testimonial-card card h-100 border-0 shadow-sm">
+                        <div class="card-body p-4">
+                            <div class="d-flex mb-3">
+                                <img src="images/avatar3.jpg" class="rounded-circle me-3" width="50" height="50" alt="User">
+                                <div>
+                                    <h4 class="h6 mb-0">David L.</h4>
+                                    <small class="text-muted">Team Lead</small>
+                                </div>
+                            </div>
+                            <p class="mb-0">"Using these learning modules to onboard my team to Blazor has been incredibly effective."</p>
+                        </div>
+                        <div class="card-footer bg-transparent border-0 pt-0">
+                            <div class="text-warning">
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter-section py-5 bg-primary text-white">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center">
+                    <h2 class="display-5 fw-bold mb-3">Stay Updated</h2>
+                    <p class="lead mb-5 opacity-75">Subscribe to get notified about new learning modules, tools, and updates</p>
+                    
+                    <div class="row justify-content-center">
+                        <div class="col-md-8 col-lg-6">
+                            <div class="input-group mb-3">
+                                <input type="email" class="form-control form-control-lg" placeholder="Your email address" />
+                                <button class="btn btn-light btn-lg px-4" type="button">Subscribe</button>
+                            </div>
+                            <small class="opacity-75">We'll never share your email. Unsubscribe anytime.</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="cta-section py-5 bg-white">
+        <div class="container text-center py-4">
+            <h2 class="display-5 fw-bold mb-4">Ready to Dive Into Blazor?</h2>
+            <p class="lead mb-5 text-muted">Start exploring my learning journey and build your own Blazor expertise</p>
+            <div class="d-flex justify-content-center gap-3">
+                <button @onclick='() => Navigation.NavigateTo("/learning")' 
+                        class="btn btn-primary btn-lg px-4 py-2 d-flex align-items-center">
+                    Begin Learning <i class="bi bi-arrow-right ms-2"></i>
+                </button>
+                <button @onclick='() => Navigation.NavigateTo("/contact")'
+                        class="btn btn-outline-primary btn-lg px-4 py-2 d-flex align-items-center">
+                    Contact Me <i class="bi bi-envelope ms-2"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer bg-dark text-white py-5">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <h3 class="h4 mb-4">
+                        <i class="bi bi-code-square me-2"></i>LearningWithAbhi
+                    </h3>
+                    <p class="text-white-50 mb-4">
+                        My personal playground for learning Blazor development, building tools, and documenting the journey.
+                    </p>
+                    <div class="social-links d-flex gap-3">
+                        <a href="#" class="text-white"><i class="bi bi-github fs-5"></i></a>
+                        <a href="#" class="text-white"><i class="bi bi-twitter fs-5"></i></a>
+                        <a href="#" class="text-white"><i class="bi bi-linkedin fs-5"></i></a>
+                        <a href="#" class="text-white"><i class="bi bi-youtube fs-5"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-4">
+                    <h4 class="h5 mb-4">Explore</h4>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="/learning" class="text-white-50">Learning</a></li>
+                        <li class="mb-2"><a href="/tools" class="text-white-50">Tools</a></li>
+                        <li class="mb-2"><a href="/automation" class="text-white-50">Automation</a></li>
+                        <li class="mb-2"><a href="/blog" class="text-white-50">Blog</a></li>
+                        <li><a href="/about" class="text-white-50">About</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-4">
+                    <h4 class="h5 mb-4">Resources</h4>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="/docs" class="text-white-50">Documentation</a></li>
+                        <li class="mb-2"><a href="/samples" class="text-white-50">Code Samples</a></li>
+                        <li class="mb-2"><a href="/roadmap" class="text-white-50">Roadmap</a></li>
+                        <li class="mb-2"><a href="/updates" class="text-white-50">Changelog</a></li>
+                        <li><a href="/faq" class="text-white-50">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4 col-md-4">
+                    <h4 class="h5 mb-4">Contact</h4>
+                    <ul class="list-unstyled text-white-50">
+                        <li class="mb-2"><i class="bi bi-envelope me-2"></i> contact@LearningWithAbhi.com</li>
+                        <li class="mb-2"><i class="bi bi-geo-alt me-2"></i> Gorakhpur, India</li>
+                        <li><i class="bi bi-clock me-2"></i> Last updated: @DateTime.Now.ToString("dd MMM yyyy")</li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="my-4 bg-white-10">
+            <div class="row">
+                <div class="col-md-6 text-center text-md-start">
+                    <p class="small mb-0">&copy; @DateTime.Now.Year LearningWithAbhi. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <p class="small mb-0">
+                        Made with <i class="bi bi-heart-fill text-danger"></i> using Blazor
+                    </p>
+                </div>
+            </div>
         </div>
     </footer>
 </div>
 
 @code {
-    private string user = "- Abhi";
+    private string user = "Abhi";
     private string currentTime = DateTime.Now.ToString("dd-MMM-yyyy HH:mm:ss");
     private int demoValue = 50;
+    private bool menuOpen = false;
+    
+    // Stats
+    private int learningModules = 12;
+    private int webTools = 8;
+    private int automationTests = 5;
+    private int codeSamples = 24;
+    private Timer? clockTimer;
+
+    private void ToggleMenu()
+    {
+        menuOpen = !menuOpen;
+    }
 
     private void UpdateClock()
     {
@@ -115,69 +647,274 @@
         StateHasChanged();
     }
 
+    private void AdjustValue(int change)
+    {
+        demoValue = Math.Clamp(demoValue + change, 0, 100);
+    }
+
+    private void ResetValue()
+    {
+        demoValue = 50;
+    }
+
     private string GetValueDescription()
     {
-        if (demoValue < 20)
-            return "Getting started";
-        else if (demoValue < 40)
-            return "Making progress";
-        else if (demoValue < 60)
-            return "Halfway there";
-        else if (demoValue < 80)
-            return "Almost complete";
-        else
-            return "Excellent work!";
+        return demoValue switch
+        {
+            int n when n < 20 => "Just getting started with Blazor",
+            int n when n < 40 => "Learning the fundamentals",
+            int n when n < 60 => "Building interactive components",
+            int n when n < 80 => "Creating complex applications",
+            _ => "Mastering advanced Blazor concepts"
+        };
     }
 
     private string GetValueColor()
     {
-        if (demoValue < 20)
-            return "#dc3545"; // Red
-        else if (demoValue < 40)
-            return "#fd7e14"; // Orange
-        else if (demoValue < 60)
-            return "#ffc107"; // Yellow
-        else if (demoValue < 80)
-            return "#0dcaf0"; // Cyan
-        else
-            return "#198754"; // Green
+        return demoValue switch
+        {
+            int n when n < 20 => "#dc3545", // Red
+            int n when n < 40 => "#fd7e14", // Orange
+            int n when n < 60 => "#ffc107", // Yellow
+            int n when n < 80 => "#0dcaf0", // Cyan
+            _ => "#198754" // Green
+        };
     }
 
     protected override void OnInitialized()
     {
-        var timer = new Timer(1000);
-        timer.Elapsed += (sender, e) => InvokeAsync(UpdateClock);
-        timer.Start();
+        clockTimer = new Timer(1000);
+        clockTimer.Elapsed += (sender, e) => InvokeAsync(UpdateClock);
+        clockTimer.Start();
+    }
+
+    public void Dispose()
+    {
+        clockTimer?.Dispose();
     }
 }
 
 <style>
     .home-page {
-        min-height: 100vh;
-        display: flex;
-        flex-direction: column;
+        overflow-x: hidden;
+        padding-top: 56px; /* For fixed navbar */
     }
 
+    /* Navbar */
+    .navbar {
+        transition: all 0.3s ease;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+
+    .navbar.scrolled {
+        background-color: rgba(13, 110, 253, 0.95) !important;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+    }
+
+    /* Hero Section */
     .hero-section {
         background: linear-gradient(135deg, #0d6efd 0%, #0b5ed7 100%);
-        margin-bottom: 2rem;
+        padding: 6rem 0;
+        position: relative;
+        overflow: hidden;
     }
 
-    .clock-display {
-        font-family: 'Courier New', monospace;
-        font-weight: bold;
+    .hero-image-container {
+        position: relative;
     }
 
+    .hero-badge {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        animation: pulse 2s infinite;
+    }
+
+    .badge-content {
+        text-align: center;
+        color: white;
+        line-height: 1.2;
+    }
+
+    .hero-wave {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 100px;
+        color: white;
+    }
+
+    /* Stats Section */
+    .stat-card {
+        position: relative;
+        overflow: hidden;
+        transition: all 0.3s ease;
+        border: 1px solid rgba(0,0,0,0.05);
+    }
+
+    .stat-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    }
+
+    .stat-icon {
+        position: absolute;
+        bottom: 10px;
+        right: 15px;
+        opacity: 0.2;
+        font-size: 3rem !important;
+    }
+
+    /* Demo Section */
+    .code-sample {
+        position: relative;
+    }
+
+    .code-sample pre {
+        overflow-x: auto;
+        white-space: pre-wrap;
+        word-wrap: break-word;
+    }
+
+    /* Feature Cards */
     .feature-card {
-        transition: transform 0.2s;
-        height: 100%;
+        transition: all 0.3s ease;
+        border-radius: 0.5rem;
     }
 
-        .feature-card:hover {
-            transform: translateY(-5px);
-        }
+    .hover-lift:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.1) !important;
+    }
 
-    .value-display {
-        transition: color 0.3s;
+    .icon-circle {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s ease;
+    }
+
+    .feature-card:hover .icon-circle {
+        transform: scale(1.1);
+    }
+
+    /* Update Cards */
+    .update-card {
+        position: relative;
+        transition: all 0.3s ease;
+    }
+
+    .update-badge {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        padding: 5px 10px;
+        border-radius: 20px;
+        font-size: 0.75rem;
+        font-weight: bold;
+        z-index: 1;
+    }
+
+    .update-card:hover {
+        transform: translateY(-5px);
+    }
+
+    /* Timeline */
+    .timeline {
+        position: relative;
+        padding-left: 30px;
+    }
+
+    .timeline-item {
+        position: relative;
+        padding-bottom: 20px;
+    }
+
+    .timeline-badge {
+        position: absolute;
+        left: -30px;
+        top: 0;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+    }
+
+    .timeline-content {
+        padding-left: 20px;
+    }
+
+    .timeline-item:not(:last-child) .timeline-content:after {
+        content: '';
+        position: absolute;
+        left: -25px;
+        top: 20px;
+        bottom: 0;
+        width: 2px;
+        background: #dee2e6;
+    }
+
+    /* Testimonials */
+    .testimonial-card {
+        transition: all 0.3s ease;
+    }
+
+    .testimonial-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.1) !important;
+    }
+
+    /* Animations */
+    @@keyframes float {
+        0% { transform: translateY(0px); }
+        50% { transform: translateY(-20px); }
+        100% { transform: translateY(0px); }
+    }
+
+    @@keyframes pulse {
+        0% { transform: scale(1); }
+        50% { transform: scale(1.05); }
+        100% { transform: scale(1); }
+    }
+
+    .floating-animation {
+        animation: float 6s ease-in-out infinite;
+    }
+
+    /* Responsive Adjustments */
+    @@media (max-width: 768px) {
+        .hero-section {
+            padding: 4rem 0;
+            text-align: center;
+        }
+        
+        .display-3 {
+            font-size: 2.5rem;
+        }
+        
+        .lead {
+            font-size: 1.1rem;
+        }
     }
 </style>
+
+<script>
+    // Add navbar scroll effect
+    window.addEventListener('scroll', function() {
+        const navbar = document.querySelector('.navbar');
+        if (window.scrollY > 50) {
+            navbar.classList.add('scrolled');
+        } else {
+            navbar.classList.remove('scrolled');
+        }
+    });
+</script>
