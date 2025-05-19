@@ -1,0 +1,91 @@
+@page "/number-conversion"
+<title>Number Conversion</title>
+
+<div>
+    <label>From:</label>
+    <select @bind="fromBase">
+        <option value="2">Binary</option>
+        <option value="8">Octal</option>
+        <option value="10">Decimal</option>
+        <option value="16">Hexadecimal</option>
+    </select>
+    <label>To:</label>
+    <select @bind="toBase">
+        <option value="2">Binary</option>
+        <option value="8">Octal</option>
+        <option value="10">Decimal</option>
+        <option value="16">Hexadecimal</option>
+    </select>
+</div>
+
+<div>
+    <input @bind="inputNumber" placeholder="Enter number" />
+    <button @onclick="ConvertNumber">Convert</button>
+</div>
+@if (!string.IsNullOrEmpty(outputNumber))
+{
+    <div>
+        <strong>Result:</strong> @outputNumber
+    </div>
+}
+@if (conversionSteps?.Count > 0)
+{
+    <div>
+        <strong>Conversion Steps:</strong>
+        <ol>
+            @foreach (var step in conversionSteps)
+            {
+                <li>@step</li>
+            }
+        </ol>
+    </div>
+}
+
+@code {
+    
+    private string inputNumber;
+    private string outputNumber;
+    private int fromBase = 2;
+    private int toBase = 10;
+    private List<string> conversionSteps = new();
+
+    private void ConvertNumber()
+    {
+        outputNumber = string.Empty;
+        conversionSteps.Clear();
+
+        if (string.IsNullOrWhiteSpace(inputNumber))
+        {
+            Console.WriteLine("Input number is empty.");
+            inputNumber = Console.ReadLine();
+           
+        }
+
+        try
+        {
+            // Step 1: Parse input to decimal
+            int decimalValue = Convert.ToInt32(inputNumber, fromBase);
+            conversionSteps.Add($"Parsed '{inputNumber}' from base {fromBase} to decimal: {decimalValue}");
+
+            // Step 2: Convert decimal to target base
+            string result = toBase switch
+            {
+                2 => Convert.ToString(decimalValue, 2),
+                8 => Convert.ToString(decimalValue, 8),
+                10 => decimalValue.ToString(),
+                16 => Convert.ToString(decimalValue, 16).ToUpper(),
+                _ => decimalValue.ToString()
+            };
+
+            conversionSteps.Add($"Converted decimal {decimalValue} to base {toBase}: {result}");
+
+            outputNumber = result;
+        }
+        catch (Exception)
+        {
+            outputNumber = $"Invalid number for base {fromBase}.";
+        }
+    }
+}
+
+

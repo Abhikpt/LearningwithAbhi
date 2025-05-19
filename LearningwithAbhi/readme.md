@@ -116,3 +116,9 @@ dotnet new blazorwasm -o LearningWithAbhi --hosted
 
 
 ## [Employee CRUD Flow (documentation)](/LearningwithAbhi/Client/Pages/learning/blog-pages/EmplyeeScreenE2E.md)
+
+## Toools Created
+
+- Calculator
+- Number conversion (with formual)
+-
