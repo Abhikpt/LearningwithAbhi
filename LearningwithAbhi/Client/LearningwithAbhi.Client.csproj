@@ -53,4 +53,9 @@
   <ItemGroup>
     <None Include="C:\project\WebDesigning\LearningwithAbhi\LearningwithAbhi\Client\.editorconfig" />
   </ItemGroup>
+  <ItemGroup>
+  <Content Update="wwwroot\data\blogposts.json">
+  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+  </Content>
+  </ItemGroup>
 </Project>

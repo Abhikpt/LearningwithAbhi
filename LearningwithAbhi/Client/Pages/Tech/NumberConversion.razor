@@ -1,0 +1,269 @@
+@page "/number-conversion"
+<title>Number Conversion Tool</title>
+
+<div class="converter-container">
+    <h1>Number Base Converter</h1>
+    
+    <div class="input-group">
+        <div style="display: flex; align-items: center;">
+            <label style="margin-right: 10px;"><strong>From:</strong></label>
+            <select @bind="fromBase" style="margin-right: 10px;">
+                <option value="2">Binary (Base 2)</option>
+                <option value="8">Octal (Base 8)</option>
+                <option value="10" selected>Decimal (Base 10)</option>
+                <option value="16">Hexadecimal (Base 16)</option>
+            </select>
+            
+            <button class="swap-btn" @onclick="SwapBases">
+                <span style="font-size: 16px;">⇄</span> Swap
+            </button>
+            
+            <label style="margin-right: 10px;"><strong>To:</strong></label>
+            <select @bind="toBase">
+                <option value="2">Binary (Base 2)</option>
+                <option value="8" selected>Octal (Base 8)</option>
+                <option value="10">Decimal (Base 10)</option>
+                <option value="16">Hexadecimal (Base 16)</option>
+            </select>
+        </div>
+    </div>
+    
+    <div class="input-group">
+        <input @bind="inputNumber" 
+               @onkeypress="HandleKeyPress"
+               placeholder="Enter number here..." 
+               style="width: 70%; margin-right: 10px;" />
+        <button @onclick="ConvertNumber" style="width: 25%;">
+            Convert
+        </button>
+    </div>
+    
+    @if (!string.IsNullOrEmpty(errorMessage))
+    {
+        <div class="error-message">
+            @errorMessage
+        </div>
+    }
+    
+    @if (!string.IsNullOrEmpty(outputNumber))
+    {
+        <div class="result-box">
+            <h3>Conversion Result</h3>
+            <p style="font-size: 24px; font-weight: bold; margin: 10px 0;">
+                @outputNumber
+            </p>
+            <p>From: @GetBaseName(fromBase) (@inputNumber)</p>
+            <p>To: @GetBaseName(toBase)</p>
+        </div>
+    }
+    
+    @if (conversionSteps?.Count > 0)
+    {
+        <div class="steps-box">
+            <h3>Conversion Steps</h3>
+            <ol>
+                @foreach (var step in conversionSteps)
+                {
+                    <li style="margin-bottom: 8px;">@step</li>
+                }
+            </ol>
+        </div>
+    }
+    
+    <div style="margin-top: 30px; font-size: 14px; color: #666;">
+        <p><strong>Tips:</strong></p>
+        <ul>
+            <li>Hexadecimal numbers can be entered with or without '0x' prefix</li>
+            <li>Binary numbers can be entered with or without '0b' prefix</li>
+            <li>Press Enter in the input field to convert</li>
+        </ul>
+    </div>
+</div>
+
+@code {
+    private string inputNumber = "";
+    private string outputNumber = "";
+    private string fromBase = "10";
+    private string toBase = "8";
+    private List<string> conversionSteps = new List<string>();
+    private string errorMessage = "";
+    
+    private void ConvertNumber()
+    {
+        errorMessage = "";
+        conversionSteps.Clear();
+        
+        if (string.IsNullOrWhiteSpace(inputNumber))
+        {
+            errorMessage = "Please enter a number to convert";
+            return;
+        }
+        
+        try
+        {
+            // Remove common prefixes if present
+            string processedInput = inputNumber.Trim().ToLower();
+            if (processedInput.StartsWith("0x") && fromBase == "16")
+            {
+                processedInput = processedInput.Substring(2);
+                conversionSteps.Add($"Removed '0x' prefix from hexadecimal number");
+            }
+            else if (processedInput.StartsWith("0b") && fromBase == "2")
+            {
+                processedInput = processedInput.Substring(2);
+                conversionSteps.Add($"Removed '0b' prefix from binary number");
+            }
+            
+            // Convert from original base to decimal first
+            conversionSteps.Add($"Step 1: Convert from {GetBaseName(fromBase)} to decimal");
+            int decimalValue = Convert.ToInt32(processedInput, int.Parse(fromBase));
+            conversionSteps.Add($"   {processedInput} (base {fromBase}) = {decimalValue} (base 10)");
+            
+            // Convert from decimal to target base
+            conversionSteps.Add($"Step 2: Convert from decimal to {GetBaseName(toBase)}");
+            string result;
+            if (toBase == "2")
+            {
+                result = "0b" + Convert.ToString(decimalValue, 2);
+                conversionSteps.Add($"   {decimalValue} (base 10) = {result} (base 2)");
+            }
+            else if (toBase == "8")
+            {
+                result = Convert.ToString(decimalValue, 8);
+                conversionSteps.Add($"   {decimalValue} (base 10) = {result} (base 8)");
+            }
+            else if (toBase == "16")
+            {
+                result = "0x" + Convert.ToString(decimalValue, 16).ToUpper();
+                conversionSteps.Add($"   {decimalValue} (base 10) = {result} (base 16)");
+            }
+            else
+            {
+                result = decimalValue.ToString();
+                conversionSteps.Add($"   {decimalValue} (base 10) = {result} (base 10)");
+            }
+            
+            outputNumber = result;
+        }
+        catch (FormatException)
+        {
+            errorMessage = $"Invalid number for the selected base. {GetBaseName(fromBase)} numbers can only contain: {GetValidCharsForBase(fromBase)}";
+        }
+        catch (Exception ex)
+        {
+            errorMessage = $"Error during conversion: {ex.Message}";
+        }
+    }
+    
+    private void SwapBases()
+    {
+        string temp = fromBase;
+        fromBase = toBase;
+        toBase = temp;
+        
+        if (!string.IsNullOrEmpty(outputNumber))
+        {
+            inputNumber = outputNumber.Replace("0x", "").Replace("0b", "");
+            outputNumber = "";
+            errorMessage = "";
+            conversionSteps.Clear();
+        }
+    }
+    
+    private void HandleKeyPress(KeyboardEventArgs e)
+    {
+        if (e.Key == "Enter")
+        {
+            ConvertNumber();
+        }
+    }
+    
+    private string GetBaseName(string baseValue)
+    {
+        return baseValue switch
+        {
+            "2" => "Binary",
+            "8" => "Octal",
+            "10" => "Decimal",
+            "16" => "Hexadecimal",
+            _ => "Unknown"
+        };
+    }
+    
+    private string GetValidCharsForBase(string baseValue)
+    {
+        return baseValue switch
+        {
+            "2" => "0-1",
+            "8" => "0-7",
+            "10" => "0-9",
+            "16" => "0-9, A-F",
+            _ => "Unknown"
+        };
+    }
+}
+
+
+<style>
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #f5f5f5;
+    }
+    .converter-container {
+        background-color: white;
+        padding: 25px;
+        border-radius: 10px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    .input-group {
+        margin-bottom: 15px;
+    }
+    select, input, button {
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        font-size: 16px;
+    }
+    button {
+        background-color: #4CAF50;
+        color: white;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+    button:hover {
+        background-color: #45a049;
+    }
+    .result-box {
+        margin-top: 20px;
+        padding: 15px;
+        background-color: #e8f5e9;
+        border-radius: 5px;
+        border-left: 4px solid #4CAF50;
+    }
+    .steps-box {
+        margin-top: 20px;
+        padding: 15px;
+        background-color: #e3f2fd;
+        border-radius: 5px;
+        border-left: 4px solid #2196F3;
+    }
+    .error-message {
+        color: #d32f2f;
+        margin-top: 10px;
+        padding: 10px;
+        background-color: #ffebee;
+        border-radius: 4px;
+    }
+    .swap-btn {
+        background-color: #2196F3;
+        margin: 0 10px;
+        padding: 5px 10px;
+        font-size: 14px;
+    }
+    .swap-btn:hover {
+        background-color: #0b7dda;
+    }
+</style>
