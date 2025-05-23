@@ -1,13 +1,13 @@
 {
   "mainAssemblyName": "LearningwithAbhi.Client",
   "resources": {
-    "hash": "sha256-kupqEoDEXOSP8v+qdmbaCoXjMHVvHUIZngeOFuGmYGk=",
+    "hash": "sha256-uoyjB1ZlEjJG+2Dp4vUkRnuvPJGR0sn10FAuB20Pxx4=",
     "fingerprinting": {
       "Aspose.Words.dsu5j50hif.wasm": "Aspose.Words.wasm",
       "Autofac.0kkxchiwua.wasm": "Autofac.wasm",
       "ICSharpCode.SharpZipLib.7k6gb0rnvb.wasm": "ICSharpCode.SharpZipLib.wasm",
-      "LearningwithAbhi.Client.xyhk41ai8l.wasm": "LearningwithAbhi.Client.wasm",
-      "LearningwithAbhi.Shared.4p15yz99p2.wasm": "LearningwithAbhi.Shared.wasm",
+      "LearningwithAbhi.Client.cmahv0qd2b.wasm": "LearningwithAbhi.Client.wasm",
+      "LearningwithAbhi.Shared.lgunuos3o0.wasm": "LearningwithAbhi.Shared.wasm",
       "Microsoft.AspNetCore.Components.Forms.imqknm5h5r.wasm": "Microsoft.AspNetCore.Components.Forms.wasm",
       "Microsoft.AspNetCore.Components.cziapayka2.wasm": "Microsoft.AspNetCore.Components.wasm",
       "Microsoft.AspNetCore.Components.Web.onwfghm6ky.wasm": "Microsoft.AspNetCore.Components.Web.wasm",
@@ -148,8 +148,8 @@
       "Aspose.Words.dsu5j50hif.wasm": "sha256-HZJw4GUoDXd+aQPA5yz9cDlvE6aiKNv4NqyCPgVIZFY=",
       "Autofac.0kkxchiwua.wasm": "sha256-sIkC8eW9Zn/Zgal9k0aLFxTLbwy+NqMQhtjuUjoCUFE=",
       "ICSharpCode.SharpZipLib.7k6gb0rnvb.wasm": "sha256-N+B+aaiZzE1fHJnfuESjuouC3agz168HHdDcBj9kCPQ=",
-      "LearningwithAbhi.Client.xyhk41ai8l.wasm": "sha256-ByCNHb6Egyi4JuUlfeDdWRRh+ugP6G76AXX8vBVDGlA=",
-      "LearningwithAbhi.Shared.4p15yz99p2.wasm": "sha256-2DUYDRy0UyRVFLvcNez9pPE/DOI79mBEh6kNT7tgDHc=",
+      "LearningwithAbhi.Client.cmahv0qd2b.wasm": "sha256-BK8V7Co8UCxSVo2pCe9wXIhqzkWQWG33LlgScz3o3Lc=",
+      "LearningwithAbhi.Shared.lgunuos3o0.wasm": "sha256-9bcp+/6t9nYl67oOHvoZrL3gQBkC54Z9ZiFA1yUAt6A=",
       "Microsoft.AspNetCore.Components.Forms.imqknm5h5r.wasm": "sha256-Nh17pnLD3GP2Yyzf+0wIvhA1baSdi4m10/ci+69HDhc=",
       "Microsoft.AspNetCore.Components.cziapayka2.wasm": "sha256-mL/xIonWzpN2F3PVB2hqgFccchZJQ8/mOXu9xHBULL8=",
       "Microsoft.AspNetCore.Components.Web.onwfghm6ky.wasm": "sha256-7NgoPmO0/fqiWim+HcYIHtBmPtglyDq8d2lYPP3bYhA=",
