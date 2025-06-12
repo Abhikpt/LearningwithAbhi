@@ -30,7 +30,7 @@ steps:
   displayName: 'Build Solution'
   inputs:
     command: 'build'
-    projects: 'Server/LearningwithAbhi.Server.csproj'
+    projects: 'LearningwithAbhi/Server/LearningwithAbhi.Server.csproj'
     arguments: '--configuration $(buildConfiguration)'
 
 - task: DotNetCoreCLI@2
@@ -38,7 +38,7 @@ steps:
   inputs:
     command: 'publish'
     publishWebProjects: false
-    projects: 'Server/Server.csproj'
+    projects: 'LearningwithAbhi/Server/LearningwithAbhi.Server.csproj'
     arguments: '--configuration $(buildConfiguration) --output $(publishDir)'
     zipAfterPublish: true
 
