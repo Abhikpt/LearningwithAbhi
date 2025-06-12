@@ -1,180 +1,197 @@
 @page "/Blog"
+@using LearningwithAbhi.Shared.Services
+@using System.Text.Json
+@inject IJSRuntime JSRuntime
+@inject HttpClient Http
 
+<PageTitle>Blog Hub - Create and Explore Content</PageTitle>
 
-@inject IJSRuntime jsRuntime
+<main class="container py-5">
+    <div class="text-center mb-5">
+        <h1 class="display-4 fw-bold text-primary">Blog Hub</h1>
+        <p class="lead text-muted">Create your own blogs and explore insightful content</p>        
+        <div class="row justify-content-center mt-4">
+            <div class="col-md-8">
+                <div class="input-group mb-1 ">
+                    <input type="text" class="form-control m-3 mt-1" placeholder="Search blogs..." 
+                        @bind="searchQuery" @onkeypress="HandleSearchKeyPress" />
+                    <button class="btn btn-primary" type="button" @onclick="FilterBlogs">
+                        <i class="bi bi-search"></i> Search
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="d-flex flex-wrap justify-content-center gap-2 mb-4">
+            <button class="btn btn-outline-primary @(activeFilter == "all" ? "active" : "")" 
+                    @onclick='() => SetFilter("all")'>All</button>
+            <button class="btn btn-outline-primary @(activeFilter == "tech" ? "active" : "")" 
+                    @onclick='() => SetFilter("tech")'>Technology</button>
+            <button class="btn btn-outline-primary @(activeFilter == "gov" ? "active" : "")" 
+                    @onclick='() => SetFilter("gov")'>Government</button>
+            <button class="btn btn-outline-primary @(activeFilter == "edu" ? "active" : "")" 
+                    @onclick='() => SetFilter("edu")'>Education</button>
+        </div>
+    </div>
 
-
-<PageTitle> Create your own blogs here</PageTitle>
-
-
-<main>
-	<div class="main-tile">
-		<div class="card-01"> 
-			<div class="heading01"> Do you know how to make your PC fast?	</div>
-			<span>If your PC is running slowly, the following suggestions might help speed things up. The tips are listed in order, so start with the first one, 
-				see if that helps, and then continue to the next one if it doesn’t. 
-				</span>
-				<div class="Expanded">
-			<ul>
-				<li> 1. Make sure you have the latest updates for Windows and device drivers </li>
-				<li> 2. Restart your PC and open only the apps you need </li>
-				<li>	3. Use ReadyBoost to help improve performance </li>
-				<li>4. Make sure the system is managing the page file size  </li>
-				<li> 5. Check for low disk space and free up space  </li>
-				<li>	6. Adjust the appearance and performance of Windows </li>
-				<li>7. Pause OneDrive syncing </li>
-				<li> 8. Disable unnecessary startup programs </li>
-				<li>9. Check for and remove viruses and malware </li>
-				<li> 10. Restore your PC from a system restore point </li>
-			</ul>
-			</div>
-			
-			<div> Author: Anhishek Singh Date: @DateTime.Now </div>
-
-		</div>
-
-		<div class="card-01">
-			<div class="heading01"> Top 10 government sites</div>
-			<span>
-				<div class="Expanded">
-					<div class="items">	<h7> 
-							<a href="https://www.pmkisan.gov.in/">1.  PM KISAN SAMMAN NIDHI </a>
-						</h7>
-						<p>Pradhan Mantri Kisan Samman Nidhi (PMKISAN) is an initiative by the government 
-							of India that give farmers up to Rs.6,000 (US$75) per year as minimum income support. </p>
-					</div>
-					<div class="items">
-							<h7>
-							<a href="https://www.india.gov.in">2.National Portal of India  </a>
-						</h7>
-						<p>National Portal of India provides a single-window access to information and services that are electronically delivered from all Government Departments, 
-							Institutions and Organizations.</p>
-					</div>
-					<div class="items">
-							<h7>
-							<a href="https://www.dst.gov.in/">3. Science & Technology</a>
-						</h7>
-						<p>Science & TechnologyScience and Technology have always been an integral part of Indian culture. Natural philosophy, as it was termed in those ancient times, 
-							was pursued vigorously at institutions of higher learning. </p>
-					</div>
-					<div class="items">
-							<h7>
-							<a href="https://main.mohfw.gov.in/"> 4. Health & Family Welfare </a>
-						</h7>
-						<p>Health care should be within the reach of every citizen. For providing basic health facilities to all citizens, government has introduced and implemented 
-							various health schemes and programmes.</p>
-					</div>
-					<div class="items">
-							<h7>
-							<a href="https://www.education.gov.in">5. Education  </a>
-						</h7>
-						<p>EducationThe essence of Human Resource Development is education, which plays a significant and remedial role in balancing the socio-economic framework of the country. 
-							This section is very helpful in getting information related to the elementary, secondary, higher secondary, higher and adult education etc.	You can also find details 
-							of educational institutions, courses, admission procedure, scholarships, student loans, technical and medical education and vocational studies etc.</p>
-					</div>
-					<div class="items">
-							<h7>
-							<a href="http://mohua.gov.in/">6. Housing </a>
-						</h7>
-						<p> HousingThe housing industry of India is one of the fastest growing sectors. A large population base, rising income level and rapid urbanization leads to growth in this sector.
-							In the Federal structure of the Indian polity, the matters pertaining to the housing and urban development have been assigned by the Constitution of India to the State Governments.</p>
-					</div>
-					<div class="items">	<h7>
-							<a href="">7.    </a>
-						</h7>
-						<p></p>
-					</div>
-					<div class="items">
-							<h7>
-							<a href=""> 8.   </a>
-						</h7>
-						<p></p>
-					</div>
-					<div class="items">
-								<h7>
-							<a href="">9.   </a>
-						</h7>
-						<p></p>
-					</div>
-					<div class="items">	<h7>
-							<a href=""> 10.   </a>
-						</h7>
-						<p></p>
-					</div>
-
-					
-				</div>
-			</span>
-			
-
-			<div> Author: Anhishek Singh Date: @DateTime.Now </div>
-
-		</div>
-
-		<div class="card-01">
-			<div class="heading01"> Top 10 educational sites</div>
-			<span  class="wrap expand"  id="#1343" >
-				<main class="Expanded">
-					<div class="items">
-						<h7>
-							<a href="https://dotnettutorials.net/">1. Learn Programming languages </a>
-						</h7>
-						<p>Learn Microsoft .NET, .NET Core, ASP.NET Core, Java, Advance Java, Java Frameworks, C, C++, Python, Data Structure & Algorithm, Databases, 
-							JavaScript, JQuery, Angular, SQL Server, Design Patterns, Dot Net Tutorials, MEAN, MERN, Node, React, and Many more Technologies Quickly and Easily 
-							by Industry Professionals </p>
-					</div>
-					<div class="items">
-						<h7>
-							<a href="https://toolsqa.com/selenium-webdriver/selenium-tutorial/"> 2. Learn selenium  </a>
-						</h7>
-						<p> To learn about selenium from basic to advance go to the website after clicked</p>
-					</div>
-					<div class="items">
-						<h7>
-							<a href="tutorialspoint.com/codingground.htm">3. Get online compilers  </a>
-						</h7>
-						<p> Click on above linke to get almost every language compliers online</p>
-					</div>
-					<div class="items">
-						<h7>
-							<a href="https://arduinogetstarted.com/"> 4. Learn Aurduino -officail  </a>
-						</h7>
-						<p> Learn everyting about through similar likne manuals doc. Here on the side you will get basic code, bloags etc</p>
-					</div>
-
-
-				</main>
-		
-			</span>
-			
-			</div>
-
-			<div> Author: Abhishek Singh Date: @DateTime.Now </div>
-
-	</div>
-
-   
-	
-	
-
+    <div class="row g-4">
+        @foreach (var blog in filteredBlogs)
+        {
+            <div class="col-md-6 col-lg-4">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-start mb-2">
+                            <span class="badge bg-primary">@blog.Category</span>
+                            <button class="btn btn-sm btn-outline-secondary" @onclick="() => ToggleBookmark(blog.Id)">
+                                <i class="bi @(blog.IsBookmarked ? "bi-bookmark-fill" : "bi-bookmark")"></i>
+                            </button>
+                        </div>
+                        
+                        <h3 class="card-title h5 mb-3">@blog.Title</h3>
+                        <p class="card-text text-muted">@blog.Summary</p>
+                        
+                        <button class="btn btn-link p-0 text-decoration-none" 
+                                @onclick="() => ToggleExpand(blog.Id)">
+                            @(expandedBlogs.Contains(blog.Id) ? "Show less" : "Read more")
+                            <i class="bi @(expandedBlogs.Contains(blog.Id) ? "bi-chevron-up" : "bi-chevron-down")"></i>
+                        </button>
+                        
+                        <div class="mt-3 @(expandedBlogs.Contains(blog.Id) ? "" : "collapse")">
+                            @if (blog.IsList)
+                            {
+                                <ul class="list-group list-group-flush mb-3">
+                                    @foreach (var item in blog.ListItems)
+                                    {
+                                        <li class="list-group-item">@item</li>
+  
+                                    }
+                                </ul>
+                            }
+                            else
+                            {
+                                <div class="list-group list-group-flush mb-3">
+                                    @foreach (var resource in blog.Resources)
+                                    {
+                                        <a href="@resource.Url" target="_blank" 
+                                           class="list-group-item list-group-item-action">
+                                            <div class="d-flex w-100 justify-content-between">
+                                                <h6 class="mb-1">@resource.Title</h6>
+                                                <small><i class="bi bi-box-arrow-up-right"></i></small>
+                                            </div>
+                                            <p class="mb-1 small text-muted">@resource.Description</p>
+                                        </a>
+                                    }
+                                </div>
+                            }
+                        </div>
+                    </div>
+                    
+                    <div class="card-footer bg-transparent border-top">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="d-flex align-items-center">
+                                <div class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center" 
+                                     style="width: 32px; height: 32px; font-size: 0.8rem;">
+                                    @blog.AuthorInitials
+                                </div>
+                                <div class="ms-2">
+                                    <small class="text-muted">By @blog.Author</small>
+                                    <br>
+                                    <small class="text-muted">@blog.Date.ToString("MMM dd, yyyy")</small>
+                                </div>
+                            </div>
+                            <div>
+                                <button class="btn btn-sm btn-outline-danger" @onclick="() => ToggleLike(blog.Id)">
+                                    <i class="bi @(blog.IsLiked ? "bi-heart-fill text-danger" : "bi-heart")"></i>
+                                    <span>@blog.Likes</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
 </main>
 
+@code {
+    private List<Blog> blogs = new();
+    private List<Blog> filteredBlogs = new();
+    private HashSet<string> expandedBlogs = new();
+    private string searchQuery = "";
+    private string activeFilter = "all";
 
+    protected override async Task OnInitializedAsync()
+    {
+        
 
+        InitializeBlogs();
+        filteredBlogs = blogs;
+        
+    }	
 
-@code
-{
+    private async Task InitializeBlogs()
+    {       
+        // set the file in project file to CopyToOutputDirectory
+        blogs = await Http.GetFromJsonAsync<List<Blog>>("data/blogposts.json");
+      
+    }
 
-	private string? currentDateTime;
+    private void ToggleExpand(string blogId)
+    {
+        if (expandedBlogs.Contains(blogId))
+        {
+            expandedBlogs.Remove(blogId);
+        }
+        else
+        {
+            expandedBlogs.Add(blogId);
+        }
+    }
 
-	protected override void OnInitialized()
-	{
-		updateCurrentDateTime();
-	}
+    private void ToggleLike(string blogId)
+    {
+        var blog = blogs.FirstOrDefault(b => b.Id == blogId);
+        if (blog != null)
+        {
+            blog.IsLiked = !blog.IsLiked;
+            blog.Likes += blog.IsLiked ? 1 : -1;
+        }
+    }
 
-	private void updateCurrentDateTime()
-	{
-		currentDateTime = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
-	}
+    private void ToggleBookmark(string blogId)
+    {
+        var blog = blogs.FirstOrDefault(b => b.Id == blogId);
+        if (blog != null)
+        {
+            blog.IsBookmarked = !blog.IsBookmarked;
+        }
+    }
+
+    private void SetFilter(string filter)
+    {
+        activeFilter = filter;
+        FilterBlogs();
+    }
+
+    private void FilterBlogs()
+    {
+        filteredBlogs = blogs
+            .Where(b => activeFilter == "all" || b.Category == activeFilter)
+            .Where(b => string.IsNullOrWhiteSpace(searchQuery) || 
+                   b.Title.Contains(searchQuery, StringComparison.OrdinalIgnoreCase) || 
+                   b.Summary.Contains(searchQuery, StringComparison.OrdinalIgnoreCase) ||
+                   (b.IsList && b.ListItems.Any(i => i.Contains(searchQuery, StringComparison.OrdinalIgnoreCase))) ||
+                   (!b.IsList && b.Resources.Any(r => r.Title.Contains(searchQuery, StringComparison.OrdinalIgnoreCase) || 
+                                              r.Description.Contains(searchQuery, StringComparison.OrdinalIgnoreCase))))
+            .ToList();
+    }
+
+    private void HandleSearchKeyPress(KeyboardEventArgs e)
+    {
+        if (e.Key == "Enter")
+        {
+            FilterBlogs();
+        }
+    }
 
 }

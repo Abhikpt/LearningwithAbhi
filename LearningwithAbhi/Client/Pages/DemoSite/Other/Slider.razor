@@ -1,8 +1,96 @@
 @page "/sliderdemo"
 
-<input type="range" min="0" max="100" step="1" @bind="sliderValue" />
-<p>Slider value: @sliderValue</p>
 
-@code {
+<div class="slider-container">
+    <input type="range" 
+           min="0" 
+           max="100" 
+           step="1" 
+           @bind="sliderValue" 
+           @bind:event="oninput"
+           @onchange="OnSliderChanged"
+           class="form-range"
+           id="customRange" />
+    
+    <div class="slider-info">
+        <p>Current value: <span class="value-display">@sliderValue</span></p>
+        <div class="progress" style="height: 20px;">
+            <div class="progress-bar" role="progressbar" 
+                 style="width: @(sliderValue + "%");" 
+                 aria-valuenow="@sliderValue" 
+                 aria-valuemin="0" 
+                 aria-valuemax="100">
+            </div>
+        </div>
+        <p class="mt-2">@GetValueDescription()</p>
+    </div>
+    
+    <div class="slider-controls mt-3">
+        <button @onclick="() => AdjustValue(-10)" class="btn btn-secondary">-10</button>
+        <button @onclick="() => AdjustValue(-1)" class="btn btn-secondary">-1</button>
+        <button @onclick="ResetValue" class="btn btn-warning">Reset</button>
+        <button @onclick="() => AdjustValue(1)" class="btn btn-secondary">+1</button>
+        <button @onclick="() => AdjustValue(10)" class="btn btn-secondary">+10</button>
+    </div>
+</div>
+
+@code 
+{
     private int sliderValue = 50;
+    
+    private void OnSliderChanged(ChangeEventArgs e)
+    {
+        // You could add additional logic here when the slider changes
+        Console.WriteLine($"Slider changed to: {sliderValue}");
+    }
+    
+    private void AdjustValue(int change)
+    {
+        sliderValue = Math.Clamp(sliderValue + change, 0, 100);
+    }
+    
+    private void ResetValue()
+    {
+        sliderValue = 50;
+    }
+    
+    private string GetValueDescription()
+    {
+        return sliderValue switch
+        {
+            int n when n < 20 => "Very low",
+            int n when n < 40 => "Low",
+            int n when n < 60 => "Medium",
+            int n when n < 80 => "High",
+            _ => "Very high"
+        };
+    }
 }
+
+
+<style>
+    .slider-container {
+        max-width: 600px;
+        margin: 20px auto;
+        padding: 20px;
+        background-color: #f8f9fa;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    
+    .value-display {
+        font-weight: bold;
+        color: #0d6efd;
+    }
+    
+    .slider-controls {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+    }
+    
+    .form-range {
+        width: 100%;
+        margin: 15px 0;
+    }
+</style>
