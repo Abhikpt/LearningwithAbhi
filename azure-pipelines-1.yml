@@ -21,15 +21,15 @@ steps:
   inputs:
     command: 'restore'
     projects: |
-      Server/Server.csproj
-      Client/Client.csproj
-      Shared/Shared.csproj
+      Server/LearningwithAbhi.Server.csproj
+      Client/LearningwithAbhi.Client.csproj
+      Shared/LearningwithAbhi.Shared.csproj
 
 - task: DotNetCoreCLI@2
   displayName: 'Build Solution'
   inputs:
     command: 'build'
-    projects: 'Server/Server.csproj'
+    projects: 'Server/LearningwithAbhi.Server.csproj'
     arguments: '--configuration $(buildConfiguration)'
 
 - task: DotNetCoreCLI@2
