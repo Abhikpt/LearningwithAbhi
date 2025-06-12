@@ -1,0 +1,27 @@
+
+@page "/learning"
+@using Markdig
+@inject HttpClient Http
+
+<h2>Learning Content</h2>
+
+@if (string.IsNullOrEmpty(markdownHtml))
+{
+    <p>Loading...</p>
+}
+else
+{
+    <div class="markdown-body">
+        @((MarkupString)markdownHtml)
+    </div>
+}
+
+@code {
+    private string markdownHtml;
+
+    protected override async Task OnInitializedAsync()
+    {
+        var markdown = await Http.GetStringAsync("https://localhost:7294/api/markdown/readme"); // fileName without .md
+        markdownHtml = Markdig.Markdown.ToHtml(markdown);
+    }
+}

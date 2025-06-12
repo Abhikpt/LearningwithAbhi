@@ -13,6 +13,7 @@ builder.Services.AddSingleton<TaxCalculationService>();
 builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();
 builder.Services.AddSingleton<EmployeeService>();
+builder.Services.AddHttpClient();
 
 
 
