@@ -1,13 +1,13 @@
 {
   "mainAssemblyName": "LearningwithAbhi.Client",
   "resources": {
-    "hash": "sha256-b38vzhp62BElKwgczwd+pYslWSFytrIPE+B6pJ66XdU=",
+    "hash": "sha256-8VRn5dj30VAU7QSagFJZzJYj3qkPpgUL6CZIsgf4wFI=",
     "fingerprinting": {
       "Aspose.Words.dsu5j50hif.wasm": "Aspose.Words.wasm",
       "Autofac.0kkxchiwua.wasm": "Autofac.wasm",
       "ICSharpCode.SharpZipLib.7k6gb0rnvb.wasm": "ICSharpCode.SharpZipLib.wasm",
-      "LearningwithAbhi.Client.xodvmpjl33.wasm": "LearningwithAbhi.Client.wasm",
-      "LearningwithAbhi.Shared.mgvcrtgbvx.wasm": "LearningwithAbhi.Shared.wasm",
+      "LearningwithAbhi.Client.ndyo3539cf.wasm": "LearningwithAbhi.Client.wasm",
+      "LearningwithAbhi.Shared.0eoy9zbocy.wasm": "LearningwithAbhi.Shared.wasm",
       "Markdig.8m8q17eux9.wasm": "Markdig.wasm",
       "Microsoft.AspNetCore.Components.Forms.imqknm5h5r.wasm": "Microsoft.AspNetCore.Components.Forms.wasm",
       "Microsoft.AspNetCore.Components.leru1e50uh.wasm": "Microsoft.AspNetCore.Components.wasm",
@@ -149,8 +149,8 @@
       "Aspose.Words.dsu5j50hif.wasm": "sha256-HZJw4GUoDXd+aQPA5yz9cDlvE6aiKNv4NqyCPgVIZFY=",
       "Autofac.0kkxchiwua.wasm": "sha256-sIkC8eW9Zn/Zgal9k0aLFxTLbwy+NqMQhtjuUjoCUFE=",
       "ICSharpCode.SharpZipLib.7k6gb0rnvb.wasm": "sha256-N+B+aaiZzE1fHJnfuESjuouC3agz168HHdDcBj9kCPQ=",
-      "LearningwithAbhi.Client.xodvmpjl33.wasm": "sha256-EaE87tX5B7kBuJ46+jZE7xMJI0nR3KCSMWqW8hcrklM=",
-      "LearningwithAbhi.Shared.mgvcrtgbvx.wasm": "sha256-RnliKO8HFYp63nJ5LCV/inMCo0L0EWKeOmfmOZ2vMdA=",
+      "LearningwithAbhi.Client.ndyo3539cf.wasm": "sha256-9bTWPQyNkm+bFE5G5SKVIDwF7p4TKiclHisH0FEFJPY=",
+      "LearningwithAbhi.Shared.0eoy9zbocy.wasm": "sha256-CIsMfUhASA35ndf924LbJCsIkn3scxrTWdKJxM5dc5I=",
       "Markdig.8m8q17eux9.wasm": "sha256-4NRl6Uv3KMSWq86K58aRc0myM/vF0kILqNdUqpOTXdw=",
       "Microsoft.AspNetCore.Components.Forms.imqknm5h5r.wasm": "sha256-Nh17pnLD3GP2Yyzf+0wIvhA1baSdi4m10/ci+69HDhc=",
       "Microsoft.AspNetCore.Components.leru1e50uh.wasm": "sha256-Pc8RqUgfXe4eoH3KBiiZ0vs6UPlrSnLwskGj4PWrIWI=",
