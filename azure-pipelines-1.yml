@@ -45,6 +45,6 @@ steps:
 - task: PublishBuildArtifacts@1
   displayName: 'Publish Artifact'
   inputs:
-    PathtoPublish: '$(publish)/Server'
+    PathtoPublish: '$(publishDir)'
     ArtifactName: 'drop'
     publishLocation: 'Container'
