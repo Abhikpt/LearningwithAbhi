@@ -16,14 +16,22 @@ steps:
     packageType: 'sdk'
     version: '9.0.x' # Match your .NET version
 
+- script: |
+    Write-Host "🔍 Current Directory:"
+    Get-Location
+    Write-Host "`n📁 Listing All Files:"
+    Get-ChildItem -Recurse
+  displayName: '📦 Check Working Directory and Contents Before Build'
+
+  
 - task: DotNetCoreCLI@2
   displayName: 'Restore NuGet Packages'
   inputs:
     command: 'restore'
     projects: |
-      Server/LearningwithAbhi.Server.csproj
-      Client/LearningwithAbhi.Client.csproj
-      Shared/LearningwithAbhi.Shared.csproj
+      LearningwithAbhi/Server/LearningwithAbhi.Server.csproj
+      LearningwithAbhi/Client/LearningwithAbhi.Client.csproj
+      LearningwithAbhi/Shared/LearningwithAbhi.Shared.csproj
 
 - task: DotNetCoreCLI@2
   displayName: 'Build Solution'
