@@ -18,7 +18,7 @@ public class MarkdownController : ControllerBase
     [HttpGet("{fileName}")]
     public async Task<IActionResult> GetMarkdownFile(string fileName)
     {
-        var githubToken = Environment.GetEnvironmentVariable("GITHUB_TOKEN");
+      
         var repoOwner = "Abhikpt";
         var repoName = "Documentation";
         fileName = "Readme";
