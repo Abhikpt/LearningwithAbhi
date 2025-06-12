@@ -8,7 +8,7 @@ pool:
 
 variables:
   buildConfiguration: 'Release'
-  outputDir: '$(Build.ArtifactStagingDirectory)/blazor-app'
+  outputDir: '$(Build.ArtifactStagingDirectory)/publish'
 
 steps:
 - task: UseDotNet@2
@@ -33,12 +33,14 @@ steps:
   displayName: 'Publish Blazor WASM App'
   inputs:
     command: 'publish'
-    publishWebProjects: true
-    arguments: '--configuration $(buildConfiguration) --output $(outputDir)'
+    publishWebProjects: false
+    projects: 'Server/Server.csproj'
+    arguments: '--configuration $(buildConfiguration) --output $(publishDir)'
     zipAfterPublish: true
 
 - task: PublishBuildArtifacts@1
   displayName: 'Publish Artifact'
   inputs:
-    PathtoPublish: '$(outputDir)'
+    PathtoPublish: '$(publish)'
     ArtifactName: 'drop'
+    publishLocation: 'Container'
