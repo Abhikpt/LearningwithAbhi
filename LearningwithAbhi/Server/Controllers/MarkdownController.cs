@@ -18,11 +18,8 @@ public class MarkdownController : ControllerBase
     [HttpGet("{fileName}")]
     public async Task<IActionResult> GetMarkdownFile(string fileName)
     {
-<<<<<<< HEAD
-      
-=======
         var githubToken = "a";
->>>>>>> Devlope_May
+
         var repoOwner = "Abhikpt";
         var repoName = "Documentation";
         fileName = "Readme";
