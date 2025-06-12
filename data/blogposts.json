@@ -110,6 +110,7 @@
         "Url": "https://arduinogetstarted.com/",
         "Description": "Official Arduino documentation with basic code examples and blogs."
       }
+      
     ],
     "Likes": 22
   },
@@ -145,5 +146,27 @@
     }
     ],
     "Likes": 17
+  },
+  {
+    "id": "5",
+    "Title": "Explain URL vs URI",
+    "Summary": "A URI (Uniform Resource Identifier) is a string that identifies a resource by name or location, while a URL (Uniform Resource Locator) is a type of URI that specifically provides the means to locate and access the resource using a protocol like HTTP or FTP.",
+    "Author": "Abhishek Singh",
+    "AuthorInitials": "AS",
+    "Date": "2025-04-19",
+    "Category": "edu",
+    "IsList": false,
+    "Resources": [
+      {
+      "Title": "URL Example : https://www.mySite.com:80/path/to/mypage.html?product=camera#SomewhereInDoc",
+      "Description": "Schema/Protocol -> http:,  Domain name -> www.mySite.com, Port -> 80, Path to file -> /path/to/mypage.html, Query -> ?product=camera , Anchor -> #SomewhereInDoc"
+      }, 
+      {
+      "Title": "URL Example : https://www.mySite.com:80/path/to/mypage.html?product=camera#SomewhereInDoc",
+      "Description": "Schema/Protocol -> http:,  Domain name -> www.mySite.com, Port -> 80, Path to file -> /path/to/mypage.html, Query -> ?product=camera , Anchor -> #SomewhereInDoc"
+      }   
+    ],
+    "Likes": 12
   }
+  
 ]
