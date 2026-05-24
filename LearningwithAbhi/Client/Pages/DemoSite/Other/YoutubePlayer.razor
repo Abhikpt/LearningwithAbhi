@@ -1,0 +1,91 @@
+@page "/youtubeplayer"
+@using System.Text.Json
+
+<h3>YouTube Player</h3>
+
+<div>
+    <input type="text" @bind="searchQuery" placeholder="Enter search keywords">
+    <button @onclick="SearchVideos">Search</button>
+</div>
+
+@if (searchResults != null)
+{
+    <div>
+        @foreach (var video in searchResults)
+        {
+            <div style="margin-bottom: 20px;">
+                <h4>@video.Title</h4>
+                <iframe width="560" height="315" src="@($"https://www.youtube.com/embed/{video.VideoId}")" frameborder="0" allowfullscreen></iframe>
+            </div>
+        }
+    </div>
+}
+
+@code {
+    private string searchQuery;
+    private List<YouTubeVideo> searchResults;
+
+    private async Task SearchVideos()
+    {
+        try
+        {
+            var apiKey = "YOUR_YOUTUBE_API_KEY";
+            var httpClient = new HttpClient();
+            var response = await httpClient.GetAsync($"https://www.googleapis.com/youtube/v3/search?part=snippet&q={searchQuery}&type=video&key={apiKey}&maxResults=5");
+
+            if (response.IsSuccessStatusCode)
+            {
+                var content = await response.Content.ReadAsStringAsync();
+                
+                
+              var searchResponse = JsonSerializer.Deserialize<YouTubeSearchResponse>(content); 
+
+                if (searchResponse != null && searchResponse.Items != null)
+                {
+                    searchResults = searchResponse.Items.Select(item => new YouTubeVideo
+                    {
+                        Title = item.Snippet.Title,
+                        VideoId = item.Id.VideoId
+                    }).ToList();
+                }
+            }
+            else
+            {
+                // Handle error
+            }
+        }
+        catch (Exception ex)
+        {
+            // Handle exception
+        }
+    }
+
+    public class YouTubeSearchResponse
+    {
+
+        public List<YouTubeVideoItem> Items { get; set; }
+  
+    }
+
+    public class YouTubeVideoItem
+    {
+        public YouTubeSnippet Snippet { get; set; }
+        public YouTubeVideoId Id { get; set; }
+    }
+
+    public class YouTubeSnippet
+    {
+        public string Title { get; set; }
+    }
+
+    public class YouTubeVideoId
+    {
+        public string VideoId { get; set; }
+    }
+
+    public class YouTubeVideo
+    {
+        public string Title { get; set; }
+        public string VideoId { get; set; }
+    }
+}

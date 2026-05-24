@@ -1,19 +1,48 @@
 ﻿@inherits LayoutComponentBase
+@using System.Timers;
 
-<div class="page">
-    <div class="sidebar">
-        <NavMenu />
+<div class="">
+<div class="header ">
+<span class="app-name h3"><a href="\"> LearningwithAbhi</a></span>
+<span class="timestamp h3">@currentTime</span>
+</div>
+    
+
+<div class="">
+    <NavBar />
+
+    <div style="margin-top: 24px;"></div> <!-- Gap after NavBar -->
+
+    <div class="min-h-150">
+        <main class="container ">
+            @Body
+        </main>
     </div>
 
-    <main>
-        <div class="top-row px-4">
-           
-            <a href="https://docs.microsoft.com/aspnet/" target="_blank">About</a>
-            <a href="#" target="_self">Home</a>
-        </div>
-
-        <article class="content px-4">
-            @Body
-        </article>
-    </main>
+    <Footer />
 </div>
+
+</div>
+
+@code{
+    private string user = "- Abhi";
+
+    private string currentTime = DateTime.Now.ToString("HH:mm:ss");
+    private void UpdateClock()
+    {
+        currentTime = DateTime.Now.ToString("dd-MMM-yyyy HH:mm:ss");
+        StateHasChanged(); // Update the UI
+    }
+
+    protected override void OnInitialized()
+    {
+        // Update the clock every second
+        var timer = new Timer(1000);
+        timer.Elapsed += (sender, e) => UpdateClock();
+        timer.Start();
+    }
+   
+
+
+}
+

@@ -43,7 +43,7 @@ namespace LearningwithAbhi.Server.Controllers
 
         };
 
-        public async Task<IActionResult> GetProduct()
+        public IActionResult GetProduct()
         {
             return Ok(pr);
         }

@@ -1,0 +1,60 @@
+@page "/webelements"
+
+    <div class="demo-layout">
+        <div class="sidebar">
+            <ul>
+                <li><a @onclick='() => SelectDemo("popup")'>Popup Functionality</a></li>
+                <li><a @onclick='() => SelectDemo("alert")'>Alert Functionality</a></li>
+                <li><a @onclick='() => SelectDemo("slider")'>Slider Demo</a></li>
+                <li><a @onclick='() => SelectDemo("tabs")'>Tabs Demo</a></li>
+                <li><a @onclick='() => SelectDemo("dragdrop")'>Drag and Drop Demo</a></li>
+                <li><a @onclick='() => SelectDemo("bookfilter")'>BookFilters</a></li>
+                <li><a @onclick='() => SelectDemo("product-manage")'>ProductPage</a></li>        
+            </ul>
+        </div>
+
+        <div class="content">
+            @if (selectedDemo == "popup")
+            {
+                <Popupbox />
+            }
+            else if (selectedDemo == "alert")
+            {
+                <AlertDemo/>
+            }
+            else if (selectedDemo == "slider")
+            {
+                 <Slider /> 
+               
+            }
+            else if (selectedDemo == "tabs")
+            {
+                <TabsScreen /> 
+
+            }
+            else if (selectedDemo == "dragdrop")
+            {
+                 <DragAndDrop/> 
+              
+            }
+            else if (selectedDemo == "bookfilter")
+            {
+                <Bookfilter />
+            }
+            
+           else if(selectedDemo == "product-manage")
+            {
+                <ManageProduct /> 
+            }
+
+        </div>
+   </div>
+
+@code {
+    private string selectedDemo;
+
+    private void SelectDemo(string demoName)
+    {
+        selectedDemo = demoName;
+    }
+}

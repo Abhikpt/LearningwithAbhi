@@ -1,0 +1,50 @@
+# Runnig through Azure portal 
+
+trigger:
+- master
+
+pool:
+  vmImage: 'windows-latest'
+
+variables:
+  buildConfiguration: 'Release'
+  outputDir: '$(Build.ArtifactStagingDirectory)/publish'
+
+steps:
+- task: UseDotNet@2
+  inputs:
+    packageType: 'sdk'
+    version: '9.0.x' # Match your .NET version
+
+  
+- task: DotNetCoreCLI@2
+  displayName: 'Restore NuGet Packages'
+  inputs:
+    command: 'restore'
+    projects: |
+      LearningwithAbhi/Server/LearningwithAbhi.Server.csproj
+      LearningwithAbhi/Client/LearningwithAbhi.Client.csproj
+      LearningwithAbhi/Shared/LearningwithAbhi.Shared.csproj
+
+- task: DotNetCoreCLI@2
+  displayName: 'Build Solution'
+  inputs:
+    command: 'build'
+    projects: 'LearningwithAbhi/Server/LearningwithAbhi.Server.csproj'
+    arguments: '--configuration $(buildConfiguration)'
+
+- task: DotNetCoreCLI@2
+  displayName: 'Publish Blazor WASM App'
+  inputs:
+    command: 'publish'
+    publishWebProjects: false
+    projects: 'LearningwithAbhi/Server/LearningwithAbhi.Server.csproj'
+    arguments: '--configuration $(buildConfiguration) --output $(publishDir)'
+    zipAfterPublish: true
+
+- task: PublishBuildArtifacts@1
+  displayName: 'Publish Artifact'
+  inputs:
+    PathtoPublish: '$(publishDir)'
+    ArtifactName: 'drop'
+    publishLocation: 'Container'

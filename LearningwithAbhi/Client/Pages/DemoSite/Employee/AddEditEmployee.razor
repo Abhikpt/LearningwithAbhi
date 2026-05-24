@@ -1,0 +1,99 @@
+@page "/employees/add"
+@page "/employees/edit/{Id:int}"
+@inject Client.Services.EmployeeService EmployeeService
+@inject NavigationManager NavigationManager
+
+<h3 class="text-xl font-bold mb-4">@((Id == 0) ? "Add New Employee" : "Edit Employee")</h3>
+
+<EditForm Model="employee" OnValidSubmit="HandleSubmit">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+
+    <div class="mb-3">
+        <label>Name:</label>
+        <InputText class="form-control" @bind-Value="employee.FullName" />
+    </div>
+
+    <div class="mb-3">
+        <label>Email:</label>
+        <InputText class="form-control" @bind-Value="employee.Email" />
+    </div>
+
+    <div class="mb-3">
+        <label>Department:</label>
+        <InputText class="form-control" @bind-Value="employee.Department" />
+    </div>
+
+    <div class="mb-3">
+        <label>Phone:</label>
+        <InputText class="form-control" @bind-Value="employee.Phone" />
+    </div>
+    <div class="mb-3">
+        <label>Age:</label>
+        <InputNumber class="form-control" @bind-Value="employee.Age" />
+    </div>
+
+    <div class="mb-3">
+        <label>Address Details :</label>
+    </div>
+    <div class="mb-3">
+        <label>Street:</label>
+        <InputText class="form-control" @bind-Value="employee.Address.Street" />
+    </div>
+    <div class="mb-3">
+        <label>City:</label>
+        <InputText class="form-control" @bind-Value="employee.Address.City" />
+    </div>
+    <div class="mb-3">
+        <label>State:</label>
+        <InputText class="form-control" @bind-Value="employee.Address.State" />
+    </div>
+    <div class="mb-3">
+        <label>Zip Code:</label>
+        <InputText class="form-control" @bind-Value="employee.Address.ZipCode" />   
+    </div>
+    <div class="mb-3">
+        <label>Country:</label>
+        <InputText class="form-control" @bind-Value="employee.Address.Country" />
+    </div>  
+    <button class="btn btn-success me-2" type="submit">Save</button>
+    <button class="btn btn-secondary" type="button" @onclick="Cancel">Cancel</button>
+</EditForm>
+
+
+@code {
+    [Parameter] public int Id { get; set; }
+    
+    private Employee employee = new()
+    {
+        Address = new()
+    };
+    
+
+   
+
+    protected override async Task OnInitializedAsync()
+    {
+        if (Id != 0)
+        {
+            var existing = await EmployeeService.GetByIdAsync(Id);
+            if (existing != null)
+                employee = existing;
+        }
+    }
+
+    private async Task HandleSubmit()
+    {
+        if (Id == 0)
+        {
+            // Ensure Id is set to 0 for new employee
+            await EmployeeService.AddAsync(employee);
+        }
+        else
+            await EmployeeService.UpdateAsync(employee);
+
+        NavigationManager.NavigateTo("/employees");
+    }
+
+    private void Cancel() => NavigationManager.NavigateTo("/employees");
+}

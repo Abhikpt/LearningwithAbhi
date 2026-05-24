@@ -1,0 +1,167 @@
+@page "/learning"
+@page "/learning/{*filePath}"
+@using Markdig
+@using System.Text.RegularExpressions
+@inject HttpClient Http
+@inject NavigationManager Navigation
+@using Microsoft.AspNetCore.Components
+
+<PageTitle>Learning</PageTitle>
+
+@if (!string.IsNullOrEmpty(loadError))
+{
+    <p class="text-danger" role="alert">@loadError</p>
+}
+else if (string.IsNullOrEmpty(markdownHtml))
+{
+    <p>Loading...</p>
+}
+else
+{
+    <div class="markdown-body">
+        @((MarkupString)markdownHtml)
+    </div>
+}
+
+@code {
+    private string? markdownHtml;
+    private string? loadError;
+
+    private string fileName = "README.md"; // Default filename
+    private string[]? breadcrumbParts;
+    [Parameter]
+    public string? filePath { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        Navigation.LocationChanged += OnLocationChanged;
+        await LoadFromQueryAndFetchAsync();
+    }
+
+    private async void OnLocationChanged(object? sender, Microsoft.AspNetCore.Components.Routing.LocationChangedEventArgs e)
+    {
+        await LoadFromQueryAndFetchAsync();
+        StateHasChanged();
+    }
+
+    private async Task LoadFromQueryAndFetchAsync()
+    {
+        try
+        {
+            // If route provided a parameter, use it directly
+            if (!string.IsNullOrEmpty(filePath))
+            {
+                fileName = Uri.UnescapeDataString(filePath);
+            }
+            else
+            {
+            // Determine file from pretty route segment first, otherwise fall back to ?file= query
+            var relative = Navigation.ToBaseRelativePath(Navigation.Uri);
+            // relative will be like "learning/Notes/.." or just "learning"
+            if (!string.IsNullOrEmpty(relative) && relative.StartsWith("learning", StringComparison.OrdinalIgnoreCase))
+            {
+                var after = relative.Length > "learning".Length ? relative.Substring("learning".Length).TrimStart('/') : string.Empty;
+                if (!string.IsNullOrEmpty(after))
+                    fileName = Uri.UnescapeDataString(after);
+                else
+                    fileName = "README.md";
+            }
+            else
+            {
+                var uri = Navigation.ToAbsoluteUri(Navigation.Uri);
+                var q = uri.Query;
+                if (!string.IsNullOrEmpty(q))
+                {
+                    var pairs = q.TrimStart('?').Split('&', StringSplitOptions.RemoveEmptyEntries);
+                    foreach (var p in pairs)
+                    {
+                        var kv = p.Split('=', 2);
+                        if (kv.Length >= 1 && kv[0] == "file")
+                        {
+                            fileName = kv.Length == 2 ? Uri.UnescapeDataString(kv[1]) : string.Empty;
+                            break;
+                        }
+                    }
+                }
+            }
+            }
+
+            // Build breadcrumb parts
+            breadcrumbParts = string.IsNullOrEmpty(fileName) ? new string[0] : fileName.Split('/', StringSplitOptions.RemoveEmptyEntries);
+
+            var encodedPath = string.Join('/', breadcrumbParts.Select(s => Uri.EscapeDataString(s)));
+            var markdown = await Http.GetStringAsync($"api/markdown/{encodedPath}");
+            var html = Markdown.ToHtml(markdown);
+
+            // Rewrite markdown links that point to .md files.
+            var appBase = new Uri(Navigation.BaseUri);
+            markdownHtml = Regex.Replace(html,
+                "href=\"([^\"]+?\\.md)(#[^\"]*)?\"",
+                m =>
+                {
+                    var target = m.Groups[1].Value;
+                    var fragment = m.Groups[2].Success ? m.Groups[2].Value : string.Empty;
+
+                    string pathToSend;
+                    if (Uri.TryCreate(target, UriKind.Absolute, out var abs))
+                    {
+                        // If absolute and same origin as the app, use the absolute path + query
+                        if (abs.Scheme == appBase.Scheme && abs.Host == appBase.Host && abs.Port == appBase.Port)
+                        {
+                            pathToSend = abs.AbsolutePath.TrimStart('/') + abs.Query;
+                        }
+                        else
+                        {
+                            // External absolute link - leave it unchanged
+                            return m.Value;
+                        }
+                    }
+                    else if (target.StartsWith("/"))
+                    {
+                        pathToSend = target.TrimStart('/');
+                    }
+                    else
+                    {
+                        // Relative link like "docs/next.md" or "../other.md"
+                        // Resolve against current fileName directory
+                        var baseDir = string.Empty;
+                        if (!string.IsNullOrEmpty(fileName) && fileName.Contains('/'))
+                            baseDir = fileName.Substring(0, fileName.LastIndexOf('/'));
+
+                        var combined = string.IsNullOrEmpty(baseDir) ? target : ($"{baseDir}/{target}");
+
+                        // Normalize segments (handle .. and .)
+                        var parts = combined.Split('/', StringSplitOptions.RemoveEmptyEntries);
+                        var stack = new System.Collections.Generic.List<string>();
+                        foreach (var part in parts)
+                        {
+                            if (part == ".")
+                                continue;
+                            if (part == "..")
+                            {
+                                if (stack.Count > 0)
+                                    stack.RemoveAt(stack.Count - 1);
+                                continue;
+                            }
+                            stack.Add(part);
+                        }
+                        pathToSend = string.Join('/', stack);
+                    }
+
+                    var encoded = string.Join('/', pathToSend.Split('/', StringSplitOptions.RemoveEmptyEntries).Select(s => Uri.EscapeDataString(s)));
+                    return $"href=\"/learning/{encoded}{fragment}\"";
+                },
+                RegexOptions.IgnoreCase);
+        }
+        catch (Exception ex)
+        {
+            loadError = $"Could not load learning content: {ex.Message}";
+            Console.Error.WriteLine(ex.ToString());
+        }
+    }
+
+    public void Dispose()
+    {
+        Navigation.LocationChanged -= OnLocationChanged;
+    }
+}

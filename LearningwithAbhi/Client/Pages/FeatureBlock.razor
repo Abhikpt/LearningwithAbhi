@@ -1,0 +1,17 @@
+<div class="col-md-6 p-3 p-md-5 text-start">
+    <h3 class="display-4"><a href="@Href">@Title</a></h3>
+    <p>@Description</p>
+    <code>@Command</code>
+</div>
+<div class="col-md-6 p-3 p-md-5">
+    <img class="img-fluid" width="100%" src="@ImageSrc" alt="@Title" />
+</div>
+
+
+@code {
+    [Parameter] public string Href { get; set; } = "/";
+    [Parameter] public string Title { get; set; }
+    [Parameter] public string Description { get; set; }
+    [Parameter] public string Command { get; set; }
+    [Parameter] public string ImageSrc { get; set; }
+}

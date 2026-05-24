@@ -1,0 +1,94 @@
+@page "/dragdropdemo"
+
+
+<h3>Drag and Drop Demo</h3>
+
+    <div class="container">
+         <div class="pickzone">Pick the object to dropped: 
+            <div class="draggable" style = "@draggableStyle"  @ondragstart="OnDragStart"  draggable="true">Object A</div>
+        </div>
+   
+        <div class="dropzone" @ondrop="OnDrop" @ondragover="AllowDrop" > Drop here :
+                <div class="draggable" style="@dropzoneStyle" >Object A</div>
+        </div>
+    </div>
+
+@code {   
+    private bool isItemDropped = false;
+    private string draggableStyle => isItemDropped ? "display: none;" : "display: block;";
+    private string dropzoneStyle => isItemDropped ?  "display: block;" : "display: none;"  ; //"background-color: lightgreen; border: 2px solid green;" : "background-color: lightcoral; border: 2px dashed #ccc;";
+
+   
+    private void OnDragStart(DragEventArgs e)
+    {
+        // Optional: Add data to the drag operation
+       //  e.DataTransfer?.SetData("text/plain", "dragged-item");
+        
+
+    }
+
+    private void AllowDrop(DragEventArgs e)
+    {
+        // Allow drop by preventing default behavior
+       // e.PreventDefault();
+     
+      
+         isItemDropped = !isItemDropped;
+        
+    }
+
+    private void OnDrop(DragEventArgs e)
+    {
+       @* // Handle drop event
+        var data = e.DataTransfer?.GetData("text/plain");
+        Console.WriteLine($"Dropped data: {data}"); *@
+
+        // Update state to reflect that the item has been dropped
+@*       
+         isItemDropped = !isItemDropped; *@
+       
+        
+    }
+}
+
+<style>
+    .container {
+        display: flex;
+        justify-content: space-around;
+        margin-top: 20px;
+    }
+
+    .draggable {
+        width: 100px;
+        height: 100px;
+        background-color: lightblue;       
+        align-items: center;
+        justify-content: center;
+        cursor: move;
+        user-select: none;
+        border-radius: 8px;
+        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+    }
+
+    .pickzone
+    {  background-color: rgb(229, 230, 173);       
+        align-items: center;
+        justify-content: center;      
+        border-radius: 8px;}
+
+    .dropzone {
+        width: 200px;
+        height: 200px;
+        background-color: rgb(208, 216, 51);
+        margin-top: 20px;
+        border: 2px dashed #ccc;
+      
+        align-items: center;
+        justify-content: center;
+        border-radius: 8px;
+    }
+
+    .dropzone:hover {
+        background-color: lightcoral;
+    }
+</style>

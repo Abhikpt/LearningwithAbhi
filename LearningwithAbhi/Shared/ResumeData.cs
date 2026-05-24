@@ -6,9 +6,6 @@ using System.Threading.Tasks;
 
 namespace LearningwithAbhi.Shared
 {
-   
-
-
     public partial class ResumeData
     {
         public List<Skill>? Skill { get; set; } 

@@ -39,9 +39,8 @@
 
 	<h5 class="section">EDUCATIONAL QUALIFICATION: </h5>   <hr />
 	
-	<Table class="center">
-
-		
+	<table class="center">
+		<thead>
 				<tr>
 					<th>		Course	</th>
 					<th>Discipline/ specialization	</th>
@@ -49,6 +48,8 @@
 					<th>Percentage /CGPA </th>
 					<th>Year Of	Passing	</th>
 				</tr>
+	</thead>
+<tbody>
 			@foreach (var e in _rd)
 			{
 				<tr>
@@ -60,9 +61,9 @@
 				</tr>
 			}
 	
+</tbody>
 
-
-	</Table>
+	</table>
 
 <h5 class="section">Experience : </h5>			<hr />
 			<span>

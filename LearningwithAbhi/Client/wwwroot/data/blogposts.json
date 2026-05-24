@@ -1,0 +1,172 @@
+[
+  {
+    "id": "1",
+    "Title": "Do you know how to make your PC fast?",
+    "Summary": "If your PC is running slowly, these suggestions might help speed things up.",
+    "Author": "Anhishek Singh",
+    "AuthorInitials": "AS",
+    "Date": "2024-06-10",
+    "Category": "tech",
+    "IsList": true,
+    "ListItems": [
+      "1. Make sure you have the latest updates for Windows and device drivers",
+      "2. Restart your PC and open only the apps you need",
+      "3. Use ReadyBoost to help improve performance",
+      "4. Make sure the system is managing the page file size",
+      "5. Check for low disk space and free up space",
+      "6. Adjust the appearance and performance of Windows",
+      "7. Pause OneDrive syncing",
+      "8. Disable unnecessary startup programs",
+      "9. Check for and remove viruses and malware",
+      "10. Restore your PC from a system restore point"
+    ],
+    "Likes": 15
+  },
+  {
+    "id": "2",
+    "Title": "Top 10 government sites",
+    "Summary": "Essential government websites that provide valuable services and information.",
+    "Author": "Anhishek Singh",
+    "AuthorInitials": "AS",
+    "Date": "2024-06-07",
+    "Category": "gov",
+    "IsList": false,
+    "Resources": [
+      {
+        "Title": "Digital India",
+        "Url": "https://www.digitalindia.gov.in/",
+        "Description": "A campaign to ensure government services are made available to citizens electronically."
+      },
+      {
+        "Title": "e-Governance",
+        "Url": "https://www.nisg.org/",
+        "Description": "Promotes the use of information and communication technology in governance."
+      },
+      {
+        "Title": "PM Awas Yojana",
+        "Url": "https://pmaymis.gov.in/",
+        "Description": "Housing for all by 2022, providing affordable housing to the urban poor."
+      },
+      {
+        "Title": "PM KISAN SAMMAN NIDHI",
+        "Url": "https://www.pmkisan.gov.in/",
+        "Description": "Provides farmers with up to Rs.6,000 per year as minimum income support."
+      },
+      {
+        "Title": "National Portal of India",
+        "Url": "https://www.india.gov.in",
+        "Description": "Single-window access to information and services from all Government Departments."
+      },
+      {
+        "Title": "Science & Technology",
+        "Url": "https://www.dst.gov.in/",
+        "Description": "Information about India's scientific and technological developments."
+      },
+      {
+        "Title": "Health & Family Welfare",
+        "Url": "https://main.mohfw.gov.in/",
+        "Description": "Details about government health schemes and programs."
+      },
+      {
+        "Title": "Education",
+        "Url": "https://www.education.gov.in",
+        "Description": "Information about educational institutions, courses, and scholarships."
+      },
+      {
+        "Title": "Housing",
+        "Url": "http://mohua.gov.in/",
+        "Description": "Information about India's housing industry and urban development."
+      }
+    ],
+    "Likes": 8
+  },
+  {
+    "id": "3",
+    "Title": "Top 10 educational sites",
+    "Summary": "Top websites to learn programming and development skills online.",
+    "Author": "Abhishek Singh",
+    "AuthorInitials": "AS",
+    "Date": "2024-06-11",
+    "Category": "edu",
+    "IsList": false,
+    "Resources": [
+      {
+        "Title": "Learn Programming languages",
+        "Url": "https://dotnettutorials.net/",
+        "Description": "Learn .NET, Java, Python, Data Structures, and many more technologies."
+      },
+      {
+        "Title": "Learn Selenium",
+        "Url": "https://toolsqa.com/selenium-webdriver/selenium-tutorial/",
+        "Description": "Comprehensive Selenium tutorials from basic to advanced."
+      },
+      {
+        "Title": "Online Compilers",
+        "Url": "https://www.tutorialspoint.com/codingground.htm",
+        "Description": "Access compilers for almost every programming language online."
+      },
+      {
+        "Title": "Learn Arduino",
+        "Url": "https://arduinogetstarted.com/",
+        "Description": "Official Arduino documentation with basic code examples and blogs."
+      }
+      
+    ],
+    "Likes": 22
+  },
+  {
+    "id": "4",
+    "Title": "My Blazor Project",
+    "Summary": "Welcome to my website, a platform I'm developing as part of my learning journey with Blazor. Here’s what you can explore:",
+    "Author": "Abhishek Singh",
+    "AuthorInitials": "AS",
+    "Date": "2025-04-19",
+    "Category": "edu",
+    "IsList": false,
+    "Resources": [
+      {
+      "Title": "Blazor Learning Journey",
+      "Description": "This project showcases my hands-on experience with Blazor."
+    },
+    {
+      "Title": "Informative Pages",
+      "Description": "Navigate through various sections including Blogs, About, Contact, and a Feedback Form."
+    },
+    {
+      "Title": "Interactive Web Tools",
+      "Description": "Access useful web tools like calculators that I will be creating and integrating."
+    },
+    {
+      "Title": "Engaging Blog Content",
+      "Description": "Stay tuned for insightful blog posts that I will be writing and sharing in the future."
+    },
+    {
+      "Title": "Web Automation Demo",
+      "Description": "Visit the demo page for practical examples of web automation using Selenium."
+    }
+    ],
+    "Likes": 17
+  },
+  {
+    "id": "5",
+    "Title": "Explain URL vs URI",
+    "Summary": "A URI (Uniform Resource Identifier) is a string that identifies a resource by name or location, while a URL (Uniform Resource Locator) is a type of URI that specifically provides the means to locate and access the resource using a protocol like HTTP or FTP.",
+    "Author": "Abhishek Singh",
+    "AuthorInitials": "AS",
+    "Date": "2025-04-19",
+    "Category": "edu",
+    "IsList": false,
+    "Resources": [
+      {
+      "Title": "URL Example : https://www.mySite.com:80/path/to/mypage.html?product=camera#SomewhereInDoc",
+      "Description": "Schema/Protocol -> http:,  Domain name -> www.mySite.com, Port -> 80, Path to file -> /path/to/mypage.html, Query -> ?product=camera , Anchor -> #SomewhereInDoc"
+      }, 
+      {
+      "Title": "URL Example : https://www.mySite.com:80/path/to/mypage.html?product=camera#SomewhereInDoc",
+      "Description": "Schema/Protocol -> http:,  Domain name -> www.mySite.com, Port -> 80, Path to file -> /path/to/mypage.html, Query -> ?product=camera , Anchor -> #SomewhereInDoc"
+      }   
+    ],
+    "Likes": 12
+  }
+  
+]

@@ -1,0 +1,115 @@
+@page "/product-manage"
+@using System.ComponentModel.DataAnnotations
+
+<h3>Product Management</h3>
+  
+
+    <EditForm Model="@newProduct" OnValidSubmit="AddProduct">
+        <DataAnnotationsValidator />
+        <ValidationSummary class="mb-3" />
+<section class="container row ">
+        <div class="mb-1 col">
+            <label for="productID" class="form-label mb-0">Product ID</label>
+            <InputText id="productID" @bind-Value="newProduct.ProductID" class="form-control" />
+        </div>
+
+        <div class="mb-1 col">
+            <label for="productName" class="form-label mb-0">Name</label>
+            <InputText id="productName" @bind-Value="newProduct.Name" class="form-control" />
+        </div>
+
+        <div class="mb-1 col">
+            <label for="productPrice" class="form-label mb-0">Price</label>
+            <InputNumber id="productPrice" @bind-Value="newProduct.Price" class="form-control" />
+        </div>
+
+        <div class="mb-1 col">
+            <label for="productDescription" class="form-label mb-0 ">Description</label>
+            <InputText id="productDescription" @bind-Value="newProduct.Description" class="form-control" />
+        </div>
+
+        <div class="mb-1 col">
+            <label for="productType" class="form-label mb-0">Product Type</label>
+            <InputText id="productType" @bind-Value="newProduct.ProductType" class="form-control" />
+        </div>
+
+        <div class="d-flex gap-3">
+            <button type="submit" class="btn btn-primary @(IsAnyFieldPopulated() ? "" : "btn-secondary")" disabled="@(!IsAnyFieldPopulated())">Add Product</button>
+            <button type="reset" class="btn btn-primary">Reset</button>
+        </div>
+        </section>
+    </EditForm>
+
+
+
+ 
+<br/>
+<section class="grid-data container">
+   <div class="d-flex justify-content-between align-items-center mb-3">
+    <h4 class="mb-0">Products List</h4>
+    <button type="reset" class="btn btn-primary" @onclick="ClearProduct">Clear Product</button>
+    </div>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Description</th>
+                <th>ProductType</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var product in products)
+            {
+                <tr>
+                    <td>@product.ProductID</td>
+                    <td>@product.Name</td>
+                    <td>@product.Price</td>
+                    <td>@product.Description</td>
+                    <td>@product.ProductType</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</section>
+
+@code {
+    private Product newProduct = new Product();
+    private List<Product> products = new List<Product>();
+
+    private void AddProduct()
+    {
+        products.Add(newProduct);
+        newProduct = new Product(); // Reset the form
+    }
+
+    private bool IsAnyFieldPopulated()
+    {
+        return !string.IsNullOrWhiteSpace(newProduct.ProductID)
+            && !string.IsNullOrWhiteSpace(newProduct.Name)
+            && newProduct.Price > 0;
+    }
+
+    private void ClearProduct()
+    {
+        products.Clear();
+    }
+
+    public class Product
+    {
+
+        [Required]
+        public string? ProductID {get; set;}
+
+        [Required]        
+        public string? Name { get; set; }
+
+        [Required]
+        [Range(0.01, double.MaxValue, ErrorMessage = "Price must be greater than 0")]
+        public decimal Price { get; set; }
+        public string? ProductType {get;set;}
+        public string? Description { get; set; }
+    }
+}

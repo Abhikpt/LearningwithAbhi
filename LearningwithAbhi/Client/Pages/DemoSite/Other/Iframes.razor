@@ -1,0 +1,41 @@
+@page "/iframes"
+
+<h3>Nested Iframes Detailed Screen</h3>
+
+<div class="outer-iframe">
+    <h4>Outer Iframe </h4>
+    <iframe src="/Parentframe" width="100%" height="400" title="Outer"></iframe>
+
+    <div class="inner-iframe">
+        <h5>Parallel Iframe 01 </h5>
+        <iframe src="" width="10%" height="30" title="Iframe 01"> Parralel 01</iframe>
+    </div>
+
+    <div id="frame1Wrapper">
+ <h5>Parallel Iframe 02</h5>
+        <iframe src="/sampleiframe" id="frame1" width="500px" height="350px" title="Iframe 02">Parralel 02 </iframe>
+        </div>
+
+</div>
+
+
+
+
+
+<style>
+    .outer-iframe {
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        background-color: #f0f0f0;
+        margin-bottom: 20px;
+    }
+
+    .inner-iframe {
+        margin-top: 20px;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        background-color: #fff;
+    }
+</style>

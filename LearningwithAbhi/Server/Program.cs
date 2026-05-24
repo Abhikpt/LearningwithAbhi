@@ -1,12 +1,20 @@
 global using LearningwithAbhi.Shared;
+using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
+
+using LearningwithAbhi.Shared.Services;
+using LearningwithAbhi.Server.Services;
 
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
+builder.Services.AddSingleton<TaxCalculationService>();
 builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();
+builder.Services.AddSingleton<EmployeeService>();
+builder.Services.AddHttpClient();
+
 
 
 var app = builder.Build();

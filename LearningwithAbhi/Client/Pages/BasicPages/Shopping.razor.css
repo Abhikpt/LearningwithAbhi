@@ -26,11 +26,11 @@ body {
 	width: 300px;
 	height: auto;
 	
-	// writing-mode: vertical-rl;
+	writing-mode: vertical-rl;
 	display: flex;
 }
 
 	.Medicine:hover {
-		//transform: rotate(5deg);
+		transform: rotate(5deg);
 		transform: scale(1.1, 1.2);
 	}

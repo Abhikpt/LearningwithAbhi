@@ -15,7 +15,7 @@ namespace LearningwithAbhi.Server.Controllers
     };
         public BookModel GetProductById(int productId)
         {
-            return  _bk.FirstOrDefault(p => p.Id == productId );
+            return _bk.FirstOrDefault(p => p.Id == productId);
         }
 
     }

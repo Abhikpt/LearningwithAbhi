@@ -1,0 +1,108 @@
+@page "/income-tax-calculator"
+@using LearningwithAbhi.Shared.Models
+@using LearningwithAbhi.Shared.Services
+
+
+<h3>Income Tax Calculator (Old vs New Regime)</h3>
+
+<div class="p-4 border rounded shadow">
+    <div class="mb-2">
+        <label>Income:</label>
+        <input type="number" @bind="Income" class="form-control" />
+    </div>
+    <div class="mb-2">
+        <label>Standard Deduction:</label>
+        <input type="number" @bind="StandardDeduction" class="form-control" />
+    </div>
+    <div class="mb-2">
+        <label>Investments:</label>
+        <input type="number" @bind="Investments" class="form-control" />
+    </div>
+
+    <button class="btn btn-primary mt-2" @onclick="CalculateTax">Calculate</button>
+
+    @if (TaxCalculated)
+    {
+        <div class="table-responsive mt-4">
+            <table class="table table-bordered table-striped">
+                <thead class="table-light">
+                    <tr>
+                        <th>Label</th>
+                        <th>Old Regime</th>
+                        <th>New Regime</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>Taxable Income</td><td>₹@FormatAmount(OldTax.TaxableIncome)</td><td>₹@FormatAmount(NewTax.TaxableIncome)</td></tr>
+                    <tr><td>5% Slab</td><td>₹@FormatAmount(OldTax.Slab5)</td><td>₹@FormatAmount(NewTax.Slab5)</td></tr>
+                    <tr><td>10% Slab</td><td>-</td><td>₹@FormatAmount(NewTax.Slab10)</td></tr>
+                    <tr><td>15% Slab</td><td>-</td><td>₹@FormatAmount(NewTax.Slab15)</td></tr>
+                    <tr><td>20% Slab</td><td>₹@FormatAmount(OldTax.Slab20)</td><td>₹@FormatAmount(NewTax.Slab20)</td></tr>
+                    <tr><td>25% Slab</td><td>-</td><td>₹@FormatAmount(NewTax.Slab25)</td></tr>
+                    <tr><td>30% Slab</td><td>₹@FormatAmount(OldTax.Slab30)</td><td>₹@FormatAmount(NewTax.Slab30)</td></tr>
+                    <tr><td>Total Tax</td><td>₹@FormatAmount(OldTax.TotalTax)</td><td>₹@FormatAmount(NewTax.TotalTax)</td></tr>
+                    <tr><td>Rebate</td><td>₹@FormatAmount(OldTax.Rebate)</td><td>₹@FormatAmount(NewTax.Rebate)</td></tr>
+                    <tr><td>Cess (4%)</td><td>₹@FormatAmount(OldTax.Cess)</td><td>₹@FormatAmount(NewTax.Cess)</td></tr>
+                    <tr class="fw-bold"><td>Final Tax Payable</td><td>₹@FormatAmount(OldTax.FinalTax)</td><td>₹@FormatAmount(NewTax.FinalTax)</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="row mt-4">
+            <div class="col-md-6">
+                <div class="card border-success mb-3">
+                    <div class="card-header bg-success text-white">Old Regime</div>
+                    <div class="card-body">
+                        <p><strong>Taxable Income:</strong> ₹@FormatAmount(OldTax.TaxableIncome)</p>
+                        <p><strong>5% Slab:</strong> ₹@FormatAmount(OldTax.Slab5)</p>
+                        <p><strong>20% Slab:</strong> ₹@FormatAmount(OldTax.Slab20)</p>
+                        <p><strong>30% Slab:</strong> ₹@FormatAmount(OldTax.Slab30)</p>
+                        <p><strong>Total Tax:</strong> ₹@FormatAmount(OldTax.TotalTax)</p>
+                        <p><strong>Rebate:</strong> ₹@FormatAmount(OldTax.Rebate)</p>
+                        <p><strong>Cess (4%):</strong> ₹@FormatAmount(OldTax.Cess)</p>
+                        <p><strong>Final Tax Payable:</strong> ₹@FormatAmount(OldTax.FinalTax)</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card border-primary mb-3">
+                    <div class="card-header bg-primary text-white">New Regime</div>
+                    <div class="card-body">
+                        <p><strong>Taxable Income:</strong> ₹@FormatAmount(NewTax.TaxableIncome)</p>
+                        <p><strong>5% Slab:</strong> ₹@FormatAmount(NewTax.Slab5)</p>
+                        <p><strong>10% Slab:</strong> ₹@FormatAmount(NewTax.Slab10)</p>
+                        <p><strong>15% Slab:</strong> ₹@FormatAmount(NewTax.Slab15)</p>
+                        <p><strong>20% Slab:</strong> ₹@FormatAmount(NewTax.Slab20)</p>
+                        <p><strong>25% Slab:</strong> ₹@FormatAmount(NewTax.Slab25)</p>
+                        <p><strong>30% Slab:</strong> ₹@FormatAmount(NewTax.Slab30)</p>
+                        <p><strong>Total Tax:</strong> ₹@FormatAmount(NewTax.TotalTax)</p>
+                        <p><strong>Rebate:</strong> ₹@FormatAmount(NewTax.Rebate)</p>
+                        <p><strong>Cess (4%):</strong> ₹@FormatAmount(NewTax.Cess)</p>
+                        <p><strong>Final Tax Payable:</strong> ₹@FormatAmount(NewTax.FinalTax)</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+
+@code {
+    decimal Income;
+    decimal StandardDeduction = 75000;
+    decimal Investments;
+    bool TaxCalculated = false;
+
+    TaxResult OldTax = new();
+    TaxResult NewTax = new();
+
+    void CalculateTax()
+    {
+        OldTax = TaxCalculator.CalculateOldRegime(Income, Investments);
+        NewTax = TaxCalculator.CalculateNewRegime(Income, StandardDeduction, Investments);
+        TaxCalculated = true;
+    }
+
+    string FormatAmount(decimal amount) => string.Format("{0:N0}", amount);
+}
+

@@ -1,0 +1,53 @@
+@page "/product/{Id:int}"
+@using LearningwithAbhi.Shared
+@inject NavigationManager Navigation
+@inject CartService CartService
+
+
+
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="#">Home</a></li>
+    <li class="breadcrumb-item"><a href="Demo1">Demo</a></li>
+    <li class="breadcrumb-item"><a href="products">Products</a></li>
+    <li class="breadcrumb-item"><a href="product/{@Id}">Products -@Id</a></li>
+
+  </ol>
+</nav>
+
+
+ <img src="https://via.placeholder.com/150" class="card-img-top" alt="@product.Name"  style="width: 18rem;   border: 2px double #000000">
+
+ <div>
+<h3>@product?.Name</h3>
+<p>@product?.Description</p>
+<p>@product?.Price.ToString("C")</p>
+
+</div>
+<p>
+    <button @onclick="AddToCart" class="btn btn-primary">Add to Cart</button>
+</p>
+
+@code {
+    [Parameter]
+    public int Id { get; set; }
+
+    private ProductModel product;
+
+    protected override void OnInitialized()
+    {
+        product = GetProductById(Id);
+    }
+
+    private ProductModel GetProductById(int id)
+    {
+        return new ProductModel { Id = id, Name = $"Product {id}", Price = 19.99 * id, Description = $"Description {id}" };
+    }
+
+    private void AddToCart()
+    {
+        CartService.AddToCart(product);
+        Navigation.NavigateTo("cart");
+       
+    }
+}
