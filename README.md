@@ -43,6 +43,15 @@ Embark on your Blazor odyssey with the following steps:
 3. Build and run the project.
 4. Navigate to the URL provided by the development server to embark on your immersive Blazor learning experience.
 
+## Run locally with full API support
+
+1. Start the **Server** project: `dotnet run` from `LearningwithAbhi/Server`
+2. Open the URL shown in the console (for example `https://localhost:7294`)
+3. Navigate to `/learning`
+
+To load markdown from GitHub instead, set `GitHub:Owner`, `GitHub:Repo`, and `GitHub:DefaultFile` in `Server/appsettings.json`.
+
+
 ## Contributing
 
 Your expertise and insights are invaluable assets in enriching this repository. If you aspire to contribute by expanding the repertoire of demo pages or refining existing ones, we warmly welcome your contributions through pull requests.
