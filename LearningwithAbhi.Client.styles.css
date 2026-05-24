@@ -658,6 +658,53 @@ a[b-r0ffl4iydz] {
     <p>Email: contact@educational-site.com</p>
     <p>Phone: +1 (123) 456-7890</p>
 </div[b-nsfrto36e3]>
+/* /Pages/learning/Learning.razor.rz.scp.css */
+/* Breadcrumb and markdown styling for Learning page */
+nav[aria-label="breadcrumb"][b-txler9jxcw] {
+  margin-bottom: 1rem;
+}
+.breadcrumb[b-txler9jxcw] {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+  list-style: none;
+  padding: 0.5rem 0.75rem;
+  margin: 0;
+  background: #f8f9fa;
+  border: 1px solid #e9ecef;
+  border-radius: 0.25rem;
+  align-items: center;
+}
+.breadcrumb-item a[b-txler9jxcw] {
+  color: #0d6efd;
+  text-decoration: none;
+}
+.breadcrumb-item a:hover[b-txler9jxcw] {
+  text-decoration: underline;
+}
+.breadcrumb-item + .breadcrumb-item[b-txler9jxcw]::before {
+  content: "/";
+  margin: 0 0.5rem;
+  color: #6c757d;
+}
+.breadcrumb-item.active[b-txler9jxcw] {
+  color: #212529;
+  font-weight: 600;
+}
+.markdown-body[b-txler9jxcw] {
+  padding: 1rem;
+  background: #ffffff;
+  border: 1px solid #e9ecef;
+  border-radius: 0.25rem;
+  line-height: 1.6;
+}
+.markdown-body img[b-txler9jxcw] {
+  max-width: 100%;
+  height: auto;
+}
+.markdown-body a[b-txler9jxcw] {
+  color: #0d6efd;
+}
 /* /Pages/learning/MyResume.razor.rz.scp.css */
 .page-container[b-7nxabpxfkf] {
 	color: blue;
